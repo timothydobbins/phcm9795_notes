@@ -1,0 +1,47 @@
+### Activity 2.1 {-}
+Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The file `Activity_2.1.rds` contain data on the participants in the study. The file is located on Moodle in the Learning Activities section.
+
+Create a 2 by 2 table to show the proportions of low birth weight babies born to mothers who smoked during pregnancy and those that did not smoke during pregnancy. Answer the following questions:
+
+a) What was the total number of mothers who smoked during pregnancy?
+b) What proportion of mothers who smoked gave birth to low birth weight babies? What proportion of non-smoking mothers gave birth to low birth weight babies?
+c) Construct a stacked bar chart of the data to examine if there a difference in the proportion of babies born with a low birth weight in relation to the age group of the mother? Provide appropriate labels for the axes and give the graph an appropriate title. [Hint: plot the data using the `AgeGrp` variable]
+d) Using your answers to the question a) and b), write a brief conclusion about the relationship of low birth weight and mother’s age and smoking status.
+
+### Activity 2.2 {-}
+
+In a Randomised Controlled Trial, the preference of a new drug was tested against an established drug by giving both drugs to each of 90 people. Assume that the two drugs are equally preferred, that is, the probability that a patient prefers either of the drugs is equal (50%). Use either the web applet, or one of the binomial functions in R to compute the probability that 60 or more patients would prefer the new drug. In completing this question, determine:
+
+a)	The number of trials (`n` for the web applet, `size` for R)
+b)	The number of successes we are interested in (`x` for web applet, `x` or `q` for R)
+c)	The probability of success for each trial (`p` for the web applet, `prob` for R)
+d)	The form of the binomial function
+    - for the web applet: `P(X=x)`, `P(X≤x)` or `P(X≥x)`;
+    - for R: `dbinom`, `pbinom` or `pbinom(lower.tail=FALSE)`
+e)	The final probability.
+
+### Activity 2.3 {-}
+
+A case of Schistosomiasis is identified by the detection of schistosome ova in a faecal sample. In patients with a low level of infection, a field technique of faecal examination has a probability of 0.35 of detecting ova in any one faecal sample. If five samples are routinely examined for each patient, use the web applet or R to compute the probability that a patient with a low level of infection:
+
+a)	Will not be identified?
+b)	Will be identified in two of the samples?
+c)	Will be identified in all the samples?
+d)	Will be identified in at most 3 of the samples?
+
+### Activity 2.4 {-}
+
+A health survey was conducted, and an extract of data has been provided in `Activity_2.4-health-survey.csv`. Categorise height into 20cm intervals, and present the height-groups appropriately.
+
+### Activity 2.5 {-}
+
+The data in the file `Activity_2.5-LengthOfStay.rds` (available on Moodle) has information about **birth weight** and **length of stay** collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
+
+a.  Create a histogram, density plot and boxplot to inspect the distribution of birth weight and length of stay;
+
+b.  Complete the following summary statistics for each variable:
+    - mean and median;
+    - standard deviation and interquartile range.
+
+Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.
+

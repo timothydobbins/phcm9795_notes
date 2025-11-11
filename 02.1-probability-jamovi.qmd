@@ -1,0 +1,156 @@
+## Producing a one-way frequency table
+
+The simplest way to summarise categorical variables is with a one-way frequency table. These are constructed using **Analyses \> Exploration**. We will illustrate this by summarising the variable `sex` from the `pbc.rds` data from the previous module.
+
+![](img/mod02/jamovi/mod02-onefreq01.png)
+
+jamovi has summarised `sex` here, just as we asked it to, however it has analysed `sex` as if it was a continuous variable. This is incorrect: `sex` is a categorical variable. This can be corrected by defining `sex` to be categorical within **Data \> Setup**:
+
+1.  Select `sex`, then choose **Nominal** as the Measure type. jamovi now lists the levels of `sex` as 1 and 2. These should be replaced by the categories they represent.
+2.  From the `mod01_pbc_info.txt` file, we see that 1 represents Male, and 2 represents Female. These labels can be added by typing in the appropriate cell. The completed screen should look like this:
+
+![](img/mod02/jamovi/mod02-onefreq02.png)
+
+Clicking back to the original summary of sex shows that jamovi is no longer treating `sex` as a continuous variable, but there is little output in the summary:
+
+![](img/mod02/jamovi/mod02-onefreq03.png){width="30%"}
+
+Click **Frequency tables** in the main Descriptives window to request the one-way frequency table:
+
+![](img/mod02/jamovi/mod02-onefreq04.png)
+
+## Producing a two-way frequency table
+
+Two-way tables are constructed using **Analyses > Frequencies > Contingency Tables > Independent Samples**. Note that **both variables must be defined as Nominal variables**. As an example, to produce a two-way table of disease stage by sex:
+
+![](img/mod02/jamovi/mod02-twofreq01.png)
+
+**Ignore the output labelled χ^2^ tests for now.**
+
+Row or column percents can be requested in the **Cells** section. For example, to calculate the proportion of males within each stage of disease, we would request column percents:
+
+![](img/mod02/jamovi/mod02-twofreq02.png)
+
+## Creating bar charts for one categorical variable
+
+Here we will create the bar chart shown in @fig-bar-1 using the `mod01_pbc.rds` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
+
+Bar charts are created in the **Exploration** tab. We can summarise `stage`, and request a **Frequency table** in the usual way. To request a bar chart as well, tick **Bar plot** within the **Plots** section:
+
+![](img/mod02/jamovi/mod02-barchart01.png)
+
+## Creating bar charts for two categorical variables
+
+### Option 1: Using Contingency Tables command
+
+Creating a **clustered bar chart** as shown in @fig-bar-2 can be done using **Analyses > Frequencies > Contingency Tables > Independent Samples**. First create the cross-tab of interest, for example, Stage by Sex. Choose **Plots > Bar Plot**, and ensure the Bar Type is selected as **Side by side**. Choose the X-axis as required - here we want to see stage on the x-axis, so we choose the x-axis to be columns (this may need to be adjusted according to how your table has been set up):
+
+![](img/mod02/jamovi/mod02-clustered.png)
+To create a **stacked bar chart** (as in @fig-bar-3), choose the Bar Type to be **Stacked**:
+
+![](img/mod02/jamovi/mod02-stacked.png)
+
+Finally, to create a **stacked relative bar chart** (as in @fig-bar-4), choose the Y-axis to be **Percentages within column**:
+
+![](img/mod02/jamovi/mod02-stacked-rel.png)
+
+### Option 2: Using Survey Plots command
+
+An alternative way of producing barcharts is via a Module called **surveymv** that we add to jamovi. To install the module, click the **Analyses** tab, and click the large **+** at the top-right of the window. Choose **jamovi library**:
+
+![](img/mod02/jamovi/act2.1.2.png)
+
+Click **Available** and search for `surveymv`, then click install:
+
+![](img/mod02/jamovi/act2.1.3.png)
+
+The module has now been installed. To run the module, click the up-arrow to return to the **Analyses** tab, click the large **+** and choose **surveymv > Survey Plots**:
+
+![](img/mod02/jamovi/act2.1.4.png)
+
+We will demonstrate the module by recreating @fig-bar-4, a figure of the relative frequencies of sex within stage of disease. To open the module options, click the large **+** and choose **surveymv > Survey Plots**:
+
+![](img/mod02/jamovi/surveymv-1.png)
+
+We choose the variable we want to plot, here `Sex`. We want to plot sex within each stage, so `Stage` is entered as a **Grouping Variable**:
+
+![](img/mod02/jamovi/surveymv-2.png)
+
+This has plotted a clustered bar chart, we want a stacked bar chart, so select **Stacked bar**. Also, we want to plot percentages, not counts, so choose **Percentages**:
+
+![](img/mod02/jamovi/surveymv-3.png)
+
+Our stacked relative frequency chart has been completed. While this produces a bar chart with horizontal bars, it often performs better with labelling of the groups than the previous method.
+
+## Recoding data {#sec-recoding-data-jmv}
+
+One task that is common in statistical computing is to recode variables. For example, we might want to group some categories of a categorical variable, or to present a continuous variable in a categorical way.
+
+In this example, we can use the `pbc` data and recode age into age groups:
+
+-   Less than 30
+-   30 to less than 50
+-   50 to less than 70
+-   70 or older
+
+Recoding can be done using **Data > Transform**.
+
+First, click **Data** to view the spreadsheet, then click in an empty column, then click **Setup > NEW TRANSFORMED VARIABLE**. We need to specify three things:
+
+1. The name of the new variable. Here, we will choose `age group`.
+2. The source variable. Here, we want to recode **from** `age`, so choose `age`.
+3. The `transform`, which is where we define the rules of the recode. Choose **Create New Transform**.
+
+![](img/mod02/jamovi/mod02-recode2.png)
+
+The `transform` is built up by specifying the **recode conditions**. Click **+ Add recode condition** to define the first condition:
+
+![](img/mod02/jamovi/mod02-recode3.png)
+
+Here we want to define all ages less than 30 as "Less than 30". Complete the recode condition so it appears as: `if $source < 30 use "Less than 30"`. Note that the quotation marks around "Less than 30" are required:
+
+![](img/mod02/jamovi/mod02-recode4.png)
+
+Add another recode condition, which will be applied if the first condition is not satisfied: `if $source < 50 use "30 to less than 50"`:
+
+![](img/mod02/jamovi/mod02-recode5.png)
+
+Add another condition: `if $source < 70 use "50 to less than 70"`. There is no need to add a condition for the final condition, simply complete the final line: `else use "70 or more"`:
+
+![](img/mod02/jamovi/mod02-recode6.png)
+
+Finally, click the **down** arrow to dismiss the transform builder, and the **up** arrow to dismiss the transform dialog.
+
+We can examine the new categories by obtaining a frequency table: **Analyses > Exploration > Descriptives**:
+
+![](img/mod02/jamovi/mod02-recode7.png)
+
+## Computing binomial probabilities
+
+jamovi does not have a point-and-click method for computing probabilities from a binomial distribution. Here, instructions are provided for using a third-party applet. This Binomial Distribution Applet has been posted at https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html, and provides a simple and intuitive way to compute probabilities from a binomial distribution. 
+
+The applet requires three pieces of information:
+
+- $/n$: the number of binary trials being considered
+- $/p$: the probability of "success" in each trial
+- $x$: the number of success we are interested in
+
+We also need to consider whether we are interested in the probability being equal to, greater than, or less than x.
+
+To do the computation for part (a) in Worked Example 2.1:
+
+-   *x* is the number of successes, here, the number of smokers (i.e. x=3);
+-   *n* is the number of trials (i.e. n=6);
+-   and *p* is probability of drawing a smoker from the population, which is 19.8% (i.e. p=0.198).
+
+Replace each of these with the appropriate number into the applet:
+
+![](img/mod02/jamovi/mod02-bin-01.png)
+
+To calculate the probability of at least 4 smokers in part (b), we change the drop-down to "P(X≥x)", and x to be equal to 4:
+
+![](img/mod02/jamovi/mod02-bin-02.png)
+
+To calculate the probability of at most 2 smokers part (c), we we change the drop-down to "P(X≤x)", and x to be equal to 2:
+
+![](img/mod02/jamovi/mod02-bin-03.png)
