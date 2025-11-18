@@ -40,9 +40,9 @@ pbc$stage <- factor(pbc$stage,
 
 Plots produced by the `plot(dens())` and `boxplot()` functions have used so-called `base` graphics: no special packages have been needed to produce these plots. In this section, we will introduce the `ggplot2` [^1] package, which defines plots using a **grammar of graphics**. This can seem like a complex way of constructing a plot, but the framework allows for very complex plots to be constructed in a relatively consistent way.
 
-The key elements of a plot that we will use in this course:
+The grammar of graphics defines a number of elements of a plot; the key elements that we will use in this course are:
 
-- data: the data must be a data frame where variables are organised in columns, and observations are in rows
+- data: we need to specify the data we are plotting. The data must be stored as a dataframe, where variables are organised in columns, and observations are in rows
 - mapping: the *aesthetic mapping* describes how your data map to visual properties of the plot. For example, we might want to define the x-axis by the `age` variable and the colour of points by `sex`. We can define our mapping using the command `mapping = aes()`, and entering the specific aesthetic components within the `aes()` component.
 - geometries: we can think of *geometries* as defining the actual "ink" of the plot, modified by the *aesthetics* defined by the mapping. For example:
   - `geom_bar()` will plot a bar-chart;
@@ -82,7 +82,7 @@ ggplot(data=pbc, mapping = aes(x=sex)) +
   geom_bar()
 ```
 
-Finally, we can change the look of the figure by choosing a different *theme*:let's use `theme_classic()` here.
+We can change the look of the figure by choosing a different *theme*:let's use `theme_classic()` here.
 
 ```{r}
 ggplot(data=pbc, mapping = aes(x=sex)) +
@@ -90,14 +90,14 @@ ggplot(data=pbc, mapping = aes(x=sex)) +
   theme_classic()
 ```
 
-We can change the axis labels using `xlab()` and `ylab()`:
+The final changes we can make are to define the axis labels using `labs()`:
 
 ```{r}
 ggplot(data=pbc, mapping = aes(x=sex)) +
   geom_bar() +
   theme_classic() +
-  xlab("Participant sex") +
-  ylab("Frequency")
+  labs(x = "Participant sex", 
+       y = "Frequency")
 ```
 
 Finally, we can change the colour of the bars by specifying a `fill` colour within the `geom_bar()` command. We can choose one of over 600 (!) colours by name [^2].
@@ -106,8 +106,8 @@ Finally, we can change the colour of the bars by specifying a `fill` colour with
 ggplot(data=pbc, mapping = aes(x=sex)) +
   geom_bar(fill="steelblue") +
   theme_classic() +
-  xlab("Participant sex") +
-  ylab("Frequency")
+  labs(x = "Participant sex", 
+       y = "Frequency")
 ```
 
 Let's adapt this code to produce a bar chart for stage of disease:
@@ -116,8 +116,8 @@ Let's adapt this code to produce a bar chart for stage of disease:
 ggplot(data=pbc, mapping = aes(x=stage)) +
   geom_bar(fill="steelblue") +
   theme_classic() +
-  xlab("Stage of disease") +
-  ylab("Frequency")
+  labs(x = "Stage of disease", 
+       y = "Frequency")
 ```
 
 Note that `ggplot` has included a separate bar for the missing values (i.e. the `NA` values). We can instruct R to ignore the missing values in the `ggplot` function by specifying the data to be a `subset` of `pbc`. The command: `subset(pbc, is.na(stage) == FALSE)` essentially creates a temporary subset of the `pbc` dataset where `stage` is not missing. Putting it all together:
@@ -126,8 +126,8 @@ Note that `ggplot` has included a separate bar for the missing values (i.e. the 
 ggplot(data=subset(pbc, is.na(stage) == FALSE), mapping = aes(x=stage)) +
   geom_bar(fill="steelblue") +
   theme_classic() +
-  xlab("Stage of disease") +
-  ylab("Frequency")
+  labs(x = "Stage of disease", 
+       y = "Frequency")
 ```
 
 ## Introducing `|>`: aka the "pipe"
@@ -153,15 +153,104 @@ subset(pbc, is.na(stage) == FALSE) |>
   ggplot(mapping = aes(x=stage)) +
     geom_bar(fill="steelblue") +
     theme_classic() +
-    xlab("Stage of disease") +
-    ylab("Frequency")
+  labs(x = "Stage of disease", 
+       y = "Frequency")
 ```
 
 Notice that when we pipe a dataset from the `subset()` function, we no longer need to specify the name of the dataset in `ggplot()`: the dataset is inferred from the action of the `subset()` function.
 
 ::: {.callout-note}
 The `|>` pipe was introduced in R version 4.1.0, May 2021, and for this author (TD), has drastically improved the code that I write (and read!). When reading code that I, or others, have written using the pipe, I replace `|>` by the words **and then**. So the previous code would be read: subset the data **and then** plot the data.
+
+You may also see `%>%` referred to as a pipe. This version of the pipe was introduced in the early 2010s, most notably in the `magrittr` package. While there are subtle differences between `|>` and `%>%`, the `|>` is the easier to use for this course, as it does not require loading any additional packages. More in-depth history can be found at [this blog post](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/).
 :::
 
+### Using `ggplot2` to construct bar charts for two variables
+
+In Section X.X, we saw hat clustered or stacked bar charts can be used to summarise two categorical variables. Remember that the *aesthetic mapping* can be used to describe how our data map to visual elements of our plot. So we can map `sex` to the `fill` attribute to summarise Stage of Disease by sex. By default, `ggplot` will produce a stacked bar chart, but we can request a clustered bar chart by specifying `position="dodge"` in the `geom_bar()` statement:
+
+```{r}
+subset(pbc, is.na(stage) == FALSE) |> 
+  ggplot(mapping = aes(x=stage, fill=sex)) +
+    geom_bar(position = "dodge") +
+    theme_classic() +
+  labs(x = "Stage of disease", 
+       y = "Frequency")
+```
+
+Notice that the legend title uses the name of the `fill` variable, in this case `sex` with a lower-case s. We can specify an alternative legend title in the `labs()` statement:
+
+```{r}
+subset(pbc, is.na(stage) == FALSE) |> 
+  ggplot(mapping = aes(x=stage, fill=sex)) +
+    geom_bar(position = "dodge") +
+    theme_classic() +
+  labs(x = "Stage of disease", 
+       y = "Frequency",
+       fill = "Sex")
+```
+
+A stacked bar chart can be constructed by removing the `position = dodge()` statement:
+
+```{r}
+subset(pbc, is.na(stage) == FALSE) |> 
+  ggplot(mapping = aes(x=stage, fill=sex)) +
+    geom_bar() +
+    theme_classic() +
+  labs(x = "Stage of disease", 
+       y = "Frequency",
+       fill = "Sex")
+```
+
+Finally, we can construct a stacked relative bar chart by specifying `position = "fill"` in the `geom_bar()` definition:
+
+```{r}
+subset(pbc, is.na(stage) == FALSE) |> 
+  ggplot(mapping = aes(x=stage, fill=sex)) +
+    geom_bar(position = "fill") +
+    theme_classic() +
+  labs(x = "Stage of disease", 
+       y = "Proportion",
+       fill = "Sex")
+```
+
+## Producing a density plot using ggplot
+
+We can produce a density plot by specifying the variable of interest as the `x` variable, and requesting a `geom_density()`:
+
+```{r}
+ggplot(data=pbc, aes(x=age)) + 
+  geom_density() +
+  theme_classic() +
+  labs(x="Age (years)",
+       y="Density")
+```
+
+## Producing a boxplot using ggplot
+
+A boxplot is constructed with a single `y` variable, and `geom_boxplot()`:
+
+```{r}
+ggplot(data=pbc, aes(y=age)) + 
+  geom_boxplot() +
+  theme_classic() +
+  labs(y="Age (years)")
+```
+
+By default, `ggplot2` includes arbitrary values on the x-axis. As boxplots are usually constructed only for informal data investigation, and are rarely included in formal documents, the x-axis labelling may not be an issue. However, the x-axis labelling can be removed as follows:
+
+```{r}
+ggplot(data=pbc, aes(y=age)) + 
+  geom_boxplot() +
+  theme_classic() +
+  labs(y="Age (years)") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+```
+
+
 [^1]: Note that the package is called `ggplot2` as it is a complete overhaul of the package called `ggplot`. The main function used in the `ggplot2` package is `ggplot()`. This can be confusing, but you will get used to this in time.
-[^2]: A list of available colours that can be used in `ggplot` can be found by entering the command `grDevices::colours()`
+[^2]: A list of available colours that can be used in `ggplot` can be found by entering the command `grDevices::colours()` in R, or by searching the web for `R colour names`.
