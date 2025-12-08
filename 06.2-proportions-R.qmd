@@ -47,9 +47,19 @@ We can do this using the `relevel()` function, which re-orders the levels of a f
 # Define "Active" as the first level of group:
 drug$group <- relevel(drug$group, ref="Active")
 
-
 # Define "Nausea" as the first level of side_effect:
 drug$side_effect <- relevel(drug$side_effect, ref="Nausea")
+```
+
+Alternatively, `mutate()` can be used to re-level the factors:
+
+```{r}
+#| eval: false
+#| include: true
+
+drug <- mutate(drug,
+               group = relevel(group, ref="Active"),
+               side_effect = relevel(side_effect, ref="Nausea"))
 ```
 
 Upon re-leveling the factors, we can check that the levels of interest have been defined as the first levels:

@@ -30,7 +30,7 @@ knitr::include_graphics(here::here("img", "mod08", "jamovi", "twoway-7.png"))
 
 To calculate the Pearson's correlation using the dataset `mod08_lung_function.csv` choose: **Correlation Matrix** within the **Regression** menu.
 
-Select the two variables, **FVC** and **Height** in the **Variables** box, and a correlation matrix will be constructed, similar to @tbl-corrmatrix. 
+Select the two variables, **FVC** and **Height** in the **Variables** box, and tick **Confidence intervals**. A correlation matrix will be constructed, similar to @tbl-corrmatrix. 
 
 
 ## Fitting a simple linear regression model

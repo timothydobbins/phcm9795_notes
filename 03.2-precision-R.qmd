@@ -20,7 +20,7 @@ summary(survey)
 We can see that sex has been entered as a numeric variable. We should transform it into a factor so that we can assign labels to each category:
 
 ```{r}
-survey$sex <- factor(survey$sex, level=c(1,2), labels=c("Male", "Female"))
+survey$sex <- factor(survey$sex, levels=c(1,2), labels=c("Male", "Female"))
 
 summary(survey$sex)
 ```
@@ -50,20 +50,79 @@ tail(survey)
 
 We should also check the construction of any new variable buy examining a density plot and/or a boxplot:
 
-```{}
-descriptives(data=survey, vars=bmi, dens=TRUE, box=TRUE)
+```{r}
+#| eval: false
+library(ggplot2)
+
+ggplot(data=survey, mapping=aes(x=bmi)) +
+  geom_density() +
+  theme_classic() +
+  labs(x="BMI (kg/m2)")
+
+
+ggplot(data=survey, mapping=aes(y=bmi)) +
+  geom_boxplot() +
+  theme_classic() +
+  labs(y="BMI (kg/m2)") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank())
 ```
 
-::: {layout-ncol=2}
-![](img/mod03/jamovi/mod03-newvar-dens.png)
 
-![](img/mod03/jamovi/mod03-newvar-boxp.png)
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-height: 3
 
-:::
+library(ggplot2)
+library(patchwork)
+
+g1 <- ggplot(data=survey, mapping=aes(x=bmi)) +
+  geom_density() +
+  theme_classic() +
+  labs(x="BMI (kg/m2)")
+
+
+g2 <- ggplot(data=survey, mapping=aes(y=bmi)) +
+  geom_boxplot() +
+  theme_classic() +
+  labs(y="BMI (kg/m2)") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank())
+
+g1 + g2
+```
 
 
 In the general population, BMI ranges between about 15 to 30. It appears that BMI has been correctly generated in this example. We should investigate the very low and some of the very high values of BMI, but this will be left for another time.
 
+## Introducing the `dplyr` package
+
+`dplyr` is a package that provides a set of functions to manipulate data. We have previously created new columns of data, or changed existing columns using `<-`. In `dplyr`, we can use the `mutate()` function to create new variables or to change existing variables. The advantage of `mutate()` is that we can create multiple new variables in the one function, using code that is easy to read.
+
+For example, in this module we have used `<-` to:
+
+1. define `sex` as a **factor**, and
+2. create BMI.
+
+We could do these manipulations using `mutate()` as:
+
+```{r}
+#| eval: false
+
+library(dplyr)
+
+df <- mutate(df, sex = factor(sex, levels=c(1,2), labels=c("Male", "Female")),
+                 bmi = weight / height^2)
+
+```
+
+Note that the results of `<-` and `mutate()` are identical. Some authors, however, see the `mutate()` approach easier to read.
 
 ## Summarising data by another variable
 
@@ -71,8 +130,29 @@ We will often want to calculate the same summary statistics by another variable.
 
 ```{r}
 library(jmv)
-descriptives(data=survey, vars=bmi, splitBy = sex, dens=TRUE, box=TRUE)
+descriptives(data=survey, vars=bmi, splitBy = sex)
 ```
+
+## Plotting boxplots by another variable
+
+```{r}
+ggplot(data=survey, mapping=aes(x=bmi)) +
+  geom_density() +
+  facet_wrap(~ sex) +
+  theme_classic() +
+  labs(x="BMI (kg/m2)")
+```
+
+
+## Plotting denity plots by another variable
+
+```{r}
+ggplot(data=survey, mapping=aes(y=bmi, x=sex)) +
+  geom_boxplot() +
+  theme_classic() +
+  labs(y="BMI (kg/m2)")
+```
+
 
 ## Summarising a single column of data
 
