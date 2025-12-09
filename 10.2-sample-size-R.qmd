@@ -1,3 +1,5 @@
+# Module 10
+
 Many power and sample size procedures are available in the `epiR` package. We will also use one function from the `pwr` package.
 
 ```{r message=FALSE, warning=FALSE}
