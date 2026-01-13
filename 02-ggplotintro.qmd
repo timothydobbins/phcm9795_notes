@@ -38,7 +38,7 @@ pbc$stage <- factor(pbc$stage,
 
 ## Introducing `ggplot2`
 
-Plots produced by the `plot(dens())` and `boxplot()` functions have used so-called `base` graphics: no special packages have been needed to produce these plots. In this section, we will introduce the `ggplot2` [^1] package, which defines plots using a **grammar of graphics**. This can seem like a complex way of constructing a plot, but the framework allows for very complex plots to be constructed in a relatively consistent way.
+Plots produced by `plot(dens())` and `boxplot()` are often called `base` graphics: no special packages have been needed to produce these plots. In this section, we will introduce the `ggplot2` [^1] package, which defines plots using a **grammar of graphics**. This can seem like a complex way of constructing a plot, but the framework allows for very complex plots to be constructed in a relatively consistent way.
 
 The grammar of graphics defines a number of elements of a plot; the key elements that we will use in this course are:
 
@@ -51,7 +51,7 @@ The grammar of graphics defines a number of elements of a plot; the key elements
 - theme: the *theme* defines the overall look of the plot. Every part of the plot that is not specified by data can be adjusted by changing the theme. For example, fonts, axis ticks, legend position and background colours can all be changed by using a theme. Some useful themes are:
   - `theme_bw()`: a black-and-white theme
   - `theme_minimal()`: a clean them with no background annotations
-  - `theme_classic()`: a theme that removes gridlines and backrounds, leaving only axis lines.
+  - `theme_classic()`: a theme that removes grid-lines and backgrounds, leaving only axis lines.
 
 These elements can be combined in a single `ggplot` command by using a `+` symbol, usually with each element provided on a new line.
 

@@ -97,19 +97,19 @@ Spearman's $\rho$ is calculated using the ranks of the data, rather than the act
 
 Correlation coefficients are often presented in the form of a *correlation matrix* which can display the correlation between a number of variables in a single table (@tbl-corrmatrix).
 
-+------------+-------------+-------------+
-|            | Height      | FVC         |
-+------------+-------------+-------------+
-| Height     | 1           | 0.70\       |
-|            |             | P \< 0.0001 |
-+------------+-------------+-------------+
-| FVC        | 0.70\       | 1           |
-|            | P \< 0.0001 |             |
-+------------+-------------+-------------+
++------------+-----------------------------+-----------------------------+
+|            | Height                      | FVC                         |
++------------+-----------------------------+-----------------------------+
+| Height     | 1                           | 0.70 (95% CI: 0.59 to 0.78) |
+|            |                             | P \< 0.0001                 |
++------------+-----------------------------+-----------------------------+
+| FVC        | 0.70 (95% CI: 0.59 to 0.78) | 1                           |
+|            | P \< 0.0001                 |                             |
++------------+-----------------------------+-----------------------------+
 
 : Correlation matrix for Height and FVC {#tbl-corrmatrix}
 
-This correlation matrix shows that the Pearson's correlation coefficient between height and lung function is 0.70 with P\<0.0001 indicating very strong evidence of a linear association between height and FVC. A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, $Height$ is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, $FVC$ is perfectly correlated with itself.
+This correlation matrix shows that the Pearson's correlation coefficient between height and lung function is 0.70 (95% CI: 0.59 to 0.78) with P\<0.0001 indicating very strong evidence of a linear association between height and FVC. A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, $Height$ is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, $FVC$ is perfectly correlated with itself.
 
 Correlation coefficients are rarely used as important statistics in their own right because they do not fully explain the relationship between the two variables and the range of the data has an important influence on the size of the coefficient. In addition, the statistical significance of the correlation coefficient is often over interpreted because a small correlation which is of no clinical importance can become statistically significant even with a relatively small sample size. For example, a poor correlation of 0.3 will be statistically significant if the sample size is large enough.
 

@@ -2,6 +2,8 @@
 library(jmv)
 ```
 
+# Module 8
+
 We will demonstrate using R for correlation and simple linear regression using the dataset `mod08_lung_function.csv`.
 
 ```{r}
@@ -43,10 +45,10 @@ scat(data=lung, x="Height", y="FVC", line="linear")
 
 ## Calculating a correlation coefficient {-}
 
-We can use the `corrMatrix` function in the Jamovi package to calculate a Pearson's correlation coefficient:
+We can use the `corrMatrix` function in the Jamovi package to calculate a Pearson's correlation coefficient with a 95% confidence interval:
 
 ```{r}
-corrMatrix(data=lung, vars=c(Height, FVC))
+corrMatrix(data=lung, vars=c(Height, FVC), ci=TRUE)
 ```
 
 ## Fitting a simple linear regression model

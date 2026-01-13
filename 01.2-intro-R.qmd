@@ -2,6 +2,8 @@
 library(huxtable)
 ```
 
+# Module 1
+
 ## Learning outcomes {-}
 
 By the end of this Module, you will be able to:
@@ -41,15 +43,13 @@ In summary, we recommend you use RStudio to write R code.
 
 2.  Install R by running the installer and following the installation instructions. The default settings are fine.
 
-    -   **Note for macOS:** if you are running macOS 10.8 or later, you may need to install an additional application called XQuartz, which is available at <https://www.xquartz.org/>. Download the latest installer (XQuartz-2.8.5.dmg as of May 2024), and install it in the usual way.
-
 3.  Open the R program. You should see a screen similar to below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/R-screenshot.png")
 ```
 
-Near the bottom of the R screen, you will find the "\>" symbol which represents the command line. If you type `1 + 2` into the command line and then hit enter you should get:
+Near the bottom of the R screen, you will find the ">" symbol which represents R's command line; this is where you can type your R commands for processing. If you type `1 + 2` into the command line and then hit enter you should get:
 
 `[1] 3`
 
@@ -68,7 +68,7 @@ At this point, close R - we will not interact with R like this in the future. Yo
 knitr::include_graphics("img/mod01/RStudio-screenshot-01.png")
 ```
 
-Locate the command line symbol "\>" at the bottom of the left-hand panel. Type `1 + 2` into the command line and hit enter, and you will see:
+Locate the R's command line symbol ">" at the bottom of the left-hand panel. Type `1 + 2` into the command line and hit enter, and you will see:
 
 `[1] 3`
 
@@ -97,7 +97,7 @@ By default, RStudio will retain data, scripts and other objects when you quit yo
 
 -   Windows: **Tools \> Global Options**
 
-and **deselect "Restore .RData into workplace at startup"**, and choose: "**Save workspace to .RData on exit:** **Never"**.
+Make sure you are in the **General** pane, and **untick "Restore .RData into workplace at startup"**, and choose: "**Save workspace to .RData on exit:** **Never"**.
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/RStudio-preferences.png")
@@ -109,25 +109,23 @@ A project in RStudio is a folder that RStudio recognises as a place to store R s
 
 We will create a project called **PHCM9795** to store all the data you will use and scripts that you will write in this course. First, think about where you want to store your project folder: this could be somewhere in your *Documents* folder.
 
-Step 1: Choose **File \> New Project...** in RStudio to open the **Create Project** dialog box:
+Step 1: Choose **File \> New Project...** in RStudio to open the **Create Project** dialog box. Click the first option to create a project in a **New directory**:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-1.png")
 ```
 
-Step 2: Click the first option to create a project in a **New directory**
+Step 2: Click the first option: **New Project**:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-2.png")
 ```
 
-Step 3: Click the first option: **New Project**. Give the project a name, by typing PHCM9795 in the "Directory name", and choose where you want to store the project by clicking the **Browse** button.
+Step 3: Give the project a name, by typing PHCM9795 in the "Directory name", and choose where you want to store the project by clicking the **Browse** button. Finally, click **Create** to create your project.
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-3.png")
 ```
-
-Step 4: Click **Create** to create your project.
 
 You will now have a new folder in your directory, which contains only one file: PHCM9795.Rproj, and the two right-hand panes of RStudio will appear as below:
 
@@ -164,13 +162,13 @@ summary(age)
 
 **Note: R is case-sensitive**, so you should enter the text exactly as written in these notes.
 
-Your screen should look something like:
+Your screen should look like:
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
 knitr::include_graphics("img/mod01/RStudio-screenshot-02.png")
 ```
 
-To run your script, choose **Code \> Run Region \> Run All**. You will see your code appear in the bottom-left window, with the following output:
+To run your script, choose **Code \> Run Region \> Run All** from the menu bar. You will see your code appear in the bottom-left window, with the following output:
 
 ```{r eval=FALSE}
 > # Author: Timothy Dobbins
@@ -192,7 +190,7 @@ We will explain the key parts of this script later, but for now, you have entere
 
 Type the code above into the top-left window, and run the script.
 
-Save your script within the PHCM9795 project by using **File \> Save As**, using the name `my_first_analysis.R`.
+Save your script within the PHCM9795 project by using **File > Save As**, using the name `my_first_analysis.R`.
 
 :::
 
@@ -207,7 +205,7 @@ knitr::include_graphics("img/mod01/RStudio-screenshot-03.png")
 
 The top-left window is call the **Source** window, and is where you write and edit your R scripts. Scripts can be saved by clicking **File \> Save As** or by clicking on the symbol of a floppy disk at the top of the script. The file will have an extension of .R, for example script.R. Remember to give your script a meaningful title and remember to periodically save as you go.
 
-In RStudio, the name of the script will be black when it has been saved, and will change to red if you have any unsaved changes.
+Notice the tab at the top of the Source window which includes the name of the current file. The name of the script will be black when it has been saved, and will change to red if you have any unsaved changes.
 
 The **Console** window, at the bottom left, contains the command line which is indicated with the symbol \>. You can type commands here, but anything executed directly from the console is not saved and therefore is lost when the session ends (when you exit RStudio). You should always run your commands from a script file which you can save and use again later. When you run commands from a script, the output and any notes/errors are shown in the console. The Terminal and Jobs tabs will not be used in this course.
 
@@ -237,11 +235,11 @@ While R can be run completely from the command line, issuing commands one-by-one
 
 #### Objects
 
-If you do some reading about R, you may learn that R is an "object-oriented programming language". When we enter or import data into R, we are asking R to create **objects** from our data. These objects can be manipulated and transformed by **functions**, to obtain useful insights from our data.
+If you do some reading about R, you may learn that R is based on **objects** and **functions**. We can think of objects as the 'nouns' of R, and functions as the 'verbs'. When we enter data, or import data into R, we are asking R to create **objects** from our data. These objects can be manipulated and transformed by **functions**, to obtain useful insights from our data.
 
 Objects in R are created using the **assignment operator**. The most common form of the assignment operator looks like an arrow: `<-` and is typed as the `<` and `-` symbols. The simplest way of reading `<-` is as the words "is defined as". Note that it possible to use `->` and even `=` as assignment operators, but their use is less frequent.
 
-Let's see an example:
+We created an object earlier, called `age`, which comprised six values. Let's see another example:
 
 ```{r}
 x <- 42
@@ -256,7 +254,7 @@ x
 
 Now we see the contents of `x` in the console.
 
-This example is rather trivial, and we rarely assign objects of just one value. In fact, we created an object earlier, called `age`, which comprised six values.
+This example is rather trivial, and we rarely assign objects of just one value.
 
 #### Data structures {#sec-data-structures}
 
@@ -272,11 +270,11 @@ This command created a new object called `age`, and *combined* the six values of
 
 Just as having a vector of size 1 is unusual, having just one column of data to analyse is also pretty unusual. The other structure we will describe here is a **data frame** which is essentially a collection of vectors, each of the same size. You could think of a data frame as being like a spreadsheet, with columns representing variables, and rows representing observations.
 
-There are other structures in R, such as matrices and lists, which we won't discuss in this course. And you may come across the term **tibble**, which is a type of data frame.
+There are other structures in R, such as matrices and lists, which we won't discuss in this course. You may also come across the term **tibble**, which is a type of data frame.
 
 #### Functions
 
-If objects are the nouns of R, functions are the verbs. Essentially, functions transform objects. Functions can transform your data into summary statistics, graphical summaries or analysis results. For example, we used the `summary()` function to display summary statistics for our six ages.
+As the 'verbs' of R, functions transform objects. Functions can transform your data into summary statistics, graphical summaries or analysis results. For example, we used the `summary()` function to display summary statistics for our six ages.
 
 R functions are specified by their arguments (or inputs). The arguments that can be supplied for each function can be inspected by examining the help notes for that function. To obtain help for a function, we can submit `help(summary)` (or equivalently `?summary`) in the console, or we can use the **Help** tab in the bottom-right window of RStudio. For example, the first part of the help notes for `summary` appear as:
 
@@ -292,13 +290,13 @@ Most help pages also include some examples of how you might use the function. Th
 knitr::include_graphics("img/mod01/help-2.png")
 ```
 
-The `summary()` function is quite simple, in that it only requires one input, the object to be summarised. More complex functions might require a number of inputs. For example, the help notes for the `descriptives()` function in the `jmv` package show a large number of inputs can be specified. Instructions for installing the `jmv` package will be provided below, this help-screen is included for illustration only.
+The `summary()` function is quite simple, in that it only requires one input, the object to be summarised. More complex functions might require a number of inputs. For example, the help notes for the `descriptives()` function in the `jmv` package show a large number of inputs can be specified. Instructions for installing the `jmv` package will be provided later, this help-screen is included for illustration only.
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/help-3.png")
 ```
 
-There are two things to note here. First, notice that the first two inputs are listed with no = symbol, but all other inputs are listed with = symbols (with values provided after the = symbol). This means that everything apart from `data` and `vars` have **default** values. We are free to not specify values for these inputs if we are happy with the defaults provided. For example, by default the variance is not calculated (as `variance = FALSE`). To obtain the variance as well as the standard deviation, we can change this default to `variance = TRUE`:
+There are two things to note here. First, notice that the first two inputs are listed with no `=` symbol, but all other inputs are listed with `=` symbols (with values provided after the `=` symbol). This means that everything apart from `data` and `vars` have **default** values. We are free to not specify values for these inputs if we are happy with the defaults provided. For example, by default the variance is not calculated (as `variance = FALSE`). To obtain the variance as well as the standard deviation, we can change this default to `variance = TRUE`:
 
 ```{r, eval=FALSE}
 # Only the standard deviation is provided as the measure of variability
@@ -371,7 +369,7 @@ When you begin a new session in RStudio, i.e. when you open RStudio, only certai
 library(skimr)
 ```
 
-Note that quotation marks are not required for the `library()` function (although they can be included if you really like quotation marks!).
+Note that quotation marks are not required for the `library()` function (although they can be included if you really like quotation marks!). Another example of R's inconsistency!!!
 
 ::: {.callout-note icon=false}
 
@@ -405,12 +403,9 @@ If you have done much reading about R, you may have come across the tidyverse:
 
 > "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures." <https://www.tidyverse.org/>
 
-Packages in the tidyverse have been designed with a goal to make using R more consistent by defining a "grammar" to manipulate data, examine data and draw conclusions from data. While the tidyverse is a common and powerful set of packages, we will not be teaching the tidyverse in this course for two main reasons:
+Packages in the tidyverse have been designed with a goal to make using R more consistent by defining a "grammar" to manipulate data, examine data and draw conclusions from data. The tidyverse is a powerful set of packages, and we will use only a small part of its capabilities.
 
-1.  The data we provide have been saved in a relatively tidy way, and do not need much manipulation for analyses to be conducted. The cognitive load in learning the tidyverse in this course is greater than the benefit that could be gained.
-2.  There are many resources (online, in print etc) that are based on `base R`, and do not use the tidyverse. It would be difficult to understand these resources if we taught only tidyverse techniques. In particular, the `dataframe$variable` syntax is an important concept that should be understood before moving into the tidyverse.
-
-In saying all of this, I think the tidyverse is an excellent set of packages, which I frequently use. At the completion of this course, you will be well equipped to teach yourself tidyverse using many excellent resources such as: [Tidyverse Skills for Data Science](https://jhudatascience.org/tidyversecourse/) and [R for Data Science](https://r4ds.had.co.nz/).
+More information about the tidyverse can be found using freely available resources such as: [Tidyverse Skills for Data Science](https://jhudatascience.org/tidyversecourse/) and [R for Data Science](https://r4ds.had.co.nz/).
 
 ## Part 2: Obtaining summary statistics for continuous data
 

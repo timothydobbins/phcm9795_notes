@@ -67,7 +67,7 @@ The prevalence of scabies among children in the village is 21.9% (95% CI 16.3%, 
 
 ### Calculating the 95% confidence interval of a proportion (Wilson method)
 
-Another method to calculate the confidence interval of a proportion is the Wilson (sometimes also called the 'score') method. We can use it in situations where it is not appropriate to use the normal approximation to the binomial distribution as described above i.e. if the sample size is small ($n < 30$) or the number of subjects with the rarer outcome is 5 or fewer. This method much more difficult to implement by hand than the standard confidence interval, and so we will not discuss the hand calculation using the mathematical equation in this course. Instead, we use statistical software to do this (see the jamovi or R notes for detail).
+Another method to calculate the confidence interval of a proportion is the Wilson (sometimes also called the 'score') method. We can use it in situations where it is not appropriate to use the normal approximation to the binomial distribution as described above i.e. if the sample size is small ($n < 30$) or the number of observations with the rarer outcome is 5 or fewer. This method much more difficult to implement by hand than the standard confidence interval, and so we will not discuss the hand calculation using the mathematical equation in this course. Instead, we use statistical software to do this (see the jamovi or R notes for detail).
 
 When using software, our worked example provides a 95% confidence interval of the prevalence of scabies of 16.9% to 27.9%.
 

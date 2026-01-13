@@ -1,3 +1,8 @@
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(jmv)
+```
+# Module 2
+
 ### Producing a one-way frequency table
 
 We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables, which can be constructed using the `descriptives` function from the `jmv` package, with the `freq = TRUE` option. Before constructing frequency tables however, we *must define the variables as categorical variables*, by converting them to *factors*.
