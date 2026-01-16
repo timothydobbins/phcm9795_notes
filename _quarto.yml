@@ -10,16 +10,16 @@ book:
   version: 1.0
   chapters:
     - index.qmd
-    - 01.2-intro-R.qmd
-    - 02.2-probability-R.qmd
-    - 03.2-precision-R.qmd
-    - 04.2-hypothesis-testing-R.qmd
+    # - 01.2-intro-R.qmd
+    # - 02.2-probability-R.qmd
+    # - 03.2-precision-R.qmd
+    # - 04.2-hypothesis-testing-R.qmd
     - 05.2-comparing-two-means-R.qmd
-    - 06.2-proportions-R.qmd
-    - 07.2-testing-proportions-R.qmd
-    - 08.2-correlation-and-regression-R.qmd
-    - 09.2-non-parametrics-R.qmd
-    - 10.2-sample-size-R.qmd
+    # - 06.2-proportions-R.qmd
+    # - 07.2-testing-proportions-R.qmd
+    # - 08.2-correlation-and-regression-R.qmd
+    # - 09.2-non-parametrics-R.qmd
+    # - 10.2-sample-size-R.qmd
     # - 01-intro.qmd
     # - 02-probability.qmd
     # - 03-precision.qmd
