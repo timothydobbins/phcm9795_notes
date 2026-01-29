@@ -13,7 +13,7 @@ By the end of this module you will be able to:
 - Consider the difference between statistical significance and clinical importance;
 - Use 95% confidence intervals to conduct an informal hypothesis test;
 - Perform and interpret a one-sample t-test;
-- Explain the concept of one and two tailed statistical tests.
+- Explain the concepts of one-tailed and two-tailed statistical tests, and determine when each is appropriate.
 
 ## Optional readings {-}
 
@@ -23,7 +23,7 @@ By the end of this module you will be able to:
 
 ## Introduction
 
-In earlier modules, we examined sampling and how summary statistics can be used to make inferences about a population from which a sample is drawn. In this module, we introduce hypothesis testing as the basis of the statistical tests that are important for reporting results from research and surveillance studies, and that you will be learning in the remainder of this course.
+In earlier modules, we examined sampling and how summary statistics can be used to make inferences about a population parameter. For example, we can use the sample mean \bar{x} to make inferences about \mu, the true mean of the population from which a sample is drawn. In this module, we introduce hypothesis testing as the basis of the statistical tests that are important for reporting results from research and surveillance studies, and that you will be learning in the remainder of this course.
 
 We use hypothesis testing to answer questions such as whether two groups have different health outcomes or whether there is an association between a treatment and a health outcome. For example, we may want to know:
 
@@ -36,7 +36,10 @@ We may also want to know something about a single group. For example, whether th
 These questions can be answered by setting up a null hypothesis and an alternative hypothesis, and performing a hypothesis test (also known as a significance test).
 
 ## Hypothesis testing
-Hypothesis testing is a statistical technique that is used to quantify the evidence against a null hypothesis. A null hypothesis (H~0~) is a statement that there is no difference in a summary statistic between groups. For example, a null hypothesis may be stated as follows:
+Hypothesis testing is a statistical technique that is used to quantify the evidence against a null hypothesis. A null hypothesis (H~0~) is a testable statement about one or more population parameters.
+
+
+that there is no difference in a summary statistic between groups. For example, a null hypothesis may be stated as follows:
 
 H~0~ = there is no difference in mean systolic blood pressure between a group taking a conventional drug and a group taking a newly developed drug
 
