@@ -14,7 +14,7 @@ book:
     # - 02.2-probability-R.qmd
     # - 03.2-precision-R.qmd
     # - 04.2-hypothesis-testing-R.qmd
-    - 05.2-comparing-two-means-R.qmd
+    # - 05.2-comparing-two-means-R.qmd
     # - 06.2-proportions-R.qmd
     # - 07.2-testing-proportions-R.qmd
     # - 08.2-correlation-and-regression-R.qmd
@@ -23,7 +23,7 @@ book:
     # - 01-intro.qmd
     # - 02-probability.qmd
     # - 03-precision.qmd
-    # - 04-hypothesis-testing.qmd
+    - 04-hypothesis-testing.qmd
     # - 05-comparing-two-means.qmd
     # - 06-proportions.qmd
     # - 07-testing-proportions.qmd

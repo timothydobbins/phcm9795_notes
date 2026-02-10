@@ -8,12 +8,14 @@ library(flextable)
 
 By the end of this module you will be able to:
 
-- Formulate a research question as a hypothesis;
-- Understand the concepts of a hypothesis test;
-- Consider the difference between statistical significance and clinical importance;
-- Use 95% confidence intervals to conduct an informal hypothesis test;
+- Formulate a research question and present it as a null and alternative hypothesis;
+- Understand the role of confidence intervals in assessing research questions;
+- Explain the general framework of hypothesis testing;
+- Interpret P-values as measures of evidence;
+- Distinguish between statistical significance and practical importance;
 - Perform and interpret a one-sample t-test;
-- Explain the concepts of one-tailed and two-tailed statistical tests, and determine when each is appropriate.
+- Explain the concepts of one-tailed and two-tailed statistical tests, and determine when each is appropriate;
+- Report the results of hypothesis tests clearly, accurately, and in plain language.
 
 ## Optional readings {-}
 
@@ -23,7 +25,7 @@ By the end of this module you will be able to:
 
 ## Introduction
 
-In earlier modules, we examined sampling and how summary statistics can be used to make inferences about a population parameter. For example, we can use the sample mean \bar{x} to make inferences about \mu, the true mean of the population from which a sample is drawn. In this module, we introduce hypothesis testing as the basis of the statistical tests that are important for reporting results from research and surveillance studies, and that you will be learning in the remainder of this course.
+In earlier modules, we examined sampling and how summary statistics can be used to make inferences about a population parameter. For example, we can use the sample mean $\bar{x}$ to make inferences about $\mu$, the true mean of the population from which a sample is drawn. In this module, we introduce hypothesis testing as the basis of the statistical tests that are important for reporting results from research and surveillance studies, and that you will be learning in the remainder of this course.
 
 We use hypothesis testing to answer questions such as whether two groups have different health outcomes or whether there is an association between a treatment and a health outcome. For example, we may want to know:
 
@@ -33,23 +35,109 @@ We use hypothesis testing to answer questions such as whether two groups have di
 
 We may also want to know something about a single group. For example, whether the mean blood pressure of a sample is the same as the general population.
 
-These questions can be answered by setting up a null hypothesis and an alternative hypothesis, and performing a hypothesis test (also known as a significance test).
+These questions can be answered by setting up a null hypothesis and an alternative hypothesis, and performing a hypothesis test (also known as a significance test). In this module we focus on testing hypotheses about a single population mean, using confidence intervals and the one-sample t-test.
+
+### Worked example
+
+In this module, we will revisit the Pima example from Module 3 (`mod03_blood_pressure.csv`). A sample of 733 female Pima indigenous Americans was taken, and their diastolic blood pressure was measured (among other measures). We saw in Module 3 that a density plot demonstrates that the data are approximately normally distributed, and the mean diastolic blood pressure was estimated as 72.4 mmHg with a 95% confidence interval from 71.5 to 73.3 mmHg.
+
+## Research questions
+
+A research question is an open, neutral question that states what we want to find out - often phrased using everyday language. Research questions guide study design and data collection, and do not presuppose an answer. Using our Pima example, a research question could be posed:
+
+- Do Pima women have the same mean diastolic blood pressure as the general US population?
+
+A useful way of structuring research questions in health research is the PECO framework:
+
+- Population: Who is being studied?
+- Exposure: What exposure, risk factor, or condition is of interest?
+- Comparator: What is the exposure being compared against?
+- Outcome: What outcome is being measured?
+
+In the example above:
+
+- Population: Pima women
+- Comparator: General US population
+- Outcome: Diastolic blood pressure
+
+Note there as there is only one group here, there is no "exposure".
+
+## Using confidence intervals to assess research questions
+
+We can use the 95% confidence interval to **informally** assess research questions. For example, we can use a 95% confidence interval for the mean to assess whether the population mean is consistent with a hypothesised value. A confidence interval gives a range of plausible values for the true population mean, based on the sample data, and we can compare the confidence interval with the hypothesised value.
+
+If a hypothesised mean lies:
+
+- *outside* the confidence interval, there is *informal evidence* that the population mean differs from the hypothesised mean
+- *inside* the confidence interval, there is *no informal evidence* that the population mean differs from the hypothesised mean
+
+Note that a confidence interval does not provide a quantitative measure of evidence against a null hypothesis; it supports only an informal comparison. Formal hypothesis testing is required to quantify the level of evidence.
 
 ## Hypothesis testing
-Hypothesis testing is a statistical technique that is used to quantify the evidence against a null hypothesis. A null hypothesis (H~0~) is a testable statement about one or more population parameters.
 
+In statistics, a hypothesis is a claim about a population parameter. Hypothesis testing is a formal procedure used to decide between two competing claims about a population parameter. These two claims are known as:
 
-that there is no difference in a summary statistic between groups. For example, a null hypothesis may be stated as follows:
+- the **null hypothesis**
+- the **alternative hypothesis**
 
-H~0~ = there is no difference in mean systolic blood pressure between a group taking a conventional drug and a group taking a newly developed drug
+Hypothesis testing is a statistical technique that is used to quantify the evidence against a null hypothesis.
 
-We also have an alternative hypothesis that is opposite or contrasting to the null hypothesis. In our example above, the alternative hypothesis for the above null hypothesis is that there is a difference between groups. The alternative hypothesis is usually of most interest to the researcher but in practice, formal statistical tests are used to test the null hypothesis (not the alternative hypothesis). The hypotheses are always in reference to the population from which the sample is drawn, not the sample itself.
+The **null hypothesis**, written H~0~, represents the hypothesis of no difference, no change, no effect. It is often described as the *boring* or *skeptical* hypothesis
+
+The **alternative hypothesis**, written H~A~, represents the hypothesis of a difference, change or effect.
+
+Note that hypotheses always refer to the **population**, not the sample.
+
+### Example
+
+In our example, our research question is: do Pima women have the same mean diastolic blood pressure as the general US population?
+
+To test this research question, we will need a value for the mean diastolic blood pressure of the general US population. We will use the results from a large-scale population survey, and state that the US population has a mean diastolic blood pressure of 71mmHg.
+
+Our hypotheses then, could be written as:
+
+- H~0~: $\mu = 71$
+- H~A~: $\mu \ne 71$
+
+where $\mu$ is the true population mean diastolic blood pressure of Pima women.
+
+These hypotheses are very formal, and it may be easier to think of them as:
+
+- H~0~: The mean diastolic blood pressure of Pima women is 71 mmHg.
+- H~A~: The mean diastolic blood pressure of Pima women is not 71 mmHg.
+
+## The hypothesis testing framework
+
+The recommended steps in a hypothesis test are as follows:
+
+0. Exploratory data analysis
+    - examine distributions, check for missing and/or unusual data
+    - understand the structure of the data (sample size, groups, variables)
+    - based on above, choose an appropriate statistical test
+    - check the assumptions required for the chosen test
+    - frame the research question using the PECO framework:
+        - Population, Exposure, Comparator, Outcome
+1. Specify the Null and Alternative Hypotheses
+2. Perform the statistical test, and obtain test statistic, degrees of freedom and P-value
+3. Calculate descriptive statistics
+4. Summarise the results including
+    - Summary statistics (overall or by group)
+    - A statement about the evidence
+    - Estimate of effect including:
+        - Direction
+        - Point estimate
+        - 95% confidence interval
+5. Provide a clear and concise conclusion, written in plain English, that summarises the results of the study in terms of the wider population, not just the sample
+
+## The test statistic
 
 After setting up our null and alternative hypotheses, we use the data to generate a test statistic. The particular test statistic differs depending on the type of data being analysed (e.g. continuous or categorical), the study design (e.g. paired or independent) and the question being asked.
 
 The test statistic is then compared to a known distribution to calculate the probability of observing a test statistic which is as large or larger than the observed test statistic, if the null hypothesis was true. The probability is known as the P-value.
 
-Informally, the P-value can be interpreted as the probability of observing data like ours, or more extreme, if the null hypothesis was true.
+## The P-value
+
+Formally, the P-value is interpreted as the probability of observing data like ours, or more extreme, if the null hypothesis was true.
 
 If the P-value is small, it is unlikely that we would observe data like ours or more extreme if the null hypothesis was true. In other words, our data are not consistent with the null hypothesis, and we conclude that we have evidence against the null hypothesis. If the P-value is not small, the probability of observing data like ours or more extreme is not unlikely. We therefore have little or no evidence against the null hypothesis. In hypothesis testing, the null hypothesis cannot be proven or accepted; we can only find evidence to refute the null hypothesis.
 
@@ -77,27 +165,27 @@ flextable(tab4_1, cwidth = c(1.5, 2))
 
 ```
 
-P-values are usually generated using statistical software although other methods such as statistical tables or Excel functions can be used to generate test statistics and determine the P-value. In traditional statistics, the probability level was described as a lower-case p but in many journals today, probability is commonly described by upper case P. Both have the same meaning. 
+These days, P-values are usually generated using statistical software. Historically, statistical tables were used to determine the P-value from the test-statistic.
 
 ## Effect size
 
-In hypothesis testing, P-values convey only part of the information about the hypothesis and need to be accompanied by an estimation of the effect size, that is, a description of the magnitude of the difference between the study groups. The effect size is a summary statistic that conveys the size of the difference between two groups. For continuous variables, it is usually calculated as the difference between two mean values.
+In hypothesis testing, P-values convey only part of the information about the hypothesis and need to be accompanied by an estimation of the effect size. The effect size describes how different your sample is from the hypothesised population parameter. The effect size depends on the study design and the type of outcome variable being analysed, and should always be presented with a 95% confidence interval (where possible).
 
-If the variable is binary, the effect size can be expressed as the absolute difference between two proportions (attributable risk), or as an odds ratio or relative risk. 
+In our blood pressure example, the sample mean and its 95% confidence interval could represent the effect size. Alternatively, the difference between the sample mean and the hypothesised mean (and the 95% confidence interval) could be presented.
 
-Reporting the effect size enables clinicians and other researchers to judge whether a statistically significant result is also a clinically important finding. The size of the difference or the risk statistic provides information to help health professionals decide whether the observed effect is large and important enough to warrant a change in current health care practice, is equivocal and suggests a need for further research, or is small and clinically unimportant.
+Reporting the effect size enables others to judge whether a result that has evidence of a difference is also a practically important finding. The effect size provides information to help others decide whether the observed effect is large and important enough to warrant a change in current health care practice, is equivocal and suggests a need for further research, or is small and practically unimportant.
 
-## Statistical significance and clinical importance
+## Statistical significance vs practical importance
 
-When applying statistical methods in health and medical research, we need to make an informed decision about whether the effect size that led to a statistically significant finding is also clinically important (see @fig-practical-importance)). The decision about whether a statistically significant result is also clinically important depends on expert knowledge and is best made by practitioners with experience in the field.
+When applying statistical methods in health and medical research, we need to make an informed decision about whether the effect size that led to a statistically significant finding is also practically important (see @fig-practical-importance). The decision about whether a statistically significant result is also practicaally important depends on expert knowledge, and is best made by others with experience in the field.
 
 ![Statistical significance vs. clinical importance (Source: Armitage P, Berry G, Matthews JNS. (2001)](img/mod04/practical-vs-statistical-sig.png){#fig-practical-importance}
 
-It is possible when conducting significance tests, particularly in very large studies, that a small effect is found to be statistically significant. For example, say in a large study of over 1000 patients, a new medication was found to lower blood pressure on average by 1 mmHg more than a currently accepted drug and this was statistically significant (P < 0.05). However, such a small decrease in blood pressure would probably not be considered clinically important. The cost and side effects of prescribing the new medication would need to be weighed against the very small average benefit that would be expected. In this case, although the null hypothesis would be rejected (i.e. the result is statistically significant), the result would not be clinically important. This is the situation described in scenario (c) of  @fig-practical-importance.
+It is possible when conducting significance tests, particularly in very large studies, that a small difference provides strong evidence of an effect due to increased precision from large sample sizes. For example, in a large study of over 1000 patients, a new medication may be found to lower blood pressure by an average of 1 mmHg more than a currently accepted drug, providing strong evidence of a difference (P < 0.01). However, such a small reduction in blood pressure would be unlikely to be practically important. The cost and potential side effects of the new medication would need to be weighed against this very small average benefit. In this situation, despite strong statistical evidence, the finding would not be practically important. This is the situation described in scenario (c) of  @fig-practical-importance.
 
-Conversely, it is possible to obtain a large, clinically important difference between groups, but a P value that does not demonstrate a statistically significant difference. 
+Conversely, it is possible to obtain a large, practically important difference between groups that provides little evidence of a difference. 
 
-For example, consider a study to measure the rate of hospital admissions. We may find that 80% of children who present to the Emergency Department are admitted before an intervention is introduced compared to only 65% of children after the intervention. However, the P value may be calculated as 0.11 and is non-significant. This is because only 60 children were surveyed in each period. Here, the reduction in the admission rate by 15% represents a clinically important difference, but not statistically significant. This situation is represented in scenario (d) of @fig-practical-importance.
+For example, consider a small study to measure the rate of hospital admissions following presentation to the Emergency Department. We may find that 80% of children who present to the Emergency Department are admitted before the intervention, compared to only 65% of children after the intervention. However, the P value may be calculated as 0.38, providing no evidence of a difference. This may be because only a small number of participants were recruited in each period. Here, the reduction in the admission rate by 15% represents a practically important difference, but not statistically significant. This situation is represented in scenario (d) of @fig-practical-importance.
 
 The important thing to remember is that statistical significance does not always correspond to practical importance. A statistically significant result may be practically unimportant, and a statistically non-significant results may be practically important.
 
@@ -272,19 +360,19 @@ Selecting the correct test to use in each situation depends on the study design 
 
 {{< pagebreak >}}
 
-# Jamovi notes {-}
+<!-- # Jamovi notes {-} -->
 
-{{< include 04.1-hypothesis-testing-jamovi.qmd >}}
+<!-- {{< include 04.1-hypothesis-testing-jamovi.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# R notes {-}
+<!-- # R notes {-} -->
 
-{{< include 04.2-hypothesis-testing-R.qmd >}}
+<!-- {{< include 04.2-hypothesis-testing-R.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# Activities {-}
+<!-- # Activities {-} -->
 
-{{< include 04.3-hypothesis-testing-activities.qmd >}}
+<!-- {{< include 04.3-hypothesis-testing-activities.qmd >}} -->
 

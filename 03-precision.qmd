@@ -265,7 +265,7 @@ If a variable $X$ is normally distributed and the population standard deviation 
 
 The diastolic blood pressure of 733 female Pima indigenous Americans was measured, and a density plot showed that the data were approximately normally distributed. The mean diastolic blood pressure in the sample was 72.4 mmHg with a standard deviation of 12.38 mmHg. These data are saved as `mod03_blood_pressure.csv`.
 
-Use Jamovi or R, we can calculate the mean, its Standard Error, and the 95% confidence interval:
+We can calculate the mean, its Standard Error, and the 95% confidence interval:
 
 | n | Mean | Standard deviation | Standard error of the mean | 95% confidence interval of the mean |
 |------------|------------|------------|------------|-------------------------|
