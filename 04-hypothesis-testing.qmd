@@ -86,7 +86,7 @@ The **null hypothesis**, written H~0~, represents the hypothesis of no differenc
 
 The **alternative hypothesis**, written H~A~, represents the hypothesis of a difference, change or effect.
 
-Note that hypotheses always refer to the **population**, not the sample.
+Note that hypotheses always refer to a **population**, not a sample.
 
 ### Example
 
@@ -169,15 +169,15 @@ These days, P-values are usually generated using statistical software. Historica
 
 ## Effect size
 
-In hypothesis testing, P-values convey only part of the information about the hypothesis and need to be accompanied by an estimation of the effect size. The effect size describes how different your sample is from the hypothesised population parameter. The effect size depends on the study design and the type of outcome variable being analysed, and should always be presented with a 95% confidence interval (where possible).
+In hypothesis testing, P-values convey only part of the information about the hypothesis and need to be accompanied by an estimation of the effect size. The effect size describes how different our sample is from the hypothesised population parameter. The effect size depends on the study design and the type of outcome variable being analysed, and should always be presented with a 95% confidence interval (where possible).
 
-In our blood pressure example, the sample mean and its 95% confidence interval could represent the effect size. Alternatively, the difference between the sample mean and the hypothesised mean (and the 95% confidence interval) could be presented.
+In our blood pressure example, the sample mean and its 95% confidence interval represent the effect size. Alternatively, the difference between the sample mean and the hypothesised mean (and the 95% confidence interval) could be presented.
 
 Reporting the effect size enables others to judge whether a result that has evidence of a difference is also a practically important finding. The effect size provides information to help others decide whether the observed effect is large and important enough to warrant a change in current health care practice, is equivocal and suggests a need for further research, or is small and practically unimportant.
 
 ## Statistical significance vs practical importance
 
-When applying statistical methods in health and medical research, we need to make an informed decision about whether the effect size that led to a statistically significant finding is also practically important (see @fig-practical-importance). The decision about whether a statistically significant result is also practicaally important depends on expert knowledge, and is best made by others with experience in the field.
+When applying statistical methods in health and medical research, we need to make an informed decision about whether the effect size that led to a statistically significant finding is also practically important (see @fig-practical-importance). The decision about whether a statistically significant result is also practically important depends on expert knowledge, and is best made by others with experience in the field.
 
 ![Statistical significance vs. clinical importance (Source: Armitage P, Berry G, Matthews JNS. (2001)](img/mod04/practical-vs-statistical-sig.png){#fig-practical-importance}
 
@@ -210,96 +210,6 @@ df <- tibble::tribble(
 )
 
 flextable(df, cwidth = c(1.5, 1, 1))
-```
-
-## Confidence intervals in hypothesis testing
-In Module 3, the 95% confidence interval around a mean value was calculated to show the precision of the summary statistic. The 95% confidence intervals around other summary statistics can also be calculated. 
-
-For example, if we were comparing the means of two groups, we would want to test the null hypothesis that the difference in means is zero, that there is no true difference between the groups.
-
-From the data from the two groups, we could estimate the difference in means, the standard error of the difference in means and the 95% confidence interval around the difference. To estimate the 95% confidence interval, we use the formula given in Module 3, that is:
-
-$$ 95\% \text{ CI} = \text{Difference in means} \pm 1.96 \times \text{SE}(\text{Difference in means)} $$
-
-It is important to remember that the 95% CI is estimated from the standard error, and that the standard error has a direct relationship to the sample size. For small sample sizes, the standard error is large and the 95% CI becomes wider. Conversely, the larger the sample size, the smaller the standard error and the narrower the 95% CI becomes indicating a more precise estimate of the mean difference. 
-
-The 95% CI tells us the region in which we are 95% confident that the true difference between the groups in the population lies. If this region contains the null value of no difference, we can say that we are 95% confident that there is no true difference between the groups and therefore we would not reject the null hypothesis. This is shown in the top two estimates in @fig-cis-overlapping-null. If the zero value lies outside the 95% confidence interval, we can conclude that there is evidence of a difference between the groups because we are 95% confident that the difference does not encompass a zero value (as shown in the lower two estimates in @fig-cis-overlapping-null.
-
-```{r fig-cis-overlapping-null, echo=FALSE, message = FALSE, warning=FALSE, fig.cap="Using confidence intervals as informal hypothesis tests"}
-set.seed(8675309)
-library(ggplot2)
-library(dplyr)
-
-group4 <- data.frame(
-    group = 4,
-    x = rnorm(65, mean = -1, sd = 4)
-)
-
-group3 <- data.frame(
-    group = 3,
-    x = rnorm(50, mean = 1, sd = 8)
-)
-
-group2 <- data.frame(
-    group = 2,
-    x = rnorm(45, mean = 2, sd = 5.5)
-)
-
-group1 <- data.frame(
-    group = 1,
-    x = rnorm(50, mean = 4, sd = 2)
-)
-
-df <- rbind(group1, group2, group3, group4)
-df$group <- factor(df$group)
-
-dfsumm <- df |>
-    group_by(group) |>
-    summarise(
-        mean.x = mean(x, na.rm = TRUE),
-        sd.x = sd(x, na.rm = TRUE),
-        n.x = n()
-    ) |>
-    mutate(
-        se.x = sd.x / sqrt(n.x),
-        lower.ci.x = mean.x - qt(1 - (0.05 / 2), n.x - 1) * se.x,
-        upper.ci.x = mean.x + qt(1 - (0.05 / 2), n.x - 1) * se.x,
-        text = c(
-            "P<0.001; Very strong evidence",
-            "P=0.01; Evidence",
-            "P=0.4; No evidence",
-            "P=0.08; Weak evidence"
-        )
-    )
-
-ggplot(data = dfsumm, aes(x = mean.x, y = group)) +
-    geom_errorbar(aes(xmin = lower.ci.x, xmax = upper.ci.x), width = 0.1) +
-    geom_point() +
-    geom_text(aes(label = text), nudge_y = -0.1) +
-    xlim(c(-2, 6)) +
-    theme_minimal() +
-    theme(
-        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        axis.line.x = element_line(colour = "black"), axis.text.y = element_blank()
-    ) +
-    labs(x = "Difference in means and 95% CI", y = "") +
-    geom_vline(xintercept = 0, linetype = 2)
-```
-
-For relative risk and odds ratio measures, when the 95% CI includes the value of 1 it indicates that we can be 95% confident that the true RR or OR of the association between the study factor and outcome factor includes 1.0 in the source population. This indicates little evidence of an association between the study factor and the outcome factor, e.g. if the results of a study were reported as RR = 1.10 (95% CI 0.95 to 1.25). The P-value can be calculated to assess this (discussed in Module 7).
-
-```{r tbl-4-null-values, echo=FALSE}
-#| tbl-cap: Values indicating no effect
-
-df <- tibble::tribble(
-    ~`Type of outcome`, ~`Measure of effect`, ~`Null value`,
-    "Continuous", "Difference in means", 0L,
-    "Binary", "Difference in proportions", 0L,
-    "Binary", "Relative risk", 1L,
-    "Binary", "Odds ratio", 1L
-)
-
-flextable(df, cwidth = c(1.5, 1.5, 1))
 ```
 
 ## One-sample t-test

@@ -134,7 +134,7 @@ desc <- descriptives(pbc, vars="Serum bilirubin", dens=TRUE)
 desc$plots
 ```
 
-In the plot of @fig-bili-pbc, there is a tail of values to the right, so we would conclude that the distribution is skewed to the right. The mean (3.2 mg/dL) is much larger than the median (1.4 mg/dL), as expected from a skewed distribution.
+In the plot of c, there is a tail of values to the right, so we would conclude that the distribution is skewed to the right. The mean (3.2 mg/dL) is much larger than the median (1.4 mg/dL), as expected from a skewed distribution.
 
 ## Parametric and non-parametric statistical methods
 
@@ -184,30 +184,27 @@ In particular, the *standard error of the mean* measures the extent to which we 
 
 $$ \text{SE}(\bar{x}) = \frac{\text{SD}}{\sqrt{n}} $$
 
-{{< pagebreak >}}
-Take for example, a set of weights of students attending a university gym in a particular hour. The thirty weights are given below:
+### Worked Example 3.1: blood pressure of Pima women
 
-```{r tbl-3-weights, echo=FALSE}
-#| tbl-cap: Weight of 30 gym attendees
+The diastolic blood pressure of 733 female Pima indigenous Americans was measured, and a density plot produced (@fig-dbp-pima). These data are saved as `mod03_blood_pressure.csv`.
 
-tab1_ages <- tibble::tribble(
-    ~v1, ~v2, ~v3, ~v4, ~v5, ~v6,
-    65.0, 70.0, 70.0, 67.5, 65.0, 80.0,
-    70.0, 72.5, 67.5, 62.5, 67.5, 72.5,
-    60.0, 65.0, 72.5, 77.5, 75.0, 75.0,
-    75.0, 70.0, 67.5, 77.5, 67.5, 62.5,
-    75.0, 62.5, 70.0, 75.0, 72.5, 70.0
-)
+```{r fig-dbp-pima, echo=FALSE, message=FALSE, warning=FALSE, out.width = "50%"}
+#| fig-cap: Density plot of diastolic blood pressure from 733 Pima indigenous American women
 
-flextable(tab1_ages) |> 
-  delete_part(part="header") |> 
-  theme_booktabs() |> 
-  colformat_double(digits=1)
+df <- read.csv("data/examples/mod03_blood_pressure.csv") |> 
+  rename(`Diastolic blood pressure (mmHg)` = dbp)
+
+desc <- descriptives(df, vars="Diastolic blood pressure (mmHg)", dens=TRUE)
+desc$plots
 ```
 
-We can calculate the mean (70.0kg) and the standard deviation (5.04kg). Hence, the standard error of the mean is estimated as:
+The density plot shows that diastolic blood pressure is approximately normally distributed. The mean diastolic blood pressure in the sample was 72.4 mmHg with a standard deviation of 12.38 mmHg.
 
-$$ \text{SE}(\bar{x}) = \frac{5.04}{\sqrt{30}} = 0.92 $$ Because the calculation uses the sample size (n) (i.e. the number of study participants) in the denominator, the SE will become smaller when the sample size becomes larger. A smaller SE indicates that the estimated mean value is more precise.
+Hence, the standard error of the mean is estimated as:
+
+$$ \text{SE}(\bar{x}) = \frac{12.38}{\sqrt{733}} = 0.457 $$
+
+Because the calculation uses the sample size (n) (i.e. the number of study participants) in the denominator, the SE will become smaller when the sample size becomes larger. A smaller SE indicates that the estimated mean value is more precise.
 
 The standard error is an important statistic that is related to sampling variation. When a random sample of a population is selected, it is likely to differ in some characteristic compared with another random sample selected from the same population. Also, when a sample of a population is taken, the true population mean is an unknown value.
 
@@ -231,13 +228,13 @@ The sample size n = 30 and above is a rule of thumb for the central limit theore
 
 ## 95% confidence interval of the mean
 
-Earlier, we showed that the characteristics of a Standard Normal Distribution are that 95% of the data lie within 1.96 standard deviations from the mean (@fig-2-2). Because the central limit theorem states that the sampling distribution of the mean is approximately Normal in large enough samples, we expect that 95% of the mean values would fall within 1.96 × SE units above and below the measured mean population value.
+Earlier, we showed that the characteristics of a Standard Normal Distribution are that 95% of the data lie within 1.96 standard deviations from the mean (@fig-2-2). Because the central limit theorem states that the sampling distribution of the mean is approximately Normal in large enough samples, we expect that 95% of the sample mean values would fall within 1.96 × SE units above and below the true mean population value.
 
-For example, if we repeated the study on weight 100 times using 100 different random samples from the population and calculated the mean weight for each of the 100 samples, approximately 95% of the values for the mean weight calculated for each of the 100 samples would fall within 1.96 × SE of the population mean weight.
+For example, if we took 100 different random samples from the population of Pima women and calculated the mean diastolic blood pressure for each of the 100 samples, approximately 95% of these sample means would fall within 1.96 × SE of the population mean weight.
 
-This interpretation of the SE is translated into the concept of precision as a 95% confidence interval (CI). A 95% CI is a range of values within which we have 95% confidence that the true population mean lies. If an experiment was conducted a very large number of times, and a 95%CI was calculated for each experiment, 95% of the confidence intervals would contain the true population mean.
+This interpretation of the SE is translated into the concept of precision as a 95% confidence interval. A 95% confidence interval is a range of values within which we have 95% confidence that the true population mean lies. If repeated samples were taken a very large number of times, and a 95% confidence interval was calculated for each sample, 95% of the confidence intervals would contain the true population mean.
 
-The calculation of the 95% CI for a mean is as follows:
+The calculation of the 95% confidence interval for a mean is as follows:
 
 $$  \bar{x} \pm 1.96 \times \text{SE}( \bar{x} ) $$ This is the generic formula for calculating 95% CI for any summary statistic. In general, the mean value can be replaced by the point estimate of a rate or a proportion and the same formula applies for computing 95% CIs, i.e.
 
@@ -255,17 +252,15 @@ The population standard deviation ($\sigma$) is required for calculation of the 
 
 Someone by the pseudonym of Student came up with the Student’s t distribution with ($n-1$) degrees of freedom to account for this underestimation. It looks very much like the standardised normal distribution, only that it has fatter tails (@fig-mod03-z-t-dist). As the degrees of freedom increase (i.e. as $n$ increases), the t-distribution gradually approaches the standard normal distribution. With a sufficiently large sample size, the Student’s t-distribution closely approximates the standardised normal distribution.
 
-```{r fig-mod03-z-t-dist, echo=FALSE, out.width = "100%", fig.cap="The normal (Z) and the student’s t-distribution with 2, 5 and 30 degrees of freedom"}
+```{r fig-mod03-z-t-dist, echo=FALSE, out.width = "50%", fig.cap="The normal (Z) and the student’s t-distribution with 2, 5 and 30 degrees of freedom"}
 knitr::include_graphics(here::here("img", "mod03", "mod03-z-t-dist.png"))
 ```
 
 If a variable $X$ is normally distributed and the population standard deviation $\sigma$ is known, using the normal distribution is appropriate. However, if $\sigma$ is not known then one should use the student t-distribution with ($n – 1$) degrees of freedom.
 
-### Worked Example 3.1: 95% CI of a mean using individual data
+### Worked Example 3.2: blood pressure of Pima women
 
-The diastolic blood pressure of 733 female Pima indigenous Americans was measured, and a density plot showed that the data were approximately normally distributed. The mean diastolic blood pressure in the sample was 72.4 mmHg with a standard deviation of 12.38 mmHg. These data are saved as `mod03_blood_pressure.csv`.
-
-We can calculate the mean, its Standard Error, and the 95% confidence interval:
+Using our example of diastolic blood pressure measured from 733 female Pima indigenous Americans, we can use software to calculate the mean, its standard error, and the 95% confidence interval of the mean:
 
 | n | Mean | Standard deviation | Standard error of the mean | 95% confidence interval of the mean |
 |------------|------------|------------|------------|-------------------------|
@@ -273,7 +268,7 @@ We can calculate the mean, its Standard Error, and the 95% confidence interval:
 
 : Summary of blood pressure from female Pima indigenous Americans {#tbl-mean-ci}
 
-We can interpret this confidence interval as: we are 95% confident that the true mean of female Pima indigenous Americans lies between 71.5 and 73.3 mmHg.
+We can interpret this confidence interval as: we are 95% confident that the true mean diastolic blood pressure of female Pima indigenous Americans lies between 71.5 and 73.3 mmHg.
 
 ### Worked Example 3.2: 95% CI of a mean using summarised data
 

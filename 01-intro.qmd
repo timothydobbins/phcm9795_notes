@@ -216,7 +216,7 @@ As well as calculating measures of central tendency and spread to describe the c
 
 A frequency histogram is a plot of the number of observations that fall within defined ranges of non-overlapping intervals (called bins). Examples of frequency histograms are given in @fig-hist-1.
 
-```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histograms of age (left) and serum bilirubin (right) from PBC data"}
+```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histograms of age and serum bilirubin from PBC data"}
 knitr::include_graphics(here::here("img", "mod01", "hist-symmetric-skewed.png"))
 ```
 
@@ -249,11 +249,11 @@ Another way to inspect the distribution of data is by using a box plot. In a box
 -   the bars (or whiskers) indicate the most extreme values (highest and lowest) that fall within 1.5 times the interquartile range from each end of the box
     -   the upper whisker is the highest value falling within 75th percentile plus 1.5 × IQR
     -   the lower whisker is the lowest value falling within 25th percentile minus 1.5 × IQR
--   any values in the dataset lying outside the whiskers are plotted individually.
+-   any values in the dataset lying outside the whiskers are plotted individually, often labelled by the row number of the observation.
 
 @fig-box-1 presents two example boxplots for age and serum bilirubin.
 
-```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age (left) and serum bilirubin (right) from PBC study data"}
+```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age and serum bilirubin from PBC study data"}
 knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
 ```
 
@@ -289,7 +289,7 @@ Exploring continuous data is best done by examining plots: specifically density 
 
 After detecting any outliers or extreme values, **do not automatically exclude them from the analysis**. First, it is important to check the original data collection form or questionnaire to rule out the possibility of a data entry error. If the outlier is not a data entry error, it is then important to decide whether the observation is biologically possible. This step will usually need to be answered by a topic expert. If the outlier is biologically possible, it must be included in the analysis. Only if the outlier is biologically impossible should it be set to missing.
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}}
 
 # An introduction to jamovi {.unnumbered}
 
@@ -305,4 +305,4 @@ After detecting any outliers or extreme values, **do not automatically exclude t
 
 # Activities {.unnumbered}
 
-{{< include 01.3-intro-activities.qmd >}}
+{{< include 01.3-intro-activities.qmd >}} -->

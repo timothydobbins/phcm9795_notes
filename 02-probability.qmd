@@ -21,7 +21,7 @@ Guidelines for Reporting of Figures and Tables for Clinical Research in Urology,
 
 ## Introduction
 
-In Module 1, we saw how to summarise continuous data numerically and graphically. In this module, we will discuss summarising categorical data numerically and graphically. We will also introduce the concept of probability which underpins the theoretical basis of statistics, and then introduce the concept of probability distributions. We will present the binomial distribution, which calculates the probability of observing a certain number of events from multiple observations.
+In Module 1, we saw how to summarise continuous data numerically and graphically. In this module, we will show how to summarise categorical data numerically and graphically. We will also introduce the concept of probability which underpins the theoretical basis of statistics, and then introduce the concept of probability distributions. We will present the binomial distribution, which calculates the probability of observing a certain number of events from multiple observations.
 
 ## Summarising a single categorical variable numerically
 
@@ -577,7 +577,7 @@ Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
 
 Again, we can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html) to calculate this, or use the `pbinom` function in R.
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}}
 
 # jamovi notes {.unnumbered}
 
@@ -593,4 +593,4 @@ Again, we can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/
 
 # Activities {.unnumbered}
 
-{{< include 02.3-probability-activities.qmd >}}
+{{< include 02.3-probability-activities.qmd >}} -->

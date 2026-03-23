@@ -18,13 +18,13 @@ By the end of this module you will be able to:
 
 In Modules 4 and 5, we discussed methods used to analyse continuous data. In Modules 6 and 7, we will focus on analysing categorical data.
 
-In health research, we often collect information that can be put into two categories, e.g. male and female, disease present or disease absent etc. Binary categorical variables such as these are summarised using proportions.
+In health research, we often collect information that can be classified into two categories, e.g. male and female, disease present or disease absent etc. Binary categorical variables such as these are summarised using proportions.
 
 ## Calculating proportions and 95% confidence intervals
 
 ### Calculating a proportion
 
-We need two pieces of information to calculate a proportion: $n$, the number of trials, and $k$, the number of 'successes'. Note that we use the term 'success' to describe the outcome of interest, recognising that a success may be a adverse outcome such as death or disease.
+We need two pieces of information to calculate a proportion: $n$, the total number of observations, and $k$, the number of 'successes'. Note that we use the term 'success' to describe the outcome of interest, recognising that a success may be a adverse outcome such as death or disease.
 
 The following formula is used to calculate the proportion, $p$:
 
@@ -131,7 +131,7 @@ The z-test provides a two-sided P-value of 0.39, while the binomial test gives a
 
 ## Contingency tables
 
-As introduced in PHCM9794: Foundations of Epidemiology, 2-by-2 contingency tables can be used to examine associations between two binary variables, most commonly an exposure and an outcome. The traditional form of a 2-by-2 contigency table is given in @tbl-2-by-2-trad.
+As introduced in PHCM9794: Foundations of Epidemiology, 2-by-2 contingency tables can be used to examine associations between two binary variables, most commonly an exposure and an outcome. The traditional form of a 2-by-2 contingency table is given in @tbl-2-by-2-trad.
 
 ```{r, echo=FALSE}
 #| label: tbl-2-by-2-trad
@@ -207,7 +207,7 @@ v1 <- tibble::tribble(
 flextable(v1)
 ```
 
-In the example in Table @tbl-cc, we can calculate the odds of being exposed in the cases as $a \div c$. Similarly, we can calculate the odds of being exposed in the controls as $b \div d$. We can the calculate the *odds ratio* as:
+In the example in @tbl-cc, we can calculate the odds of being exposed in the cases as $a \div c$. Similarly, we can calculate the odds of being exposed in the controls as $b \div d$. We can the calculate the *odds ratio* as the ratio of these odds:
 
 $$
 \begin{aligned}
