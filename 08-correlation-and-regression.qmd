@@ -17,15 +17,15 @@ By the end of this module you will be able to:
 
 ## Optional readings {.unnumbered}
 
-@kirkwood_sterne01; Chapter 10. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+@kirkwood_sterne01; Chapter 10. [\[UNSW Library Link\]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 
-@bland15; Chapter 11. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+@bland15; Chapter 11. [\[UNSW Library Link\]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
 
 ## Introduction
 
-In Module 5, we saw how to test whether the means from two groups are equal - in other words, whether a continuous variable is related to a categorical variable. Sometimes we are interested in how closely two continuous variables are related. For example, we may want to know how closely blood cholesterol levels are related to dietary fat intake in adult men. To measure the strength of association between two continuously distributed variables, a correlation coefficient is used.
+In Module 5, we saw how to test whether the means from two populations are equal. Another way of saying this is that we are interested in whether a categorical variable (i.e. the variable that defines the two populations) is **associated with** a continuous variable. Sometimes we are interested in how closely two continuous variables are associated. For example, we may want to know how closely blood cholesterol levels are related to dietary fat intake in adults. We can use correlation to measure the strength of association between two continuous variables.
 
-We may also want to predict a value of a continuous measurement from another continuous measurement. For example, we may want to know predict values of lung capacity from height in a community of adults. A regression model allows us to use one measurement to predict another measurement.
+We may also want to predict a value of a continuous measurement from another continuous measurement. For example, we may want to predict values of lung capacity from height in a community of adults. A regression model allows us to use one (or more) measurement to predict a continuous measurement.
 
 Although both correlation coefficients and regression models can be used to describe the degree of association between two continuous variables, the two methods provide different information. It is important to note that both methods summarise the strength of an association between variables, and do not imply a causal relationship.
 
@@ -33,7 +33,7 @@ Although both correlation coefficients and regression models can be used to desc
 
 In this module, we will be focussing on the association between two variables, denoted $x$ and $y$.
 
-There may be cases where it does not matter which variable is denoted $x$ and which is denoted $y$, however this is rare. We are usually interested in whether one variable is associated with another. If we believe that a change in $x$ will lead to a change in $y$, or that $y$ is influenced by $x$, we define $y$ as the *outcome variable* and $x$ as the *explanatory variable*.
+There may be cases where it does not matter which variable is denoted $x$ and which is denoted $y$, however this is rare. We are usually interested in whether one particular variable is associated with the other. If we believe that a change in $x$ will lead to a change in $y$, or that $y$ is influenced by $x$, we define $y$ as the *outcome variable* and $x$ as the *explanatory variable*.
 
 ## Correlation
 
@@ -41,9 +41,9 @@ We use correlation to measure the strength of a linear relationship between two 
 
 ### Worked Example
 
-The file `mod08_lung_function.csv` has information about height and lung function collected from a random sample of 120 adults. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC), measured in litres. We can obtain a *scatter-plot* shown in @fig-scatter-plot, where the outcome variable ($y$) is plotted on the vertical axis, and the explanatory variable ($x$) is plotted on the horizontal axis. 
+The file `mod08_lung_function.csv` has information about height and lung function collected from a random sample of 120 adults. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC), measured in litres. We can obtain a *scatter-plot* shown in @fig-scatter-plot, where the outcome variable ($y$) is plotted on the vertical axis, and the explanatory variable ($x$) is plotted on the horizontal axis.
 
-@fig-scatter-plot shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
+@fig-scatter-plot shows that, even though the points are scattered, as height increases, lung function also increases which is as expected.
 
 ```{r}
 #| echo: false
@@ -56,7 +56,22 @@ knitr::include_graphics(here::here("img", "mod08", "scatterpng.png"))
 
 ### Correlation coefficients
 
-A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. In general, an absolute (disregarding the sign) r value below 0.3 indicates a weak association, 0.3 to \< 0.6 is fair association, 0.6 to \< 0.8 is a moderate association, and $\ge$ 0.8 indicates a strong association.
+A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. One interpretation of the strength of correlation coefficients has been provided by @schober2018 (@tbl-r-strength).
+
+```{r tbl-r-strength, echo=FALSE}
+#| tbl-cap: Interpretation of correlation coefficients
+
+tab_r_strength <- tibble::tribble(
+    ~`Correlation coefficient (ignoring sign)`, ~`Strength of association`,
+    "0 to <0.1", "Negligible",
+    "0.1 to <0.4", "Weak",
+    "0.4 to <0.7", "Moderate",
+    "0.7 to <0.9", "Strong",
+    "0.9 to 1.0", "Very strong",
+)
+
+flextable(tab_r_strength, cwidth = c(2, 2))
+```
 
 The correlation coefficient is positive when large values of one variable tend to occur with large values of the other, and small values of one variable (y) tend to occur with small values of the other (x) (@fig-scatter-plot-four (a and b)). For example, height and weight in healthy children or age and blood pressure.
 
@@ -66,7 +81,9 @@ The correlation coefficient is negative when large values of one variable tend t
 knitr::include_graphics(here::here("img", "mod08", "scatterplot-four-plots.png"))
 ```
 
-It is possible to calculate a P-value associated with a correlation coefficient to test whether the correlation coefficient is different from zero. However, a correlation coefficient with a large P-value does not imply that there is no relationship between $x$ and $y$, because the correlation coefficient only tests for a linear association and there may be a non-linear relationship such as a curved or irregular relationship.
+As with all estimates, a 95% confidence interval should be provided when providing a correlation coefficient. The calculation of the 95% confidence interval is beyond the scope of this course, but the interval can be calculated easily by software.
+
+It is also possible to calculate a P-value associated with a correlation coefficient to test whether the correlation coefficient is different from zero. However, a correlation coefficient with a large P-value does not imply that there is no relationship between $x$ and $y$, because the correlation coefficient only tests for a linear association and there may be a non-linear relationship such as a curved or irregular relationship.
 
 The assumptions for using a Pearson's correlation coefficient are that:
 
@@ -76,7 +93,7 @@ The assumptions for using a Pearson's correlation coefficient are that:
 
 There is a further assumption that the data follow a bivariate normal distribution. This assumes: *y* follows a normal distribution for given values of *x*; and *x* follows a normal distribution for given values of *y*. This is quite a technical assumption that we do not discuss further.
 
-There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in  @tbl-mod08-correlation-coefficients.
+There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in @tbl-mod08-correlation-coefficients.
 
 ```{r}
 #| echo: false
@@ -97,21 +114,23 @@ Spearman's $\rho$ is calculated using the ranks of the data, rather than the act
 
 Correlation coefficients are often presented in the form of a *correlation matrix* which can display the correlation between a number of variables in a single table (@tbl-corrmatrix).
 
-+------------+-----------------------------+-----------------------------+
-|            | Height                      | FVC                         |
-+------------+-----------------------------+-----------------------------+
-| Height     | 1                           | 0.70 (95% CI: 0.59 to 0.78) |
-|            |                             | P \< 0.0001                 |
-+------------+-----------------------------+-----------------------------+
-| FVC        | 0.70 (95% CI: 0.59 to 0.78) | 1                           |
-|            | P \< 0.0001                 |                             |
-+------------+-----------------------------+-----------------------------+
++----------------+------------------------------+------------------------------+
+|                | Height                       | FVC                          |
++----------------+------------------------------+------------------------------+
+| Height         | 1                            | 0.70 (95% CI: 0.59 to 0.78)\ |
+|                |                              | P \< 0.0001                  |
++----------------+------------------------------+------------------------------+
+| FVC            | 0.70 (95% CI: 0.59 to 0.78)\ | 1                            |
+|                | P \< 0.0001                  |                              |
++----------------+------------------------------+------------------------------+
 
 : Correlation matrix for Height and FVC {#tbl-corrmatrix}
 
-This correlation matrix shows that the Pearson's correlation coefficient between height and lung function is 0.70 (95% CI: 0.59 to 0.78) with P\<0.0001 indicating very strong evidence of a linear association between height and FVC. A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, $Height$ is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, $FVC$ is perfectly correlated with itself.
+This correlation matrix shows that there is a strong association between height and lung function (r = 0.70, 95% CI: 0.59 to 0.78). The P-value (\<0.0001) indicates there is very strong evidence of a linear association between height and FVC.
 
-Correlation coefficients are rarely used as important statistics in their own right because they do not fully explain the relationship between the two variables and the range of the data has an important influence on the size of the coefficient. In addition, the statistical significance of the correlation coefficient is often over interpreted because a small correlation which is of no clinical importance can become statistically significant even with a relatively small sample size. For example, a poor correlation of 0.3 will be statistically significant if the sample size is large enough.
+A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, $Height$ is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, $FVC$ is perfectly correlated with itself.
+
+Correlation coefficients are rarely used as important statistics in their own right because they do not fully explain the relationship between the two variables and the range of the data has an important influence on the size of the coefficient. In addition, the statistical significance of the correlation coefficient is often over interpreted because a small correlation which is of no clinical importance can become statistically significant even with a relatively small sample size. For example, a weak correlation of 0.3 will be statistically significant if the sample size is large enough.
 
 ## Linear regression
 
@@ -165,22 +184,22 @@ The regression parameters $\beta_{0}$ and $\beta_{1}$ are true, unknown quantiti
 
 Using the method of least squares:
 
-- the intercept is estimated as $b_0$;
-- the slope is estimated as $b_1$.
+-   the intercept is estimated as $b_0$;
+-   the slope is estimated as $b_1$.
 
 ## Regression coefficients: inference
 
 We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with $n - 2$ degrees of freedom is used:
 
-- 95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
-- 95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
+-   95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
+-   95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
 
 Note that as the constant ($b_0$) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.
 
 The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:
 
-- H~0~: $\beta_1 = 0$
-- H~1~: $\beta_1 \ne 0$
+-   H~0~: $\beta_1 = 0$
+-   H~1~: $\beta_1 \ne 0$
 
 To test the null hypothesis for the regression coefficient $\beta_1$, the following t-test is used:
 
@@ -214,7 +233,6 @@ This equation can be used to predict FVC for a person of a given height. For exa
 FVC = − 18.87347 + (0.1407567 $\times$ 165.0) = 4.40 L.
 
 Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.
-
 
 ### Fit of a linear regression model
 
@@ -260,21 +278,22 @@ Multiple regression has an important role in investigating causality in epidemio
 
 Other multivariable models include binary logistic regression for use with a binary outcome variable, or Cox regression for survival analyses. These models, together with multiple regression, will be taught in **PHCM9517: Regression Methods in Biostatistics**.
 
+<!-- {{< pagebreak >}} -->
 
-{{< pagebreak >}}
+<!-- # Jamovi notes {-} -->
 
-# Jamovi notes {-}
+<!-- {{< include 08.1-correlation-and-regression-jamovi.qmd >}} -->
 
-{{< include 08.1-correlation-and-regression-jamovi.qmd >}}
+<!-- <!-- {{< pagebreak >}} -->
+
+--\>
+
+<!-- # R notes {-} -->
+
+<!-- {{< include 08.2-correlation-and-regression-R.qmd >}} -->
 
 <!-- {{< pagebreak >}} -->
 
-# R notes {-}
+<!-- # Activities {-} -->
 
-{{< include 08.2-correlation-and-regression-R.qmd >}}
-
-{{< pagebreak >}}
-
-# Activities {-}
-
-{{< include 08.3-correlation-and-regression-activities.qmd >}}
+<!-- {{< include 08.3-correlation-and-regression-activities.qmd >}} -->

@@ -80,10 +80,10 @@ For Worked Example 3.2 where we are given the sample mean, sample standard devia
 
 To install a new module:
 
-1 - Ensure that the middle tab, **Available** is selected;
-2 - Type **esci** in the search bar. The **esci** module will appear;
-3 - Click **INSTALL** to install the module
-4 - Click the up-arrow to exit from the Install Module window
+1. Ensure that the middle tab, **Available** is selected;
+2. Type **esci** in the search bar. The **esci** module will appear;
+3. Click **INSTALL** to install the module
+4. Click the up-arrow to exit from the Install Module window
 
 ![](img/mod03/jamovi/mod3-inst-module2.png)
 

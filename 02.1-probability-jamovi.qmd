@@ -21,7 +21,7 @@ Click **Frequency tables** in the main Descriptives window to request the one-wa
 
 ## Producing a two-way frequency table
 
-Two-way tables are constructed using **Analyses > Frequencies > Contingency Tables > Independent Samples**. Note that **both variables must be defined as Nominal variables**. As an example, to produce a two-way table of disease stage by sex:
+Two-way tables are constructed using **Analyses > Frequencies > Contingency Tables > Independent Samples**. Note that **both variables must be defined as Nominal or Ordinal variables**. As an example, to produce a two-way table of disease stage by sex:
 
 ![](img/mod02/jamovi/mod02-twofreq01.png)
 
@@ -131,17 +131,17 @@ jamovi does not have a point-and-click method for computing probabilities from a
 
 The applet requires three pieces of information:
 
-- $/n$: the number of binary trials being considered
-- $/p$: the probability of "success" in each trial
+- $n$: the number of binary trials being considered
+- $p$: the probability of "success" in each trial
 - $x$: the number of success we are interested in
 
 We also need to consider whether we are interested in the probability being equal to, greater than, or less than x.
 
 To do the computation for part (a) in Worked Example 2.1:
 
--   *x* is the number of successes, here, the number of smokers (i.e. x=3);
--   *n* is the number of trials (i.e. n=6);
--   and *p* is probability of drawing a smoker from the population, which is 19.8% (i.e. p=0.198).
+-   $x$ is the number of successes, here, the number of smokers (i.e. x=3);
+-   $n$ is the number of trials (i.e. n=6);
+-   and $p$ is probability of drawing a smoker from the population, which is 19.8% (i.e. p=0.198).
 
 Replace each of these with the appropriate number into the applet:
 

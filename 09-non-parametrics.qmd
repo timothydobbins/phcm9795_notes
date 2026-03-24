@@ -180,36 +180,30 @@ The P-value obtained from this test is 0.049. Thus, there is evidence of a diffe
 
 ## Non-parametric estimates of correlation
 
-Estimating correlation using Pearson's correlation coefficient can be problematic when bivariate Normality cannot be assumed, or in the presence of outliers or skewness. There are two commonly used non-parametric alternatives to Pearson's correlation coefficient: Spearman's rank correlation ($\rho$ or rho), and Kendall's rank correlation ($\tau$ or tau).
+Estimating correlation using Pearson's correlation coefficient can be problematic when bivariate Normality cannot be assumed, or in the presence of outliers or skewness. One commonly used non-parametric alternative to Pearson's correlation coefficient is the Spearman's rank correlation ($\rho$ or rho). When estimating the correlation between x and y, Spearman's rank correlation essentially replaces the observations x and y by their ranks, and calculates the correlation between the ranks.
 
-When estimating the correlation between x and y, Spearman's rank correlation essentially replaces the observations x and y by their ranks, and calculates the correlation between the ranks. Kendall's rank correlation compares the ranks between every possible combination of pairs of data to measure concordance: whether high values for x tend to be associated with high values for y (positively correlated) or low values of y (negatively correlated).
+We will illustrate estimating rank correlation using the data `mod08_lung_function.csv`, which has information about height and lung function collected from a sample of 120 adults. The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC.
 
-In terms of which is the more appropriate measure to use, the following passage from An Introduction to Medical Statistics (@bland15) provides some guidance:
-
-> "Why have two different rank correlation coefficients? Spearman’s $\rho$ is older than Kendall’s $\tau$, and can be thought of as a simple analogue of the product moment correlation coefficient, Pearson’s r. Kendall’s $\tau$ is a part of a more general and consistent system of ranking methods, and has a direct interpretation, as the difference between the proportions of concordant and discordant pairs. In general, the numerical value of $\rho$ is greater than that of $\tau$. It is not possible to calculate $\tau$ from $\rho$ or $\rho$ from $\tau$, they measure different sorts of correlation. $\rho$ gives more weight to reversals of order when data are far apart in rank than when there is a reversal close together in rank, $\tau$ does not. However, in terms of tests of significance, both have the same power to reject a false null hypothesis, so for this purpose it does not matter which is used."
-
-We will illustrate estimating rank correlation using the data `mod08_lung_function.csv`, which has information about height and lung function collected from a sample of 120 adults.
-
-The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC. The Kendall rank correlation coefficient is estimated as 0.56, again demonstrating a positive association between height and FVC.
+Kendall's tau ($\tau$) is an alternative to the Spearman rank correlation, but it less commonly used.
 
 ## Summary
 
 In this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# jamovi notes {-}
+<!-- # jamovi notes {-} -->
 
-{{< include 09.1-non-parametrics-jamovi.qmd >}}
+<!-- {{< include 09.1-non-parametrics-jamovi.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# R notes {-}
+<!-- # R notes {-} -->
 
-{{< include 09.2-non-parametrics-R.qmd >}}
+<!-- {{< include 09.2-non-parametrics-R.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# Activities {-}
+<!-- # Activities {-} -->
 
-{{< include 09.3-non-parametrics-activities.qmd >}}
+<!-- {{< include 09.3-non-parametrics-activities.qmd >}} -->

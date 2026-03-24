@@ -231,6 +231,7 @@ tab1_pres <- tibble::tribble(
     "Standard error", "As per standard deviation",
     "Confidence interval", "Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)",
     "Test statistic", "Test statistics should not be presented with more than two decimal places.",
+    "Degrees of freedom", "Most degrees of freedom are whole numbers, and should be presented as such. If a test statistic has degrees of freedom with decimal places (the Welch t-statistic for example), present only one decimal place.",
     "P-value", "Report P-values to a single significant figure unless the P-value is close to 0.05 (say, 0.01 to 0.2), in which case, report two significant figures. Do not report `not significant` for P-values of 0.05 or higher. Very low P-values can be reported as P < 0.001 or P < 0.0001. A P-value can indeed be 1, although some investigators prefer to report this as >0.9. (Based on Assel)",
     "Difference in means", "As for the estimated means",
     "Difference in proportions", "As for the estimated proportions",
