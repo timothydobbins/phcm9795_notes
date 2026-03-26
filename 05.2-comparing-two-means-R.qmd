@@ -16,6 +16,19 @@ bwt <- readRDS("data/examples/mod05_birthweight.rds")
 descriptives(data = bwt, vars = birthweight, splitBy = gender, dens = TRUE)
 ```
 
+Of course, we could also use `ggplot2` to produce the density plots, defining `gender` as a `facet_wrap`:
+
+```{r}
+library(ggplot2)
+
+ggplot(data=bwt, aes(x=birthweight)) +
+  geom_density() +
+  facet_wrap(~ gender) +
+  theme_classic() +
+  labs(x="Birthweight (kg)")
+```
+
+
 ## Independent samples t-test
 
 We can use the `ttestIS()` (t-test, independent samples) function from the `jmv` package to perform the independent samples t-test. We include the `meanDiff=TRUE` and `ci=TRUE` options to obtain the difference in means, with its 95% confidence interval. We can request a Welch's test (which does not assume equal variances) by the `welchs=TRUE` option:
@@ -30,9 +43,11 @@ Before performing a paired t-test, you must check that the assumptions for the t
 
 ```{r}
 library(readxl)
+library(dplyr)
 
-sbp <- read_excel("data/examples/mod05_ankle_bp.xlsx")
-sbp$diff <- sbp$sbp_dp - sbp$sbp_tp
+sbp <- read_excel("data/examples/mod05_ankle_bp.xlsx") |> 
+  mutate(diff = sbp_dp - sbp_tp)
+
 descriptives(data = sbp, vars = diff, dens = TRUE)
 ```
 

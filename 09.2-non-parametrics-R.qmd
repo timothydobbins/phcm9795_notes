@@ -8,10 +8,11 @@ You can calculate a new, transformed, variable using standard commands. For exam
 
 ```{r}
 library(jmv)
+library(dplyr)
 
-hospital <- readRDS("data/examples/mod09_infection.rds")
+hospital <- readRDS("data/examples/mod09_infection.rds") |> 
+  mutate(ln_los = log(los+1))
 
-hospital$ln_los <- log(hospital$los+1)
 descriptives(data=hospital, vars=c(los, ln_los))
 ```
 You can now check whether this logged variable is normally distributed as described in Module 2, for example by plotting a histogram as shown in Figure 9.2.
@@ -56,12 +57,10 @@ wilcox.test(arthritis$drug_1, arthritis$drug_2,
 ```
 
 ## Estimating rank correlation coefficients
-The analyses for Spearman's and Kendall's rank correlation are conducted in similar ways:
+The analyses for Spearman's rank correlation is conducted similarly:
 
 ```{r}
 lung <- read.csv("data/examples/mod08_lung_function.csv")
 
 cor.test(lung$Height, lung$FVC, method="spearman")
-
-cor.test(lung$Height, lung$FVC, method="kendall")
 ```

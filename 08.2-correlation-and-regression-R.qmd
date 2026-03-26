@@ -1,5 +1,6 @@
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(jmv)
+library(dplyr)
 ```
 
 # Module 8
@@ -40,6 +41,27 @@ Note: to obtain output similar to Jamovi output, we can use the `scatr` package:
 library(scatr)
 
 scat(data=lung, x="Height", y="FVC", line="linear")
+```
+
+Or using `ggplot2`:
+
+```{r}
+library(ggplot2)
+
+ggplot(data=lung, aes(x=Height, y=FVC)) +
+  geom_point() +
+  theme_classic() +
+  labs(x="Height (cm)", y="Forced vital capacity (L)")
+```
+
+We use `geom_smooth()` to add a regression line. This geometry "smooths" your data, essentially drawing a smooth line through the middle of the data. We specify that we want a line based on a linear regression (i.e. a **l**inear **m**odel) by including `method='ml'`, and we prevent a shaded representation of the standard error of the regression by including `se=FALSE`:
+
+```{r}
+ggplot(data=lung, aes(x=Height, y=FVC)) +
+  geom_point() +
+  geom_smooth(method="lm", se=FALSE) +
+  theme_classic() +
+  labs(x="Height (cm)", y="Forced vital capacity (L)")
 ```
 
 

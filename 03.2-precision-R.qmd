@@ -120,8 +120,8 @@ We could do these manipulations using `mutate()` as:
 
 library(dplyr)
 
-df <- mutate(df, sex = factor(sex, levels=c(1,2), labels=c("Male", "Female")),
-                 bmi = weight / height^2)
+survey <- mutate(survey, sex = factor(sex, levels=c(1,2), labels=c("Male", "Female")),
+                         bmi = weight / height^2)
 
 ```
 

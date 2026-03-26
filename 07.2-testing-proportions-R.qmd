@@ -6,6 +6,7 @@ We will demonstrate how to use R to conduct a Pearson chi-squared test using Wor
 
 ```{r}
 library(jmv)
+library(dplyr)
 
 nausea <- readRDS("data/examples/mod06_nausea.rds")
 
@@ -18,8 +19,8 @@ str(nausea$side_effect)
 The columns `group` and `side_effect` have been entered as factors, with "Placebo" and "No nausea" as the first levels. We should use the `relevel()` command to re-order the factor levels.
 
 ```{r}
-nausea$group <- relevel(nausea$group, ref = "Active")
-nausea$side_effect <- relevel(nausea$side_effect, ref = "Nausea")
+nausea <- mutate(nausea, group = relevel(group, ref = "Active"), 
+                         side_effect = relevel(side_effect, ref = "Nausea"))
 
 str(nausea$group)
 str(nausea$side_effect)
@@ -99,8 +100,8 @@ str(drug$drugb)
 Here we see that the first level of the factor is "No" - we need to use the `relevel()` function to re-order the levels so "Yes" is the first level:
 
 ```{r}
-drug$druga <- relevel(drug$druga, ref = "Yes")
-drug$drugb <- relevel(drug$drugb, ref = "Yes")
+drug <- mutate(drug, druga = relevel(druga, ref = "Yes"),
+                     drugb = relevel(drugb, ref = "Yes"))
 
 str(drug$druga)
 str(drug$drugb)

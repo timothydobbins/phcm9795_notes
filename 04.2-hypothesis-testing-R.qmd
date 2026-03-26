@@ -16,3 +16,5 @@ The output provides:
 - a P-value from the two-sided test (P=0.002);
 - the mean of the sample (72.4);
 - and the 95% confidence interval of the mean (71.5 to 73.3).
+
+
