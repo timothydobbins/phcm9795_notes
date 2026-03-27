@@ -43,7 +43,7 @@ library(scatr)
 scat(data=lung, x="Height", y="FVC", line="linear")
 ```
 
-Or using `ggplot2`:
+Or using `ggplot2`, we use `geom_point` to plot each point defined by `x` and `y`:
 
 ```{r}
 library(ggplot2)

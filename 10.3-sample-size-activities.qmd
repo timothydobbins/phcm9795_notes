@@ -20,25 +20,25 @@ d) How many participants would we need to recruit (calculated in c) if a pilot s
 
 ### Activity 10.3 {-}
 
-In a case-control study, we plan to recruit adult males who have been exposed to fumes from an industrial stack near their home and a sample of population controls in whom we expect that 20% may also have been exposed to similar fumes through their place of residence or their work.
-We want to show that an odds ratio of 2.5 for having respiratory symptoms associated with exposure to fumes is statistically significant.
+Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a disease featuring extreme fatigue, disrupted sleep, pain and other symptoms that worsen after physical or mental effort. There is a hypothesis that repeated infection with SARS-CoV-2 (the virus that causes COVID-19) may increase the risk of ME/CFS.
+A case-control study, to be conducted in NSW, is being designed to test the association between repeated infection with SARS-CoV-2 (three infections or more) and ME/CFS. We expect 40% of the population to have been infected with SARS-CoV-2 three or more times.
 
-a) What statistical test will be needed to measure the association between exposure and outcome?
-b) How large will the sample size need to be to show that the OR of 2.5 is statistically significant at P \< 0.05 with 90% power if we want to recruit equal number of cases and controls?
-c) What would be the required sample size (calculated in b) if the minimum detectable OR were 1.5?
-d) If there are problems recruiting cases to detect an OR of 1.5 (as calculated in c), what would the sample size need to be if the ratio of cases to controls was increased to 1:3?
+a)	How many participants should be enrolled to detect an odds ratio of 2.0 as statistically significant with 90% power and a two-sided 5% level of significance, assuming an equal number of cases and controls?
+b)	Your colleague suggests that your estimate of the proportion of people who have been infected with SARS-CoV-2 three or more times is out of date, and the up-to-date proportion is 60%. How many participants should be enrolled under this scenario, retaining 90% power and a two-sided 5% level of significance?
+d)	Similar studies on ME/CFS have found that only 80% of cases and 60% of controls complete research studies they enrol in. How many participants should be enrolled to achieve the sample size that you estimated in Part (a)?
+e)	Colleagues suggest that it may be difficult to recruit enough cases, and perhaps more controls than cases should be enrolled. How many participants should be enrolled if three controls per case are recruited, keeping the odds ratio, power, and level of significance the same as in Part (a)? You do not need to account for drop-outs in this part.
+
 
 ### Activity 10.4 {-}
 
-In the above study to measure the effects of exposure to fumes from an industrial stack, we also want to know if the stack has an effect on lung function which can be measured as forced vital capacity in 1 minute (FEV1). This measurement is normally distributed in the population.
+The six-minute walk test is designed to assess people’s aerobic capacity and endurance. A person who undertakes the test is asked to walk as far as they possibly can on a hard, flat surface in six minutes. The distance the person walks is called the six-minute walk distance (6MWD). Previous studies have estimated that the 6MWD in people with chronic obstructive pulmonary disease (COPD) has an average of around 360 metres, with a standard deviation of 100 metres.
 
-a) If the research question is changed to wanting to show that the mean FEV1 in the exposed group is lower than the mean FEV1 in the control group what statistical test will now be required?
-b) Population statistics show that the mean FEV1 and its SD in the general population for males are 4.40 L (SD=1.25) which can be expected in the control group.
+A researcher is interested in comparing the 6MWD in a group of people with a respiratory disease who undertake an exercise program compared with those who do not undertake the exercise program.
 
-We expect that the mean FEV1 in the cases may be 4.0 L.
-How many participants will be needed to show that this mean value is significantly different from the control group with P \< 0.05 with an 80% power if we want to recruit equal number in each group?
-
-c) How much larger will the sample size need to be if the mean FEV1 in the cases is 4.20 L?
+a)	The researcher wishes to undertake a randomised controlled trial to study the effect of the intervention. The researcher believes the minimum clinically important difference is 35 metres. The desired power of the study is 90% and alpha = 0.05. What sample size would you recommend that she use? Include your Stata output in your answer.
+b)	A colleague suggests that a minimum clinically important difference should be set to 25 metres. Without performing any calculations, explain what will happen to the required sample size and why.
+c)	Research in this area has suggested that around 20% of invited participants fail to attend their scheduled 6MWD. How many participants should the researchers enrol to meet the requirements of part (a)?
+d)	The researchers decide on scenario (a). After completing recruitment, the researchers found that 35% of the invited participants (calculated in part (a)) failed to attend. Calculate the revised power to detect a 35 metre difference in 6MWD.	
 
 ### Supplementary Activity 10.5 {-}
 Your colleague, Clancy, wants to test an intervention consisting of behavioural techniques to reduce the amount of time that primary school children spend on small-screen recreation (i.e., use of television, computers, and tablets). Clancy would like to use a randomised controlled trial to assess the impact of the intervention compared to providing an information pamphlet, and will use the relative risk to summarise the intervention effect.

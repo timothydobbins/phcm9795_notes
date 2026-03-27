@@ -35,6 +35,13 @@ pbc$stage <- factor(pbc$stage,
                     labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
 ```
 
+::: {.callout-note}
+
+## Note
+
+In this section, we introduce `ggplot2` which is a very flexible method of plotting data in R. The use of `ggplot2` is **completely optional**. It is perfectly fine to produce graphs using the simpler methods, as long as they are formatted appropriately.
+
+:::
 
 ## Introducing `ggplot2`
 
@@ -82,7 +89,7 @@ ggplot(data=pbc, mapping = aes(x=sex)) +
   geom_bar()
 ```
 
-We can change the look of the figure by choosing a different *theme*:let's use `theme_classic()` here.
+We can change the look of the figure by choosing a different *theme*: let's use `theme_classic()` here.
 
 ```{r}
 ggplot(data=pbc, mapping = aes(x=sex)) +
@@ -130,7 +137,7 @@ ggplot(data=subset(pbc, is.na(stage) == FALSE), mapping = aes(x=stage)) +
        y = "Frequency")
 ```
 
-## Introducing `|>`: aka the "pipe"
+## Introducing the "pipe" `|>`
 
 Consider the previous example, which essentially combines two functions: `ggplot()` and `subset()` by using: `ggplot(subset())` - in other words, `subset()` has been nested within `ggplot()`. When R comes across nested functions, it will happily run the inner-most function first, then applies the outer function to the result of the inner function.
 
@@ -160,14 +167,15 @@ subset(pbc, is.na(stage) == FALSE) |>
 Notice that when we pipe a dataset from the `subset()` function, we no longer need to specify the name of the dataset in `ggplot()`: the dataset is inferred from the action of the `subset()` function.
 
 ::: {.callout-note}
-The `|>` pipe was introduced in R version 4.1.0, May 2021, and for this author (TD), has drastically improved the code that I write (and read!). When reading code that I, or others, have written using the pipe, I replace `|>` by the words **and then**. So the previous code would be read: subset the data **and then** plot the data.
 
-You may also see `%>%` referred to as a pipe. This version of the pipe was introduced in the early 2010s, most notably in the `magrittr` package. While there are subtle differences between `|>` and `%>%`, the `|>` is the easier to use for this course, as it does not require loading any additional packages. More in-depth history can be found at [this blog post](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/).
+- The `|>` pipe was introduced in R version 4.1.0, May 2021, and for this author (TD), has drastically improved the code that I write (and read!). When reading code that I, or others, have written using the pipe, I replace `|>` by the words **and then**. So the previous code would be read: subset the data **and then** plot the data.
+
+- You may also see `%>%` referred to as a pipe. This version of the pipe was introduced in the early 2010s, most notably in the `magrittr` package. While there are subtle differences between `|>` and `%>%`, the `|>` is the easier to use for this course, as it does not require loading any additional packages. More in-depth history can be found at [this blog post](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/).
 :::
 
 ### Using `ggplot2` to construct bar charts for two variables
 
-In Section X.X, we saw hat clustered or stacked bar charts can be used to summarise two categorical variables. Remember that the *aesthetic mapping* can be used to describe how our data map to visual elements of our plot. So we can map `sex` to the `fill` attribute to summarise Stage of Disease by sex. By default, `ggplot` will produce a stacked bar chart, but we can request a clustered bar chart by specifying `position="dodge"` in the `geom_bar()` statement:
+In @sec-two-catvar-graph, we saw that clustered or stacked bar charts can be used to summarise two categorical variables. Remember that the *aesthetic mapping* can be used to describe how our data map to visual elements of our plot. So we can map `sex` to the `fill` attribute to summarise Stage of Disease by sex. By default, `ggplot` will produce a stacked bar chart, but we can request a clustered bar chart by specifying `position="dodge"` in the `geom_bar()` statement:
 
 ```{r}
 subset(pbc, is.na(stage) == FALSE) |> 
@@ -252,5 +260,12 @@ ggplot(data=pbc, aes(y=age)) +
 ```
 
 
+- The `|>` pipe was introduced in R version 4.1.0, May 2021, and for this author (TD), has drastically improved the code that I write (and read!). When reading code that I, or others, have written using the pipe, I replace `|>` by the words **and then**. So the previous code would be read: subset the data **and then** plot the data.
+
+- You may also see `%>%` referred to as a pipe. This version of the pipe was introduced in the early 2010s, most notably in the `magrittr` package. While there are subtle differences between `|>` and `%>%`, the `|>` is the easier to use for this course, as it does not require loading any additional packages. More in-depth history can be found at [this blog post](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/).
+:::
+
+
 [^1]: Note that the package is called `ggplot2` as it is a complete overhaul of the package called `ggplot`. The main function used in the `ggplot2` package is `ggplot()`. This can be confusing, but you will get used to this in time.
 [^2]: A list of available colours that can be used in `ggplot` can be found by entering the command `grDevices::colours()` in R, or by searching the web for `R colour names`.
+

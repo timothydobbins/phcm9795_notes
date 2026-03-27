@@ -31,6 +31,7 @@ We will use Worked Example 6.4 to demonstrate calculating a relative risk and it
 
 ```{r}
 library(jmv)
+library(dplyr)
 
 drug <- readRDS("data/examples/mod06_nausea.rds")
 
@@ -46,22 +47,9 @@ In this example, we will define `Active` as the first level in the `group` facto
 We can do this using the `relevel()` function, which re-orders the levels of a factor so that the level specified is defined as the first level, and the others are moved down:
 
 ```{r}
-# Define "Active" as the first level of group:
-drug$group <- relevel(drug$group, ref="Active")
-
-# Define "Nausea" as the first level of side_effect:
-drug$side_effect <- relevel(drug$side_effect, ref="Nausea")
-```
-
-Alternatively, `mutate()` can be used to re-level the factors:
-
-```{r}
-#| eval: false
-#| include: true
-
-drug <- mutate(drug,
-               group = relevel(group, ref="Active"),
-               side_effect = relevel(side_effect, ref="Nausea"))
+# Define "Active" as the first level of group and "Nausea" as the first level of side_effect:
+drug <- mutate(drug, group = relevel(group, ref="Active"),
+                     side_effect = relevel(side_effect, ref="Nausea"))
 ```
 
 Upon re-leveling the factors, we can check that the levels of interest have been defined as the first levels:
@@ -78,8 +66,6 @@ contTables(data=drug,
            pcRow=TRUE, relRisk = TRUE)
 ```
 
-{{< pagebreak >}}
-
 If you only have the cross-tabulated data (i.e. aggregated), you will need to enter your data into a new data frame. For example, to recreate the above analyses, we can re-write the 2-by-2 table as follows:
 
 | Group | side_effect | Number |
@@ -95,18 +81,15 @@ We can enter these data in a dataframe, comprising three vectors, as follows:
 drug_aggregated <- data.frame(
   group = c("Active", "Active", "Placebo", "Placebo"),
   side_effect = c("Nausea", "No nausea", "Nausea", "No nausea"),
-  n = c(15, 35, 4, 46)
-)
+  n = c(15, 35, 4, 46))
 ```
 
 We need to define group and side_effect as factors. Here we must define the `levels` **in the order we want the categories to appear in the table**. Note that as group and side_effect are entered as text variables, we can omit `labels` command when defining the factors, and the factor will be labelled using the text entry:
 
 ```{r}
-drug_aggregated$group <- factor(drug_aggregated$group, 
-                                levels=c("Active", "Placebo"))
-
-drug_aggregated$side_effect <- factor(drug_aggregated$side_effect, 
-                                      levels=c("Nausea", "No nausea"))
+drug_aggregated = mutate(drug_aggregated,
+                         group = factor(group, levels=c("Active", "Placebo")),
+                         side_effect = factor(side_effect, levels=c("Nausea", "No nausea")))
 ```
 
 We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the `counts` command:

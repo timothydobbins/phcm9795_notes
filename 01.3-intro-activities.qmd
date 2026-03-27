@@ -36,20 +36,17 @@ c) The smaller the variance
 
 
 ### Activity 1.3 {-}
-Estimate the mean, median, standard deviation, range and interquartile range for the data  `Activity_1.3.rds`, available on Moodle.
+A study was conducted to investigate the general health of undergraduate students at Australian universities. A random selection of 218 UNSW undergradute students from UNSW were enrolled, and their diastolic blood pressures are provided in the dataset `Activity_1.3.csv`. Compute the mean, median, range and standard deviation of diastolic blood pressure.
 
 ### Activity 1.4 {-}
-Data of diastolic blood pressure (BP) of a sample of study participants are provided in the datasets `Activity_1.4.rds`. Compute the mean, median, range and SD of diastolic BP.
-
-### Activity 1.5 {-}
-The ages of 100 study participants have been saved as `Activity_1.5.rds`. Estimate the:
+The ages of 100 study participants have been saved as `Activity_1.4.rds`. Estimate the:
 
 a. mean and median;
 b. standard deviation and interquartile range;
 c. range.
 
-Plot the data using a histogram and boxpolot. Is there anything unusual about the ages? What do you think is a possible explanation for this?
+Plot the data. Is there anything unusual about the ages? What do you think is a possible explanation for this?
 
-A clean version of the data have been saved as `Activity_1.5_clean.rds`. Recalculate the summary statistics and recreate the plots using the clean data.
+A clean version of the data have been saved as `Activity_1.4_clean.rds`. Recalculate the summary statistics and recreate the plots using the clean data.
 
 Based on this exercise, what is your advice on coding unusual or missing values in data?

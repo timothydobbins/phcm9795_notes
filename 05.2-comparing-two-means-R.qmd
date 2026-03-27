@@ -23,7 +23,7 @@ library(ggplot2)
 
 ggplot(data=bwt, aes(x=birthweight)) +
   geom_density() +
-  facet_wrap(~ gender) +
+  facet_wrap(vars(gender)) +
   theme_classic() +
   labs(x="Birthweight (kg)")
 ```

@@ -187,7 +187,7 @@ Some issues in this table:
 -   It is unclear how the percentages were calculated (which groupings added to 100%);
 -   The ages are not labelled as such, thus without reading the text in report it is unclear that these are age groupings.
 
-## Summarising two categorical variables graphically
+## Summarising two categorical variables graphically {#sec-two-catvar-graph}
 
 Information from more than one variable can be presented as clustered or multiple bar chart (bars side-by-side) (@fig-bar-2). This type of graph is useful when examining changes in the categories separately, but also comparing the grouping variable between the main bar variable. Here we can see that Stage 3 and Stage 4 disease is the most common for both males and females, but there are many more females within each stage of disease.
 

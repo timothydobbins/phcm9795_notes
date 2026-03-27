@@ -381,7 +381,7 @@ Package installation:
 -   the package name must be surrounded by quotation marks
 -   only needs to be done once
 
-Package loading
+Package loading:
 
 -   use the `library()` function
 -   the package name does not need to be surrounded by quotation marks

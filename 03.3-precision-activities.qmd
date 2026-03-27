@@ -25,27 +25,22 @@ d)	It is difficult to obtain a sample of people living with agoraphobia in a sci
 A dental epidemiologist wants to estimate the mean weekly consumption of dietary sugar among preschool children in Kensington, NSW. She takes four samples from different preschools in the area. The estimated daily intake of total sugar consumption (in grams) are saved in `Activity_3.2.rds`.
 
 a) Obtain the sample size, the mean and standard deviation for total sugar consumption for each preschool. Plot the distribution of total sugar consumption by preschool. What do you notice about the variability of total sugar consumption by preschool?
-b) Estimate the standard error of the mean total sugar consumption by preschool. What happens to the standard error as the sample size increases?
-c) Estimate the 95% confidence interval of the mean total sugar consumption by preschool, and comment.
+b) Obtain the standard error of the mean total sugar consumption by preschool. What happens to the standard error as the sample size increases?
+c) Obtain the 95% confidence interval of the mean total sugar consumption by preschool, and comment.
 d) What can you say about the precision of the sample mean as the sample size increases?
 e) Interpret the 95% confidence interval of the mean total sugar consumption for one preschool. What population are we making inferences about? Is this valid?
 
 ### Activity 3.3 {-}
 
-The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is `Activity_1.4.rds` on Moodle.
+The dataset for this activity is the same as the one used in Activity 1.3 in Module 1: a study was conducted to investigate the general health of undergraduate students at Australian universities. A random selection of 218 UNSW undergradute students from UNSW were enrolled, and their diastolic blood pressures were recorded. The file is `Activity_1.3.csv` on Moodle.
 
-a) Plot a histogram of diastolic BP and describe the distribution.
+a) Plot diastolic blood pressure and describe the distribution.
 b) Use jamovi or R to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.
 c) Interpret the 95% confidence interval for the mean diastolic blood pressure.
 
 ### Activity 3.4 {-}
 
-Suppose that a random sample of 81 newborn babies delivered in a hospital located in a poor neighbourhood during the last year had a mean birth weight of 2.7 kg and a standard deviation of 0.9 kg. Calculate the 95% confidence interval for the unknown population mean. Interpret the 95% confidence interval. 
-
-
-### Activity 3.5 {-}
-
-Using the health survey data (`Activity_3.5.xlsx`) described in the computing notes of this module, create a new variable, BMI, which is equal to a person's weight (in kg) divided by their height (in metres) squared (i.e. $\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}$. Categorise BMI using the categories:
+Using the health survey data (`Activity_3.4.xlsx`) described in the computing notes of this module, create a new variable, BMI, which is equal to a person's weight (in kg) divided by their height (in metres) squared (i.e. $\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}$. Categorise BMI using the categories:
 
 -   Underweight: BMI \< 18.5
 -   Normal weight: 18.5 $\le$ BMI \< 25
@@ -58,8 +53,8 @@ Note: BMI does not necessarily reflect body fat distribution or describe the sam
 
 Create a two-way table to display the distribution of BMI categories by sex (sex: 1 = respondent identifies as male; 2 = respondent identifies as female). Does there appear to be a difference in categorised BMI between males and females?
 
-### Activity 3.6 {-}
-The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity_3.6.csv`). Import this dataset into jamovi or R. There are two variables in this dataset:
+### Activity 3.5 {-}
+The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity_3.5.csv`). Import this dataset into jamovi or R. There are two variables in this dataset:
 
 - female: female=1; male=0
 - los: length of stay in days
@@ -68,7 +63,7 @@ a)	Use jamovi or R to examine the distribution of length of stay: overall; and s
 b)	Use jamovi or R to calculate measures of central tendency for hospital stay to obtain information about the average duration of hospital stay. Which summary statistics should you report and why? Report the appropriate statistics of the spread and measure of central tendency chosen.
 c)	Calculate the measures of central tendency for hospital duration separately for males and females. What can you conclude from comparing these measures for males and females? 
 
-### Activity 3.7 {-}
+### Activity 3.6 {-}
 
 If weights of men are Normally distributed with a population mean $\mu$ = 87, and a population standard deviation, $\sigma$ = 8 kg:
 

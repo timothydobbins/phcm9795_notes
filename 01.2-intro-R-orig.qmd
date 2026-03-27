@@ -435,7 +435,7 @@ flextable(tab) |>
   add_footer_lines("* asparate aminotransferase")
 ```
 
-This table is available in Table1.docx, saved on Moodle.
+This table is available in `PBC Table1.docx`, saved on Moodle.
 
 ::: {.callout-note icon="false"}
 ## TASK
@@ -532,12 +532,14 @@ descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE)
 We can add `dens=TRUE` to the `descriptives` function to produce a density plot for each listed variable:
 
 ```{r}
+#| out-width: "50%"
+#| out-height: "50%"
 descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE, dens=TRUE)
 ```
 
 Note that the density plots are plotted separately in the **Plot** window. They can be viewed using the arrows at the top of the **Plot** window:
 
-![](img/mod01/r-dens-01.png)
+![](img/mod01/r-dens-01.png){width=50%}{height=50%}
 
 A more flexible way of constructing a density plot is by using the plot() function within R, using the syntax: `plot(density(dataframe$variable))`, which plots the `variable` from the `dataframe`. For example, the default density plot for the `age` column of the `pbc` data:
 

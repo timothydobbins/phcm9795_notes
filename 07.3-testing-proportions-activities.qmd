@@ -1,22 +1,30 @@
 ### Activity 7.1 {-}
 
-Use the file `Activity_7.1.rds` to further investigate whether there is a gender difference in asthma in a random sample of 514 upper primary school children:
-
-a) Use a contingency table (cross-tabulation) to determine the observed and expected frequencies. Which cell has the lowest expected cell count?
-b) Use a chi-squared test to evaluate the hypothesis and interpret the result. Are the assumptions for a chi-squared test met? Calculate the 95% CI of the difference in proportions.
+This activity continues from Activity 6.2, where a survey was conducted of a random sample of 514 upper primary school children to measure the prevalence of asthma. Use the dataset `Activity_6.2.rds` to investigate whether there is a gender difference in the prevalence of asthma.
 
 ### Activity 7.2 {-}
-The file `Activity_7.2.rds` summarise 5-year mortality (the outcome) for 89 people who did or did not have a heart attack (the exposure).
+This activity continues from Activity 6.5, a study to determine the cause of mortality where 89 people were followed up for 5 years. The file `Activity_7.2.rds` summarise 5-year mortality (the outcome) for 89 people who did or did not have a heart attack (the exposure). The data are entered as:
 
-a) State the null hypothesis.
-b) Using jamovi or R, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
-c) Estimate the appropriate risk estimate for mortality. Are the confidence intervals of the risk estimates consistent with the P value?
-d) Summarise your results and state your conclusion.
+- heart_attack: Heart attack status: 1=No, 2=Yes
+- mortality: 5-year mortality; 1=No, 2=Yes
+
+Analyse these data to assess whether 5-year mortality differs between those who have a heart attack and those who do not.
 
 ### Activity 7.3 {-}
-The effect of two penicillin allergens B and G was tested in a random sample of 500 people. All people were tested with both allergens. For each person, data were recorded for whether or not there was an allergic reaction to the allergen.
+Hand hygiene is crucial for retail food workers to prevent the spread of germs and pathogens from their hands to food, which can cause foodborne illnesses. By properly washing their hands, workers can protect customers from contamination and maintain a safe food environment.
 
-Use `Activity_7.3.rds` to test the null hypothesis that the proportion of participants who react to allergen G is the same as the proportion who react to allergen B. Are the 95% CI around the difference consistent with the P value?
+A study was conducted by the Sunrise public health unit to assess whether a health promotion campaign could increase the rate of adequate hand hygiene. 107 retail food workers, working in Sunrise, were enrolled in the study, and their hand-washing techniques were observed before and after the health promotion campaign. Handwashing was classified as either inadequate or adequate.
+
+The file `Activity_7.3.csv` contains the following variables:
+
+-	age
+-	sex
+-	handwash_baseline: handwashing technique before the campaign:
+  - 0=inadequate technique, 1=adequate technique 
+-	handwash_followup: handwashing technique after the campaign:
+  - 0=inadequate technique, 1=adequate technique
+
+Analyse these data to assess the impact of the health promotion campaign.
 
 ### Activity 7.4 {-}
 A study was conducted to assess whether the rate of premature births differed by region. We examined a survey of 200 live births in an urban region in which 2 babies were born prematurely. We also surveyed 80 live births in a rural region and found that 5 babies were born prematurely.

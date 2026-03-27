@@ -37,7 +37,7 @@ A health survey was conducted, and an extract of data has been provided in `Acti
 
 The data in the file `Activity_2.5-LengthOfStay.rds` (available on Moodle) has information about **birth weight** and **length of stay** collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
 
-a.  Create a histogram, density plot and boxplot to inspect the distribution of birth weight and length of stay;
+a.  Plot birth weight and length of stay;
 
 b.  Complete the following summary statistics for each variable:
     - mean and median;
