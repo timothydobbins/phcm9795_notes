@@ -10,7 +10,7 @@ execute:
 book:
   title: "PHCM9795: Foundations of Biostatistics"
   author: "Timothy Dobbins"
-  date: "24-Jul-2025"
+  date: "31-May-2026"
   date-format: "DD MMMM, YYYY"
   version: 1.0
   chapters:
