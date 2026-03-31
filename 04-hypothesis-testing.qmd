@@ -268,21 +268,60 @@ In the following modules in this course, several formal statistical tests will b
 
 Selecting the correct test to use in each situation depends on the study design and the nature of the variables collected. Figure 1 in the Appendix shows a decision tree which enables you to decide the type of test to select based on the nature of the data.
 
+## Indigenous data sovereignty and governance: the Australian context
+
+The issue of data sovereignty was raised in Module 3, and here we will discuss how this concept applied in the Australian context. Indigenous data encompasses information or knowledge in any format or medium that is about, or may affect, Aboriginal and Torres Strait Islander peoples, either collectively or individually. [@walter2021] Indigenous Data Sovereignty specifically refers to the right of Aboriginal and Torres Strait Islander peoples, communities, and organisations to maintain, control, protect, develop, and use data as it relates to them. Data practices must support and enhance Indigenous collective well-being.
+
+Indigenous Data Governance provides the practical mechanisms through which sovereignty is enacted. It consists of formal systems that assert Indigenous data interests regarding how data is accessed and used, ensuring that practices reflect Indigenous priorities, values, culture, and diversity.[@walter2021] Importantly, Indigenous Data Sovereignty is practised through Indigenous data governance, making governance the operational expression of sovereignty principles.
+
+### The Problem of Deficit-Based Data Narratives
+
+A major challenge in Australian data collections is that First Nations peoples are often framed as the "object of study" rather than as active participants in research. Data frequently focuses on poor outcomes across health, education, and economic participation, creating what has been termed the "5D data" narrative: disparity, deprivation, disadvantage, dysfunction, and difference. This approach has been further characterised as BADDR Data: Blaming, Aggregate, Decontextualised, Deficit, and Restricted.[@walter2021] Such framings perpetuate harmful stereotypes and fail to capture the strengths, resilience, and diversity of Indigenous communities.
+
+### Key Principles for Indigenous Data Management
+
+Indigenous data management in Australia operates according to several foundational principles. Indigenous data should be reflective of Aboriginal and Torres Strait Islander interests, values, and cultural ways, ensuring cultural appropriateness throughout the data lifecycle. Data must be accessible and appropriate, meeting Indigenous needs rather than serving external agendas. Collection practices must incorporate free, prior, and informed consent, with respect for confidentiality maintained throughout.
+
+Secure storage of Indigenous data is essential, as is the requirement that data be returned to communities in an easily understood and meaningful way. Interpretation of Indigenous data should be conducted by Aboriginal and Torres Strait Islander experts who possess the cultural knowledge necessary for appropriate analysis. Finally, data use must advance self-determination and development, and only proceed in ways that Indigenous peoples agree to.
+
+### FAIR and CARE Principles
+
+The Australian Open Data infrastructure incorporates FAIR principles (Findable, Accessible, Interoperable, Reusable) for scientific data, which aim to maximise data use and reuse. However, these principles do not mention or address the specific concerns of Indigenous peoples. To address this gap, the CARE Principles for Indigenous Data Governance have been developed to complement FAIR principles.
+
+The CARE framework consists of four key components:
+
+-   Collective Benefit emphasises inclusive development and innovation, improved governance and citizen engagement, and equitable outcomes.
+
+-   Authority to Control focuses on recognising Indigenous rights and interests, supporting data for governance, and enabling the governance of data itself.
+
+-   Responsibility calls for positive relationships, expanding capability and capacity, and incorporating Indigenous worldviews into data practices.
+
+-   Ethics stresses minimising harm and maximising benefit, promoting justice, and careful consideration of future data uses.
+
+This framework enables the enactment of FAIR principles but with appropriate care and attention to Indigenous rights and interests.[@walter2021]
+
+### Protecting Indigenous Data Sovereignty Rights in Research
+
+Aboriginal and Torres Strait Islander peoples have the right to decide how Indigenous data is used and stored.[@lowitjainstitute2021][@nationalindigenousaustraliansagency2024] Formal agreements protecting Indigenous Data Sovereignty should be established at the outset of any research project. Such agreements must cover intellectual property rights, data collection procedures, retention and access arrangements, and management protocols for all data arising from the research. These agreements must also specify actions that Aboriginal and Torres Strait Islander peoples, communities, and organisations can take if commitments are not met. Crucially, these agreements must be clearly understood and formally endorsed by appropriate representatives of the involved Aboriginal and Torres Strait Islander peoples, communities, and organisations.
+
+First Nations peoples have the right to lead and participate at all stages of the research process, including planning, data collection, analysis, dissemination of results, return of data, and ongoing access to data. Researchers bear responsibility for providing appropriate information to promote full and effective Indigenous leadership in data collection. They must also provide opportunities for communities to assess data collection, storage, and governance arrangements, including confidentiality protections. Indigenous peoples must have opportunities to engage in the development, design, collection, analysis, and reporting of data, including involvement in the development of appropriate indicators and surveys applicable to local contexts.
+
+
 {{< pagebreak >}}
 
-<!-- # Jamovi notes {-} -->
+# Jamovi notes {-}
 
-<!-- {{< include 04.1-hypothesis-testing-jamovi.qmd >}} -->
+{{< include 04.1-hypothesis-testing-jamovi.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # R notes {-} -->
+# R notes {-}
 
-<!-- {{< include 04.2-hypothesis-testing-R.qmd >}} -->
+{{< include 04.2-hypothesis-testing-R.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # Activities {-} -->
+# Activities {-}
 
-<!-- {{< include 04.3-hypothesis-testing-activities.qmd >}} -->
+{{< include 04.3-hypothesis-testing-activities.qmd >}}
 
