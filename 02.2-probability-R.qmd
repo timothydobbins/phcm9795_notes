@@ -1,7 +1,6 @@
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(jmv)
 ```
-# Module 2
 
 ### Producing a one-way frequency table
 
@@ -512,12 +511,6 @@ ggplot(data=pbc, aes(y=age)) +
     axis.ticks.x = element_blank()
   )
 ```
-
-
-- The `|>` pipe was introduced in R version 4.1.0, May 2021, and for this author (TD), has drastically improved the code that I write (and read!). When reading code that I, or others, have written using the pipe, I replace `|>` by the words **and then**. So the previous code would be read: subset the data **and then** plot the data.
-
-- You may also see `%>%` referred to as a pipe. This version of the pipe was introduced in the early 2010s, most notably in the `magrittr` package. While there are subtle differences between `|>` and `%>%`, the `|>` is the easier to use for this course, as it does not require loading any additional packages. More in-depth history can be found at [this blog post](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/).
-:::
 
 
 [^1]: Note that the package is called `ggplot2` as it is a complete overhaul of the package called `ggplot`. The main function used in the `ggplot2` package is `ggplot()`. This can be confusing, but you will get used to this in time.

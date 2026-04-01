@@ -2,8 +2,6 @@
 library(huxtable)
 ```
 
-# Module 1
-
 ## Learning outcomes {-}
 
 By the end of this Module, you will be able to:

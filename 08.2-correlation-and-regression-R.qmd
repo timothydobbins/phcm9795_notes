@@ -3,8 +3,6 @@ library(jmv)
 library(dplyr)
 ```
 
-# Module 8
-
 We will demonstrate using R for correlation and simple linear regression using the dataset `mod08_lung_function.csv`.
 
 ```{r}
