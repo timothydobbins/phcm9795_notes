@@ -289,7 +289,7 @@ Exploring continuous data is best done by examining plots: specifically density 
 
 After detecting any outliers or extreme values, **do not automatically exclude them from the analysis**. First, it is important to check the original data collection form or questionnaire to rule out the possibility of a data entry error. If the outlier is not a data entry error, it is then important to decide whether the observation is biologically possible. This step will usually need to be answered by a topic expert. If the outlier is biologically possible, it must be included in the analysis. Only if the outlier is biologically impossible should it be set to missing.
 
-<!-- {{< pagebreak >}}
+{{< pagebreak >}}
 
 # An introduction to jamovi {.unnumbered}
 
@@ -305,4 +305,4 @@ After detecting any outliers or extreme values, **do not automatically exclude t
 
 # Activities {.unnumbered}
 
-{{< include 01.3-intro-activities.qmd >}} -->
+{{< include 01.3-intro-activities.qmd >}}

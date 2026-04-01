@@ -578,7 +578,7 @@ Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
 
 Again, we can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html) to calculate this, or use the `pbinom` function in R.
 
-<!-- {{< pagebreak >}}
+{{< pagebreak >}}
 
 # jamovi notes {.unnumbered}
 
@@ -594,4 +594,4 @@ Again, we can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/
 
 # Activities {.unnumbered}
 
-{{< include 02.3-probability-activities.qmd >}} -->
+{{< include 02.3-probability-activities.qmd >}}

@@ -286,12 +286,12 @@ One approach that is increasingly being used is to conduct a blinded interim ana
 
 In this module we have discussed the importance of conducting a clinical or epidemiological study with enough participants so that an effect or association can be identified if it exists (i.e. study power), and how this has to be balanced by the need to not enrol more participants than necessary because of resource issues. We have looked at the parameters that need to be considered when estimating the sample size for different studies and have used a look-up table to estimate required sample size for a prevalence study and a sample size calculator to estimate appropriate sample sizes in epidemiological research under the most straightforward situations. The common requirement in all the situations is that the researchers need to specify the minimum effect measure (e.g. difference in means, OR, RR etc) they want to detect with a given probability (usually 80% to 90%) at a certain level of significance (usually P\<0.05). The ultimate decision on the sample size depends on a compromise among different objectives such as power, minimum effect size, and available resources. To make the final decision, it is helpful to do some trial calculations using revised power and the minimum detectable effect measure.
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # Software notes {.unnumbered} -->
+# Software notes {.unnumbered}
 
-<!-- {{< include 10.1-sample-size-software.qmd >}} -->
+{{< include 10.1-sample-size-software.qmd >}}
 
-<!-- # Activities {.unnumbered} -->
+# Activities {.unnumbered}
 
-<!-- {{< include 10.3-sample-size-activities.qmd >}} -->
+{{< include 10.3-sample-size-activities.qmd >}}

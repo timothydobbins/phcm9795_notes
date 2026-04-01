@@ -266,7 +266,7 @@ ggplot(data = dfsumm, aes(x = mean.x, y = group)) +
 
 
 
-<!-- {{< pagebreak >}}
+{{< pagebreak >}}
 
 # Jamovi notes {.unnumbered}
 
@@ -282,4 +282,4 @@ ggplot(data = dfsumm, aes(x = mean.x, y = group)) +
 
 # Activities {.unnumbered}
 
-{{< include 05.3-comparing-two-means-activities.qmd >}} -->
+{{< include 05.3-comparing-two-means-activities.qmd >}}

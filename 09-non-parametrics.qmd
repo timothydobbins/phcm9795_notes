@@ -190,20 +190,20 @@ Kendall's tau ($\tau$) is an alternative to the Spearman rank correlation, but i
 
 In this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}} -->
 
-<!-- # jamovi notes {-} -->
+# jamovi notes {-}
 
-<!-- {{< include 09.1-non-parametrics-jamovi.qmd >}} -->
+{{< include 09.1-non-parametrics-jamovi.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # R notes {-} -->
+# R notes {-}
 
-<!-- {{< include 09.2-non-parametrics-R.qmd >}} -->
+{{< include 09.2-non-parametrics-R.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # Activities {-} -->
+# Activities {-}
 
-<!-- {{< include 09.3-non-parametrics-activities.qmd >}} -->
+{{< include 09.3-non-parametrics-activities.qmd >}
