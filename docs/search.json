@@ -4,7 +4,27 @@
     "href": "index.html",
     "title": "PHCM9795: Foundations of Biostatistics",
     "section": "",
-    "text": "Course introduction\nWelcome to PHCM9795 Foundations of Biostatistics.\nThis introductory course in biostatistics aims to provide students with core biostatistical skills to analyse and present quantitative data from different study types. These are essential skills required in your degree and throughout your career.\nWe hope you enjoy the course and will value your feedback and comment throughout the course.",
+    "text": "Course introduction",
+    "crumbs": [
+      "Course introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgement",
+    "href": "index.html#acknowledgement",
+    "title": "PHCM9795: Foundations of Biostatistics",
+    "section": "Acknowledgement",
+    "text": "Acknowledgement\nThe convenors of Foundations of Biostatistics acknowledge the Bidjigal, Gadigal, Ngunnawal and Ngambri, who are the Traditional Custodians of, and whose communities remain connected to, the unceded territories upon which the University’s main campuses are located. We pay our respects to Aboriginal and Torres Strait Islander Elders past and present for their custodianship of Country, and celebrate the cultural knowledges, stories, songlines, ancestors and dreamings of Aboriginal and Torres Strait Islander people, the First Peoples of Australia.",
+    "crumbs": [
+      "Course introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "PHCM9795: Foundations of Biostatistics",
+    "section": "Welcome",
+    "text": "Welcome\nThis introductory course in biostatistics aims to provide students with core biostatistical skills to analyse and present quantitative data from different study types. These are essential skills required in your degree and throughout your career.\nWe hope you enjoy the course and will value your feedback and comment throughout the course.",
     "crumbs": [
       "Course introduction"
     ]
@@ -15,16 +35,6 @@
     "title": "PHCM9795: Foundations of Biostatistics",
     "section": "Course information",
     "text": "Course information\nBiostatistics is a foundational discipline needed for the analysis and interpretation of quantitative information and its application to population health policy and practice.\nThis course is central to becoming a population health practitioner as the concepts and techniques developed in the course are fundamental to your studies and practice in population health. In this course you will develop an understanding of, and skills in, the core concepts of biostatistics that are necessary for analysis and interpretation of population health data and health literature.\nIn designing this course, we provide a learning sequence that will allow you to obtain the required graduate capabilities identified for your program. This course is taught with an emphasis on formulating a hypothesis and quantifying the evidence in relation to a specific research question. You will have the opportunity to analyse data from different study types commonly seen in population health research.\nThe course will allow those of you who have covered some of this material in your undergraduate and other professional education to consolidate your knowledge and skills. Students exposed to biostatistics for the first time may find the course challenging at times. Based on student feedback, the key to success in this course is to devote time to it every week. We recommend that you spend an average of 10-15 hours per week on the course, including the time spent reading the course notes and readings, listening to lectures, and working through learning activities and completing your assessments. Please use the resources provided to assist you, including online support.",
-    "crumbs": [
-      "Course introduction"
-    ]
-  },
-  {
-    "objectID": "index.html#units-of-credit",
-    "href": "index.html#units-of-credit",
-    "title": "PHCM9795: Foundations of Biostatistics",
-    "section": "Units of credit",
-    "text": "Units of credit\nThis course is a core course of the Master of Public Health, Master of Global Health and Master of Infectious Diseases Intelligence programs and associated dual degrees, comprising 6 units of credit towards the total required for completion of the study program. A value of 6 UOC requires a minimum of 150 hours work for the average student across the term.",
     "crumbs": [
       "Course introduction"
     ]
@@ -45,6 +55,16 @@
     "title": "PHCM9795: Foundations of Biostatistics",
     "section": "Learning outcomes",
     "text": "Learning outcomes\nOn successful completion of this course, you will be able to:\n\nSummarise and visualise data using statistical software.\nDemonstrate an understanding of statistical inference by interpreting p-values and confidence intervals.\nApply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.\nDetermine the appropriate sample size when planning a research study.\nPresent and interpret statistical findings appropriate for a population health audience.",
+    "crumbs": [
+      "Course introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#suggested-reference",
+    "href": "index.html#suggested-reference",
+    "title": "PHCM9795: Foundations of Biostatistics",
+    "section": "Suggested reference",
+    "text": "Suggested reference\nUNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics Course Notes. UNSW Sydney, 2026.",
     "crumbs": [
       "Course introduction"
     ]
@@ -1864,7 +1884,7 @@
     "href": "09-non-parametrics.html#summary",
     "title": "9  Analysing non-normal data",
     "section": "9.7 Summary",
-    "text": "9.7 Summary\nIn this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.\n –&gt;",
+    "text": "9.7 Summary\nIn this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Analysing non-normal data</span>"
     ]

@@ -12,7 +12,8 @@ book:
   author: "Timothy Dobbins"
   date: "31-May-2026"
   date-format: "DD MMMM, YYYY"
-  version: 1.0
+  version: 0.1
+  output-file: "PHCM9795 Course notes v0.1 20260414"
   chapters:
     - index.qmd
     - 01-intro.qmd
@@ -45,4 +46,11 @@ format:
     mainfont: Roboto
     sansfont: Clancy
     highlight-style: monochrome
+    toc: false
+    title-block: false
     include-in-header: preamble.tex
+    template-partials:
+      - before-body.tex
+  
+# Note the use of template-partials: which builds the PDF with a
+# title page specified in "before-body.tex"
