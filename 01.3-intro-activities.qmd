@@ -1,13 +1,12 @@
-```{r message=FALSE, warning=FALSE, include=FALSE}
-library(flextable)
-```
-
 ### Activity 1.1 {-}
 
 25 participants were enrolled in a 3-week weight loss program. The following data present the weight loss (in grams) of the participants.
 
 ```{r act-1-1, echo=FALSE}
 #| tbl-cap: Weight loss (g) for 25 participants
+
+library(tinytable)
+options(tinytable_latex_placement = "H")
 
 tab1_1 <- tibble::tribble(
     ~v1, ~v2, ~v3, ~v4, ~v5,
@@ -18,9 +17,7 @@ tab1_1 <- tibble::tribble(
     255L, 198L, 113L, 227L, 255L
 )
 
-flextable(tab1_1) |>
-    delete_part(part = "header") |>
-    theme_booktabs()
+tt(tab1_1, colnames=FALSE)
 ```
 
 a) These data have been saved as `Activity_1.1.rds`. Read the data into your software package.

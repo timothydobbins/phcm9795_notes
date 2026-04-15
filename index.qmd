@@ -1,6 +1,10 @@
 # Course introduction {-}
 
-## Acknowledgement {-}
+This is a simple Quarto book.
+
+Is *this* in italics? And is **this** in bold?
+
+<!-- ## Acknowledgement {-}
 
 The convenors of Foundations of Biostatistics acknowledge the Bidjigal, Gadigal, Ngunnawal and Ngambri, who are the Traditional Custodians of, and whose communities remain connected to, the unceded territories upon which the University’s main campuses are located. We pay our respects to Aboriginal and Torres Strait Islander Elders past and present for their custodianship of Country, and celebrate the cultural knowledges, stories, songlines, ancestors and dreamings of Aboriginal and Torres Strait Islander people, the First Peoples of Australia.
 
@@ -37,4 +41,4 @@ On successful completion of this course, you will be able to:
 UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics Course Notes. UNSW Sydney, 2026.
 
 ## Change log
-
+ -->

@@ -1,3 +1,8 @@
+```{r}
+#| echo: false
+source("_common.R")
+```
+
 # Introduction to biostatistics and data fundamentals
 
 ## Learning objectives {.unnumbered}

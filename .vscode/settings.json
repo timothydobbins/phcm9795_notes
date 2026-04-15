@@ -5,5 +5,7 @@
         "Moodle",
         "PHCM"
     ],
-    "cSpell.language": "en,en-AU"
+    "cSpell.language": "en,en-AU",
+    "workbench.colorTheme": "Default Positron Dark",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark"
 }

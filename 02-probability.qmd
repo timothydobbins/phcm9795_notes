@@ -33,10 +33,10 @@ Categorical data are best summarised using a frequency table, where each categor
 #| tbl-cap: Sex of participants in PBC study
 library(dplyr)
 library(jmv)
-library(flextable)
-library(ftExtra)
-library(gtsummary)
-library(huxtable)
+library(tinytable)
+library(modelsummary)
+
+options(tinytable_latex_placement = "H")
 
 pbc <- readRDS("data/examples/mod01_pbc.rds") |>
     mutate(sex = factor(sex,
@@ -58,9 +58,11 @@ tab_out <- as.data.frame(tab$frequencies[[1]]) |>
         `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`
     )
 
-flextable(select(tab_out, 1:3), cwidth = c(1, 1, 1.5)) |>
-    colformat_double(j = 3, digits = 1)
-
+tt(select(tab_out, 1:3)) |> 
+  format_tt(
+    j = 3,
+    digits = 1, num_fmt = "decimal", escape=TRUE) |> 
+  style_tt(j = 2:3, align = "dd")
 ```
 
 It is sometimes useful to present the cumulative relative frequency, which shows the relative frequency of individuals in a certain category or below (for example, @tbl-1-stage).
@@ -75,19 +77,22 @@ tab_stage <- descriptives(pbc, stage, freq = TRUE)
 
 tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
     rename(
-        `Stage *` = stage,
+        `Stage` = stage,
         Frequency = counts,
         `Relative frequency (%)` = pc,
         `Cumulative relative frequency (%)` = cumpc
     ) |>
     mutate(
-        `Relative frequency (%)` = 100 * `Relative frequency (%)`,
-        `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`
+    `Relative frequency (%)` = formatC(100 * `Relative frequency (%)`, format="f", digits=1),
+    `Cumulative relative frequency (%)` = formatC(100 * `Cumulative relative frequency (%)`, format="f", digits=1)
     )
 
-flextable(select(tab_stage_out, 1:4), , cwidth = c(1, 1, 1.5, 1.5)) |>
-    colformat_double(j = c(3, 4), digits = 1) |>
-    add_footer_lines("* Disease stage was missing for 6 participants")
+tt(select(tab_stage_out, 1:4), 
+   width = c(1, 1, 1.5, 1.5),
+   notes = list(
+     "*" = list(i = 0, j = 1, text = "Disease stage was missing for 6 participants"))) |>
+  format_tt(escape = TRUE) |> 
+  style_tt(j = 2:4, align = "d")
 ```
 
 From @tbl-1-stage, we can see that 65.0% of participants had Stage 3 disease or lower.
@@ -122,13 +127,14 @@ Using our PBC data, we can summarise the two categorical variables: sex and stag
 ```{r tbl-1-sex-stage-freq, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*
 
-t_cross <- tbl_cross(pbc, sex, stage,
-    missing = "no",
-    label = list(sex = "Sex", stage = "Stage")
-)
+df <- pbc |> 
+  mutate(stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))) |> 
+  rename(Sex = sex,
+         `Stage of disease` = stage)
 
-as_flex_table(t_cross) |>
-    add_footer_lines("* Disease stage was missing for 6 participants")
+datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+                     statistic = 1 ~ 1 + N,
+                     notes = c('* Stage of disease was missing for 6 participants'))
 ```
 
 We can add percentages to two-way tables as either *column* or *row* percents. Using @tbl-1-sex-stage-freq as an example, column percents represent the relative frequencies of sex within each stage (@tbl-1-sex-stage-col).
@@ -136,15 +142,9 @@ We can add percentages to two-way tables as either *column* or *row* percents. U
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
 
-t_col <- tbl_cross(pbc, sex, stage,
-    missing = "no",
-    percent = "column",
-    label = list(sex = "Sex", stage = "Stage"),
-    digits = 0
-)
-
-as_flex_table(t_col) |>
-    add_footer_lines("* Disease stage was missing for 6 participants")
+datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+                     statistic = 1 ~ 1 + N + Percent("col"),
+                     notes = c('* Stage of disease was missing for 6 participants'))
 ```
 
 Conversely, row percents represent the relative frequencies of stage within each sex (@tbl-1-sex-stage-row).
@@ -152,15 +152,10 @@ Conversely, row percents represent the relative frequencies of stage within each
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease, including row percents
 
-t_rwo <- tbl_cross(pbc, sex, stage,
-    missing = "no",
-    percent = "row",
-    label = list(sex = "Sex", stage = "Stage"),
-    digits = 0
-)
+datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+                     statistic = 1 ~ 1 + N + Percent("row"),
+                     notes = c('* Stage of disease was missing for 6 participants'))
 
-as_flex_table(t_rwo) |>
-    add_footer_lines("* Disease stage was missing for 6 participants")
 ```
 
 ### Tables containing more than two variables
@@ -240,7 +235,7 @@ tab1_pres <- tibble::tribble(
     "Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
 )
 
-flextable(tab1_pres, cwidth = c(1.5, 5))
+tt(tab1_pres)
 ```
 
 ### Table presentation guidelines
@@ -327,7 +322,7 @@ tab2_1 <- tibble::tribble(
     "Total", "100%", 1.0
 )
 
-flextable(tab2_1)
+tt(tab2_1)
 ```
 
 In this example we consider: What is the probability that an individual will have either blood group O or A?
@@ -365,7 +360,7 @@ tab2_coin <- tibble::tribble(
     "Tails", 0.5
 )
 
-flextable(tab2_coin)
+tt(tab2_coin)
 
 ```
 
@@ -373,12 +368,6 @@ Similarly, the probability distribution for a single roll of a die is straightfo
 
 ```{r tbl-die, echo=FALSE}
 #| tbl-cap: Probability distributions for a single roll of a die
-library(flextable)
-set_flextable_defaults(
-    font.family = "Roboto",
-    font.size = 10
-)
-
 tab2_die <- tibble::tribble(
     ~`Face of a die`, ~Probability,
     1L, "1/6",
@@ -389,9 +378,7 @@ tab2_die <- tibble::tribble(
     6L, "1/6"
 )
 
-flextable(tab2_die, cwidth = c(1.25, 1))
-# |>
-#  align(align = "center", part="all")
+tt(tab2_die)
 ```
 
 Things become more complicated when we consider multiple coin-tosses, or rolls of a die. These series of events can be summarised by considering the number of times a certain outcome is observed. For example, the probability of obtaining three heads from five coin tosses.
@@ -421,20 +408,19 @@ The possible combinations for three coin tosses are as follows:
 tab2_3toss <- tibble::tribble(
     ~`Pattern`, ~`Number of heads`,
     "Tail, Tail, Tail", 0,
-    "Head, Tail, Tail", 1,
+    "Head, Tail, Tail", NA,
     "Tail, Head, Tail", 1,
-    "Tail, Tail, Head", 1,
-    "Head, Head, Tail", 2,
+    "Tail, Tail, Head", NA,
+    "Head, Head, Tail", NA,
     "Head, Tail, Head", 2,
-    "Tail, Head, Head", 2,
+    "Tail, Head, Head", NA,
     "Head, Head, Head", 3
 )
 
 
-flextable(tab2_3toss) |>
-    autofit() |>
-    merge_v(j = "Number of heads") |>
-    hline(i = c(1, 4, 7))
+tt(tab2_3toss) |>
+  format_tt(replace = "") |> 
+  tt_style(i=c(1, 4, 7), line="b")
 
 ```
 
@@ -456,10 +442,7 @@ tab2_4 <- tibble::tribble(
 )
 
 
-flextable(tab2_4) |>
-    autofit()
-# |>
-#  align(j=1, align="center", part="all")
+tt(tab2_4)
 
 ```
 
@@ -486,10 +469,8 @@ tab2_5 <- tibble::tribble(
     "Not A", "Not A", "Not A", "0.62 × 0.62 × 0.62 = 0.2383"
 )
 
-flextable(tab2_5) |>
-    autofit() |>
-    hline(i = c(1, 4, 7))
-
+tt(tab2_5) |> 
+    tt_style(i=c(1, 4, 7), line="b")
 ```
 
 @tbl-2-6 gives the probability of each of the blood type combinations we could observe in three people. The probability of observing a certain number of people (say, k) with Type A blood from a sample of three people can be calculated by summing the combinations:
@@ -505,10 +486,7 @@ tab2_6 <- tibble::tribble(
     0L, "0.2383"
 )
 
-flextable(tab2_6) |>
-    autofit()
-# |>
-#  align(j=1, align="center", part="all")
+tt(tab2_6)
 
 ```
 
