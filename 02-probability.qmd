@@ -1,8 +1,3 @@
-```{r}
-#| echo: false
-source("_common.R")
-```
-
 # Categorical data, presentation guidelines and probability distributions
 
 ## Learning objectives {.unnumbered}
@@ -36,24 +31,22 @@ Categorical data are best summarised using a frequency table, where each categor
 #| message: false
 #| warning: false
 #| tbl-cap: Sex of participants in PBC study
+#| tbl-pos: h
+
 library(dplyr)
 library(jmv)
 library(tinytable)
 library(modelsummary)
 
-options(tinytable_latex_placement = "H")
-
 pbc <- readRDS("data/examples/mod01_pbc.rds") |>
-    mutate(sex = factor(sex,
-        levels = c(1, 2),
-        labels = c("Male", "Female")
-    ))
+    mutate(sex = factor(sex, levels = c(1, 2), labels = c("Male", "Female")),
+           stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))) |> 
+  rename(Sex=sex, `Stage of disease`=stage)
 
-tab <- descriptives(pbc, sex, freq = TRUE)
+tab <- descriptives(pbc, Sex, freq = TRUE)
 
 tab_out <- as.data.frame(tab$frequencies[[1]]) |>
     rename(
-        Sex = sex,
         Frequency = counts,
         `Relative frequency (%)` = pc,
         `Cumulative relative frequency (%)` = cumpc
@@ -63,9 +56,9 @@ tab_out <- as.data.frame(tab$frequencies[[1]]) |>
         `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`
     )
 
-gt(select(tab_out, 1:3)) |> 
-  theme_bt() %>% 
-  fmt_number(columns=3, decimals = 1)
+tt(select(tab_out, 1:3)) |> 
+  tt_format(j=3, digits=1, num_fmt="decimal") |> 
+  tt_style(align="lcc")
 ```
 
 It is sometimes useful to present the cumulative relative frequency, which shows the relative frequency of individuals in a certain category or below (for example, @tbl-1-stage).
@@ -73,25 +66,20 @@ It is sometimes useful to present the cumulative relative frequency, which shows
 ```{r tbl-1-stage, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Stage of disease for participants in PBC study
 
-pbc <- pbc |>
-  mutate(stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4")))
-
-tab_stage <- descriptives(pbc, stage, freq = TRUE)
+tab_stage <- descriptives(pbc, `Stage of disease`, freq = TRUE)
 
 tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
   rename(
-    `Stage of disease` = stage,
     Frequency = counts,
     `Relative frequency (%)` = pc,
     `Cumulative relative frequency (%)` = cumpc
   ) |>
   mutate(
-    `Relative frequency (%)` = 100 * `Relative frequency (%)`,
-    `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`)
+    `Relative frequency (%)` = sprintf("%.1f", 100 * `Relative frequency (%)`),
+    `Cumulative relative frequency (%)` = sprintf("%.1f", 100 * `Cumulative relative frequency (%)`))
 
-gt(select(tab_stage_out, 1:4)) |> 
-  theme_bt() %>% 
-  fmt_number(columns=c(3,4), decimals = 1)
+tt(select(tab_stage_out, 1:4)) |> 
+  tt_style(align="lccc")
 ```
 
 From @tbl-1-stage, we can see that 65.0% of participants had Stage 3 disease or lower.
@@ -126,12 +114,7 @@ Using our PBC data, we can summarise the two categorical variables: sex and stag
 ```{r tbl-1-sex-stage-freq, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*
 
-df <- pbc |> 
-  mutate(stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))) |> 
-  rename(Sex = sex,
-         `Stage of disease` = stage)
-
-datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
                      statistic = 1 ~ 1 + N,
                      notes = c('* Stage of disease was missing for 6 participants'))
 ```
@@ -141,7 +124,7 @@ We can add percentages to two-way tables as either *column* or *row* percents. U
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
 
-datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
                      statistic = 1 ~ 1 + N + Percent("col"),
                      notes = c('* Stage of disease was missing for 6 participants'))
 ```
@@ -151,7 +134,7 @@ Conversely, row percents represent the relative frequencies of stage within each
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease, including row percents
 
-datasummary_crosstab(Sex ~ `Stage of disease`, data=df,
+datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
                      statistic = 1 ~ 1 + N + Percent("row"),
                      notes = c('* Stage of disease was missing for 6 participants'))
 
