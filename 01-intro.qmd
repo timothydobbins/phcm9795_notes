@@ -1,6 +1,10 @@
 ```{r}
 #| echo: false
-source("_common.R")
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
 ```
 
 # Introduction to biostatistics and data fundamentals

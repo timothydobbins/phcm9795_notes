@@ -4,9 +4,7 @@
 
 ```{r act-1-1, echo=FALSE}
 #| tbl-cap: Weight loss (g) for 25 participants
-
-library(tinytable)
-options(tinytable_latex_placement = "H")
+#| tbl-pos: h
 
 tab1_1 <- tibble::tribble(
     ~v1, ~v2, ~v3, ~v4, ~v5,

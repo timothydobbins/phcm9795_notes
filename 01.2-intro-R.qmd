@@ -397,7 +397,7 @@ In this exercise (spanning Modules 1 and 2), we will analyse data to complete a 
 
 ```{r echo=FALSE}
 #| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
-#| tbl-pos: H
+#| tbl-pos: h
 
 tab <- tibble::tribble(
                      ~Characteristic,                   ~` `,                    ~Summary,
@@ -415,9 +415,8 @@ tab <- tibble::tribble(
                                   NA,             "Deceased",                     "n (%)"
          )
 
-gt(tab) |> 
-  sub_missing(columns = everything(), missing_text = "") |> 
-  theme_bt()
+tt(tab, escape=TRUE) |> 
+  format_tt(replace="")
 ```
 
 This table is available in Table1.docx, saved on Moodle.
