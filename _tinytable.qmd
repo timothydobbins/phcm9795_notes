@@ -1,0 +1,68 @@
+---
+title: "Untitled"
+
+format:
+  pdf:
+    mainfont: "Roboto"
+    sansfont: "Roboto Bold"
+---
+
+Here is a simple table (@tbl-1).
+
+```{r tbl-1}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-pos: h
+
+library(tinytable)
+
+x <- mtcars[1:4, 1:5]
+tt(x)
+```
+
+@tbl-2 sets decimal places. Seems to be working...
+
+```{r tbl-2}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-pos: h
+
+tt(x) |>
+  tt_format(j=c(1,3), num_fmt = "decimal", digits=1)
+```
+
+Let's try some cross-tabs (@tbl-3).
+
+```{r tbl-3}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-pos: h
+
+library(dplyr)
+library(modelsummary)
+
+pbc <- survival::pbc |>
+  mutate(sex = factor(sex, levels=c("m", "f"), labels=c("Male", "Female")),
+         stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))) |> 
+  rename(Sex=sex, `Stage of disease`=stage)
+
+datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc)
+```
+
+Now a cross-tab with percents (@tbl-4).
+
+```{r tbl-4}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-pos: h
+
+datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
+                     statistic = 1 ~ N + Percent("col"))
+```
+
+mtcars
+

@@ -56,7 +56,7 @@ tab_out <- as.data.frame(tab$frequencies[[1]]) |>
         `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`
     )
 
-tt(select(tab_out, 1:3)) |> 
+tt(select(tab_out, 1:3), escape=TRUE) |> 
   tt_format(j=3, digits=1, num_fmt="decimal") |> 
   tt_style(align="lcc")
 ```
@@ -78,7 +78,7 @@ tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
     `Relative frequency (%)` = sprintf("%.1f", 100 * `Relative frequency (%)`),
     `Cumulative relative frequency (%)` = sprintf("%.1f", 100 * `Cumulative relative frequency (%)`))
 
-tt(select(tab_stage_out, 1:4)) |> 
+tt(select(tab_stage_out, 1:4), escape=TRUE) |> 
   tt_style(align="lccc")
 ```
 
@@ -124,9 +124,13 @@ We can add percentages to two-way tables as either *column* or *row* percents. U
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
 
-datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N + Percent("col"),
-                     notes = c('* Stage of disease was missing for 6 participants'))
+tt <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
+                     statistic = 1 ~ 1 + N + Percent("col"))
+
+df <- save_tt(tt, output = "dataframe")
+
+tt(janitor::row_to_names(df, row_number = 1),
+   notes = c('* Stage of disease was missing for 6 participants'))
 ```
 
 Conversely, row percents represent the relative frequencies of stage within each sex (@tbl-1-sex-stage-row).
@@ -134,10 +138,14 @@ Conversely, row percents represent the relative frequencies of stage within each
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease, including row percents
 
-datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N + Percent("row"),
-                     notes = c('* Stage of disease was missing for 6 participants'))
+tt <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
+                     statistic = 1 ~ 1 + N + Percent("row"))
 
+df <- save_tt(tt, output = "dataframe")
+
+tt(janitor::row_to_names(df, row_number = 1),
+   notes = c('* Stage of disease was missing for 6 participants'),
+   escape=TRUE)
 ```
 
 ### Tables containing more than two variables
@@ -217,12 +225,7 @@ tab1_pres <- tibble::tribble(
     "Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
 )
 
-gt(tab1_pres) |> 
-  theme_bt() |> 
-   cols_width(
-    `Summary statistic` ~ pct(25),
-    `Guideline (reference)` ~ pct(75)
-  )
+tt(tab1_pres, width=c(2, 5))
 ```
 
 ### Table presentation guidelines
@@ -309,7 +312,7 @@ tab2_1 <- tibble::tribble(
     "Total", "100%", 1.0
 )
 
-tt(tab2_1)
+tt(tab2_1, escape=TRUE)
 ```
 
 In this example we consider: What is the probability that an individual will have either blood group O or A?
