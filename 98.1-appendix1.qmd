@@ -2,38 +2,38 @@
 
 # Analysis flowchart
 
-```{mermaid}
-flowchart LR
-    A[Type of outcome variable] ~~~ B[Type of exposure variable] ~~~ C[Independent or related exposure groups] ~~~ D[Can Normality be assumed?] ~~~ E[Statistical test]
+<!-- ```{mermaid} -->
+<!-- flowchart LR -->
+<!--     A[Type of outcome variable] ~~~ B[Type of exposure variable] ~~~ C[Independent or related exposure groups] ~~~ D[Can Normality be assumed?] ~~~ E[Statistical test] -->
 
-    A1[Continuous]
-    B1[None]
-    D1[Yes]
-    E1[1-sample t-test: Module 4]
-    B2[Categorical: 2 groups]
-    B3[Categorical: >2 groups]
-    C1[Independent]
-    C2[Related]
-    C3[Independent]
-    D2[Yes]
-    D3[No]
-    B4[Continuous]
+<!--     A1[Continuous] -->
+<!--     B1[None] -->
+<!--     D1[Yes] -->
+<!--     E1[1-sample t-test: Module 4] -->
+<!--     B2[Categorical: 2 groups] -->
+<!--     B3[Categorical: >2 groups] -->
+<!--     C1[Independent] -->
+<!--     C2[Related] -->
+<!--     C3[Independent] -->
+<!--     D2[Yes] -->
+<!--     D3[No] -->
+<!--     B4[Continuous] -->
 
-    A1 --> B1 ---> D1 --> E1
-    A1 --> B2 --> C1 --> D2 --> E2
-    C1 --> D3 --> E3
-    B2 --> C2 --> D4 --> E4
-    C2 --> D5 --> E5
-    A1 --> B3 --> C3 --> D6 --> E6
-    C3 --> D7 --> E7
-    A1 --> B4 ----> E8
+<!--     A1 --> B1 ---> D1 --> E1 -->
+<!--     A1 --> B2 --> C1 --> D2 --> E2 -->
+<!--     C1 --> D3 --> E3 -->
+<!--     B2 --> C2 --> D4 --> E4 -->
+<!--     C2 --> D5 --> E5 -->
+<!--     A1 --> B3 --> C3 --> D6 --> E6 -->
+<!--     C3 --> D7 --> E7 -->
+<!--     A1 --> B4 ----> E8 -->
 
-    A2[Categorical] --> B5[Categorical: ≥2 groups]
-    A2 --> B6[Categorical: 2 groups]
-    B5 --> C4[Independent] ---> E9[Chi-square or Fisher's exact test]
-    B6 --> C5[Independent] ---> E10[McNemar's test]
+<!--     A2[Categorical] --> B5[Categorical: ≥2 groups] -->
+<!--     A2 --> B6[Categorical: 2 groups] -->
+<!--     B5 --> C4[Independent] ---> E9[Chi-square or Fisher's exact test] -->
+<!--     B6 --> C5[Independent] ---> E10[McNemar's test] -->
 
-```
+<!-- ``` -->
 
 
 

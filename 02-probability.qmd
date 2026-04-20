@@ -65,6 +65,7 @@ It is sometimes useful to present the cumulative relative frequency, which shows
 
 ```{r tbl-1-stage, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Stage of disease for participants in PBC study
+#| tbl-pos: h
 
 tab_stage <- descriptives(pbc, `Stage of disease`, freq = TRUE)
 
@@ -113,6 +114,7 @@ Using our PBC data, we can summarise the two categorical variables: sex and stag
 
 ```{r tbl-1-sex-stage-freq, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*
+#| tbl-pos: h
 
 datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
                      statistic = 1 ~ 1 + N,
@@ -123,30 +125,49 @@ We can add percentages to two-way tables as either *column* or *row* percents. U
 
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
+#| tbl-pos: h
 
-tt <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N + Percent("col"))
+ds <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
+                     statistic = 1 ~ N + Percent("col"),
+                     output = "data.frame")
 
-df <- save_tt(tt, output = "dataframe")
+colnames(ds)[2] <- "Stat"
 
-tt(janitor::row_to_names(df, row_number = 1),
-   notes = c('* Stage of disease was missing for 6 participants'))
+ds <- ds |> 
+  mutate(Stat = replace_when(Stat,
+                             Stat == "N" ~ "Count",
+                             Stat == "% col" ~ "Column percent"))
+
+ft <- tt(ds, notes = c('* Stage of disease was missing for 6 participants'))
+
+names(ft)[2] <- " "
+ft
 ```
 
 Conversely, row percents represent the relative frequencies of stage within each sex (@tbl-1-sex-stage-row).
 
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
-#| tbl-cap: Frequency of participants by sex and stage of disease, including row percents
+#| tbl-cap: Frequency of participants by sex and stage of disease*, including row percents
+#| tbl-pos: h
 
-tt <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N + Percent("row"))
+ds <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
+                     statistic = 1 ~ 1 + N + Percent("row"),
+                     output = "data.frame")
 
-df <- save_tt(tt, output = "dataframe")
+colnames(ds)[2] <- "Stat"
 
-tt(janitor::row_to_names(df, row_number = 1),
-   notes = c('* Stage of disease was missing for 6 participants'),
-   escape=TRUE)
+ds <- ds |> 
+  mutate(Stat = replace_when(Stat,
+                             Stat == "N" ~ "Count",
+                             Stat == "% row" ~ "Row percent"))
+
+finaltable <- tt(ds, notes = c('* Stage of disease was missing for 6 participants'))
+
+names(finaltable)[2] <- " "
+finaltable
 ```
+
+\newpage
 
 ### Tables containing more than two variables
 
@@ -204,7 +225,7 @@ A summary of these guidelines that will be used in this course appear in @tbl-1-
 
 ```{r tbl-1-pres, echo=FALSE}
 #| tbl-cap: Guidelines for presentation of statistical results
-#| fig-pos: 'h'
+#| fig-pos: h
 
 tab1_pres <- tibble::tribble(
     ~`Summary statistic`, ~`Guideline (reference)`,
@@ -301,6 +322,7 @@ Using the information from https://www.donateblood.com.au/learn/about-blood letâ
 
 ```{r tbl-2-1, echo=FALSE}
 #| tbl-cap: Frequency of blood types
+#| tbl-pos: h
 
 
 tab2_1 <- tibble::tribble(
@@ -343,6 +365,7 @@ For example, the probability distribution for a single coin toss is straightforw
 
 ```{r tbl-coin, echo=FALSE}
 #| tbl-cap: Probability distribution for a single coin toss
+#| tbl-pos: h
 
 tab2_coin <- tibble::tribble(
     ~`Coin face`, ~Probability,
@@ -358,6 +381,8 @@ Similarly, the probability distribution for a single roll of a die is straightfo
 
 ```{r tbl-die, echo=FALSE}
 #| tbl-cap: Probability distributions for a single roll of a die
+#| tbl-pos: h
+
 tab2_die <- tibble::tribble(
     ~`Face of a die`, ~Probability,
     1L, "1/6",
@@ -394,6 +419,7 @@ The possible combinations for three coin tosses are as follows:
 
 ```{r tbl-2-3toss, echo=FALSE}
 #| tbl-cap: The number of heads from three coin tosses
+#| tbl-pos: h
 
 tab2_3toss <- tibble::tribble(
     ~`Pattern`, ~`Number of heads`,
@@ -422,6 +448,7 @@ Therefore, the probability distribution for X, the number of heads from three co
 
 ```{r tbl-2-4, echo=FALSE}
 #| tbl-cap: Probability distribution for the number of heads from three coin tosses
+#| tbl-pos: h
 
 tab2_4 <- tibble::tribble(
     ~`x (number of heads observed)`, ~`P(X=x)`,
@@ -446,6 +473,7 @@ The number of ways two people out of three could have Type A blood is 3, and eac
 
 ```{r tbl-2-5, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Combinations and probabilities of Type A blood in three people
+#| tbl-pos: h
 
 tab2_5 <- tibble::tribble(
     ~`Person 1`, ~`Person 2`, ~`Person 3`, ~Probability,
@@ -467,6 +495,7 @@ tt(tab2_5) |>
 
 ```{r tbl-2-6, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Probabilities of observing numbers of people with Type A blood in a sample of three people
+#| tbl-pos: h
 
 tab2_6 <- tibble::tribble(
     ~`Number of people with Type A blood`, ~`Probability of each pattern`,

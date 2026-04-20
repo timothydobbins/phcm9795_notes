@@ -1,3 +1,12 @@
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
+```
+
 # An introduction to sample size estimation
 
 ## Learning objectives {.unnumbered}
@@ -44,12 +53,12 @@ To estimate the sample size required for a descriptive study, we usually focus o
 
 ```{r tbl-10-1, echo=FALSE, warning=FALSE, message=FALSE}
 #| tbl-cap: Sample size required to calculate a 95% confidence interval with a given precision
+#| tbl-pos: h
 
 library(tidyverse)
-library(flextable)
 
 tab10_1 <- tibble::tribble(
-  ~P, ~Prevalence,
+  ~P, ~`Prevalence of outcome`,
   0.05, "5% or 95%",
   0.1, "10% or 90%",  
   0.15, "15% or 85%",
@@ -66,13 +75,10 @@ tab10_1 <- tibble::tribble(
          `10%` = ceiling(ifelse(P > 0.10, 1.96^2 * P * (1-P)/(0.10^2), NA)),
          `15%` = ceiling(ifelse(P > 0.15, 1.96^2 * P * (1-P)/(0.15^2), NA)))
 
-flextable(select(tab10_1, -P)) |> 
-  add_header_row(values="Required confidence interval width", colwidths = 11, top=TRUE) |> 
-  align(i=1, j=NULL, align="center", part="header") |> 
-  font(fontname="Arial Narrow", part="all") |> 
-  fontsize(size=10, part="all") |> 
-  autofit()
-
+tt(select(tab10_1, -P), escape = TRUE) |> 
+  tt_format(replace=" ") |> 
+  tt_style(align="c", size=0.5) |> 
+  group_tt(j = list("Required confidence interval width" = 2:11))
 ```
 
 ### Worked Example 10.1 {#wex10-1}
@@ -108,17 +114,12 @@ In addition to deciding the level of power and probability that will be used, th
 
 The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e. the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in @tbl-truth-vs-study-html.
 
-```{r tbl-truth-vs-study-html, echo=FALSE}
-#| tbl-cap: Comparison of study result with the truth
+|                           | **Effect in reality**               | **No effect in reality** |
+|---------------------------|:-----------------------------------:|:------------------------:|
+| **Evidence was found**    |      Correct: Power ($1 - \beta$)   |   Error: $\alpha$        |
+| **No evidence was found** |  Error: $\beta$                     |       Correct            |
 
-df <- tibble::tribble(
-  ~` `, ~Effect, ~`No effect`,
-  "Evidence", "Correct", "ɑ",
-  "No evidence", "β", "Correct"
-)
-
-flextable(df)
-```
+: Comparison of study result with the truth {#tbl-truth-vs-study-html}
 
 The power of a study is expressed as 1 - β where β is the probability of a false negative (that is, the probability of a Type II error - incorrectly not rejecting the null hypothesis. In most research, power is generally set to 80% (a Type II error rate of 20%). However, in some studies, especially in some clinical trials where rigorous results are required, power is set to 90% (a Type II error rate of 10%).
 
@@ -247,7 +248,7 @@ tab <- tibble::tribble(
    10L,   101L,   1010,   1111
   )
 
-flextable(tab, cwidth = c(1.5, 1.5, 1.5, 1.5))
+tt(tab, cwidth = c(1.5, 1.5, 1.5, 1.5))
 ```
 
 This can be visualised graphically, as in @fig-unequal-controls.

@@ -1,3 +1,12 @@
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
+```
+
 # Summary statistics for binary data
 
 ## Learning objectives {-}
@@ -136,8 +145,7 @@ As introduced in PHCM9794: Foundations of Epidemiology, 2-by-2 contingency table
 ```{r, echo=FALSE}
 #| label: tbl-2-by-2-trad
 #| tbl-cap: Traditional format for presenting a contingency table
-
-library(flextable)
+#| tbl-pos: h
 
 v1 <- tibble::tribble(
   ~` `, ~`Outcome present`, ~`Outcome absent`, ~`Total`,
@@ -146,7 +154,7 @@ v1 <- tibble::tribble(
   "Total", "a+c", "b+d", "N"
 )  
 
-flextable(v1)
+tt(v1)
 ```
 
 When using a statistics program, it is recommended that the outcome and exposure variables are coded by assigning 'absent' as 0 and 'present' as 1, for example 'No' = 0 and 'Yes' = 1. This coding ensures that measures of association, such as the odds ratio or relative risk, are computed correctly. While R does not strictly require this coding to be followed, it is good practice nonetheless.
@@ -197,6 +205,8 @@ For case-control studies, as we sample participants based on their outcome, we c
 
 ```{r tbl-cc, echo=FALSE}
 #| tbl-cap: Contingency table for a case-control study
+#| tbl-pos: h
+
 v1 <- tibble::tribble(
   ~` `, ~`Cases`, ~`Controls`, ~`Total`,
   "Exposure present", "a", "b", "a+b",
@@ -204,7 +214,7 @@ v1 <- tibble::tribble(
   "Total", "a+c", "b+d", "N"
 )  
 
-flextable(v1)
+tt(v1)
 ```
 
 In the example in @tbl-cc, we can calculate the odds of being exposed in the cases as $a \div c$. Similarly, we can calculate the odds of being exposed in the controls as $b \div d$. We can the calculate the *odds ratio* as the ratio of these odds:
@@ -238,6 +248,7 @@ A summary table can be constructed as in @tbl-rr-example.
 
 ```{r tbl-rr-example, echo=FALSE}
 #| tbl-cap: Nausea status by drug exposure
+#| tbl-pos: h
 
 tibble::tribble(
       ~` `, ~Nausea, ~`No nausea`, ~Total,
@@ -245,7 +256,7 @@ tibble::tribble(
       "Placebo",      4L,        46L,    50L,
         "Total",     19L,        81L,   100L
   ) |> 
-  flextable()
+  tt()
 ```
 
 We can use jamovi or R to calculate the relative risk (RR=3.75) and its 95% confidence interval (1.34 to 10.51). This tells us that nausea is 3.75 times more likely to occur in the active drug group compared with the placebo group. Because this is a randomised controlled trial, the relative risk would be an appropriate measure of association.
@@ -267,6 +278,7 @@ A case-control study investigated the association between human papillomavirus a
 
 ```{r tbl-6-nejm, echo=FALSE}
 #| tbl-cap: Association between human papillomavirus and oropharyngeal cancer
+#| tbl-pos: h
 
 df <- tibble::tribble(
             ~` `, ~`Cases`, ~`Controls`, ~Total,
@@ -275,7 +287,7 @@ df <- tibble::tribble(
          "Total",                            100L,                                  200L,   300L
   )
 
-flextable(df)
+tt(df)
 ```
 
 The odds ratio is the odds of being HPV positive in cases (those with oropharyngeal cancer) compared to the odds of being HPV positive in the controls (those without oropharyngeal cancer):

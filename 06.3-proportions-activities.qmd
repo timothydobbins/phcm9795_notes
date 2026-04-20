@@ -23,7 +23,8 @@ A study is conducted to test the hypothesis that the observed frequency of a cer
 In an experiment to test the effect of Vitamin C on IQ scores, the following confidence intervals were estimated around the percentage with improved scores for five different populations (@tbl-act-6-5):
 
 ```{r tbl-act-6-5, echo=FALSE}
-library(flextable)
+#| tbl-cap: Study results from five difference populations
+#| tbl-pos: h
 
 tab6_5 <- tibble::tribble(
     ~Population, ~`% with improved IQ`, ~`95% confidence interval`,
@@ -34,10 +35,8 @@ tab6_5 <- tibble::tribble(
     5L, "24.5", "21.0 to 28.0"
 )
 
-flextable(tab6_5) |>
-    autofit() |>
-    align(align = "center", part = "all") |>
-    set_caption("Summary of improvement in IQ")
+tt(tab6_5) |> 
+  tt_style(align="lcc")
 ```
 
 

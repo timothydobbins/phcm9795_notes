@@ -1,5 +1,10 @@
-```{r include=FALSE}
-library(flextable)
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
 ```
 
 # An introduction to hypothesis testing
@@ -151,6 +156,7 @@ Historically, a value of 0.05 has been used as a cut-point for finding evidence 
 
 ```{r tbl-4-1, echo=FALSE}
 #| tbl-cap: Interpretation of P-values
+library(tinytable)
 
 tab4_1 <- tibble::tribble(
     ~`P-value`, ~`Strength of evidence`,
@@ -161,11 +167,10 @@ tab4_1 <- tibble::tribble(
     "≥0.1", "Little or no evidence"
 )
 
-flextable(tab4_1, cwidth = c(1.5, 2))
-
+tt(tab4_1)
 ```
 
-These days, P-values are usually generated using statistical software. Historically, statistical tables were used to determine the P-value from the test-statistic.
+P-values are most commonly generated using statistical software, however historically, statistical tables were used to determine the P-value from the test-statistic.
 
 ## Effect size
 
@@ -201,17 +206,14 @@ The other situation is where, in reality, the null hypothesis is false. A correc
 
 The error in falsely rejecting the null hypothesis when it is true (type I error), or in falsely accepting the null hypothesis when it is not true (type II error) is summarised in @tbl-mod4-alpha-beta. We will return to these concepts in Module 10, when discussing how to determine the appropriate sample size of a study.
 
-```{r tbl-mod4-alpha-beta, echo=FALSE}
-#| tbl-cap: Comparison of study result with the truth
 
-df <- tibble::tribble(
-    ~` `, ~Effect, ~`No effect`,
-    "Evidence", "Correct", "ɑ",
-    "No evidence", "β", "Correct"
-)
+|                           | **Effect in reality**               | **No effect in reality** |
+|---------------------------|:-----------------------------------:|:------------------------:|
+| **Evidence was found**    |      Correct: Power ($1 - \beta$)   |   Error: $\alpha$        |
+| **No evidence was found** |  Error: $\beta$                     |       Correct            |
 
-flextable(df, cwidth = c(1.5, 1, 1))
-```
+: Comparison of study result with the truth {#tbl-mod4-alpha-beta}
+
 
 ## One-sample t-test
 

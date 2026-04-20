@@ -1,10 +1,6 @@
 # Course introduction {-}
 
-This is a simple Quarto book.
-
-Is *this* in italics? And is **this** in bold?
-
-<!-- ## Acknowledgement {-}
+## Acknowledgement {-}
 
 The convenors of Foundations of Biostatistics acknowledge the Bidjigal, Gadigal, Ngunnawal and Ngambri, who are the Traditional Custodians of, and whose communities remain connected to, the unceded territories upon which the University’s main campuses are located. We pay our respects to Aboriginal and Torres Strait Islander Elders past and present for their custodianship of Country, and celebrate the cultural knowledges, stories, songlines, ancestors and dreamings of Aboriginal and Torres Strait Islander people, the First Peoples of Australia.
 
@@ -22,7 +18,7 @@ This course is central to becoming a population health practitioner as the conce
 
 In designing this course, we provide a learning sequence that will allow you to obtain the required graduate capabilities identified for your program. This course is taught with an emphasis on formulating a hypothesis and quantifying the evidence in relation to a specific research question. You will have the opportunity to analyse data from different study types commonly seen in population health research.
 
-The course will allow those of you who have covered some of this material in your undergraduate and other professional education to consolidate your knowledge and skills.  Students exposed to biostatistics for the first time may find the course challenging at times. Based on student feedback, the key to success in this course is to devote time to it every week. We recommend that you spend an average of 10-15 hours per week on the course, including the time spent reading the course notes and readings, listening to lectures, and working through learning activities and completing your assessments. Please use the resources provided to assist you, including online support.
+The course will allow those of you who have covered some of this material in your undergraduate and other professional education to consolidate your knowledge and skills. Students exposed to biostatistics for the first time may find the course challenging at times. Based on student feedback, the key to success in this course is to devote time to it every week. We recommend that you spend an average of 10-15 hours per week on the course, including the time spent reading the course notes and readings, listening to lectures, and working through learning activities and completing your assessments. Please use the resources provided to assist you, including online support.
 
 ## Course aim {-}
 This course aims to provide students with the core biostatistical skills to apply appropriate statistical techniques to analyse and present population health data.
@@ -41,4 +37,3 @@ On successful completion of this course, you will be able to:
 UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics Course Notes. UNSW Sydney, 2026.
 
 ## Change log
- -->

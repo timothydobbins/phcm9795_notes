@@ -1,7 +1,12 @@
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
 library(tidyverse)
 library(jmv)
-library(flextable)
 ```
 
 # Analysing non-normal data
@@ -117,7 +122,8 @@ df <- tibble::tribble(
     17L, "No", 17L, 20.5, 20.5, NA
 )
 
-flextable(df)
+tt(df) |> 
+  tt_format(replace=" ")
 ```
 
 By assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups.
@@ -163,7 +169,7 @@ df <- tibble::tribble(
 ) |>
     dplyr::mutate(`Difference (Drug 2 - Drug 1)` = `Score: Drug 2` - `Score: Drug 1`)
 
-flextable(df)
+tt(df)
 ```
 
 The data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a positive difference. No one has the same score for both drugs.

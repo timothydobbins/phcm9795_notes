@@ -1,3 +1,12 @@
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tinytable)
+library(dplyr)
+```
+
 # Continuous probability distributions, sampling and precision
 
 ## Learning objectives {.unnumbered}
@@ -105,9 +114,7 @@ We can construct a density plot for `age` in the `pbc` data introduced in Module
 #| message: false
 #| warning: false
 
-library(dplyr)
 library(jmv)
-library(flextable)
 
 pbc <- readRDS("data/examples/mod01_pbc.rds") |> 
   rename(`Age (years)` = age)
