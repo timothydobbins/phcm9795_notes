@@ -118,7 +118,8 @@ Using our PBC data, we can summarise the two categorical variables: sex and stag
 
 datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
                      statistic = 1 ~ 1 + N,
-                     notes = c('* Stage of disease was missing for 6 participants'))
+                     notes = c('* Stage of disease was missing for 6 participants')) |> 
+  format_tt(replace = list("Count" = "N"))
 ```
 
 We can add percentages to two-way tables as either *column* or *row* percents. Using @tbl-1-sex-stage-freq as an example, column percents represent the relative frequencies of sex within each stage (@tbl-1-sex-stage-col).
@@ -223,6 +224,8 @@ There are a number of guidelines that have been written to help in the presentat
 
 A summary of these guidelines that will be used in this course appear in @tbl-1-pres.
 
+{{< pagebreak >}}
+
 ```{r tbl-1-pres, echo=FALSE}
 #| tbl-cap: Guidelines for presentation of statistical results
 #| fig-pos: h
@@ -246,7 +249,8 @@ tab1_pres <- tibble::tribble(
     "Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
 )
 
-tt(tab1_pres, width=c(2, 5))
+tt(tab1_pres, width=c(2, 5)) |> 
+  notes = c('Sources: Altman (1990), Cole (2015), Assel et al. (2019)')
 ```
 
 ### Table presentation guidelines
@@ -283,14 +287,6 @@ Consider the following guidelines for the appropriate presentation of graphs in 
 -   If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison
 -   Columns of bar charts should be separated by a space
 -   Three dimensional graphs should be avoided unless the third dimension adds additional information
-
-Sources:
-
-@altman90
-
-@cole15
-
-@assel_etal19
 
 ## Probability
 

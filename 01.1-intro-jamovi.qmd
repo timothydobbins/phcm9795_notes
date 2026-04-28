@@ -114,11 +114,12 @@ The **Special Import** command is hardly ever used. You should use **Open** to o
 
 ## Part 2: Obtaining summary statistics for continuous data
 
-In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from @therneau_grambsch10, Modeling Survival Data: Extending the Cox Model. By the end of this exercise, we will have completed some of the following table.
+In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from @therneau_grambsch10, Modeling Survival Data: Extending the Cox Model. By the end of this exercise, we will have completed some of @tbl-jamovi-t1.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 #| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
 #| tbl-pos: h
+#| label: tbl-jamovi-t1
 
 tab <- tibble::tribble(
                      ~Characteristic,                   ~` `,                    ~Summary,
@@ -136,14 +137,14 @@ tab <- tibble::tribble(
                                   NA,             "Deceased",                     "n (%)"
          )
 
-tt(tab, escape=TRUE) |> 
+tt(tab, escape=TRUE, notes = "* aspartate aminotransferase") |> 
   format_tt(replace="")
 ```
 
 ::: {.callout-note icon="false"}
 ## TASK
 
-Download the table shell, saved on Moodle as `PBC Table1.docx`, and the information file called `mod01_pbc_info.txt`.
+Download the table shell, saved as `PBC Table1.docx`, and the information file called `mod01_pbc_info.txt`.
 :::
 
 ### Opening a data file

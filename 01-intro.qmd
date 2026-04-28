@@ -132,7 +132,7 @@ We will use a sample of 35 ages (in whole years) to illustrate how to calculate 
 
 #### Mean
 
-The most commonly used measure of the central tendency of the data is the mean, calculated as:
+The most commonly used measure of the central tendency of the data is the mean, calculated as the sum of all the values divided by the number of values:
 
 $$\bar{x} = \frac{\sum x}{n}$$
 
@@ -140,7 +140,7 @@ From the age example: $\bar{x}$ = 1745/35 = 49.9. Thus, the mean age of this sam
 
 #### Median
 
-Other measures of central tendency include the median and mode. The median is the middle value of the data, the value at which half of the measurements lie above it and half of the measurements lie below it.
+Another measure of central tendency is the median. The median is the middle value of the data, the value at which half of the measurements lie above it and half of the measurements lie below it.
 
 To estimate the median, the data are ordered from the lowest to highest values, and the middle value is used. If the middle value is between two data points (if there are an even number of observations), the median is an average of the two values.
 

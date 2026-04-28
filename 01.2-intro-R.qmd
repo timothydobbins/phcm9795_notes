@@ -127,7 +127,7 @@ knitr::include_graphics("img/mod01/NewProject-4.png")
 ::: {.callout-note icon="false"}
 ## TASK
 
-Create a new project called PHCM9795.
+Create a new project called PHCM9795. Store it in a folder that you will remember, so that you can store all your R work in the same folder over the term.
 :::
 
 The top-right menu bar is showing that you are working within the PHCM9795 project, and the bottom-right window is showing the contents of that window: the single PHCM9795.Rproj file. We will add some more files to this project later.
@@ -393,9 +393,10 @@ More information about the tidyverse can be found using freely available resourc
 
 ## Part 2: Obtaining summary statistics for continuous data
 
-In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from Modeling Survival Data: Extending the Cox Model @therneau_grambsch10. By the end of this exercise, we will have completed the following table.
+In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from Modeling Survival Data: Extending the Cox Model @therneau_grambsch10. By the end of this exercise, we will have completed some of @tbl-r-t1.
 
 ```{r echo=FALSE}
+#| label: tbl-r-t1
 #| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
 #| tbl-pos: h
 
@@ -415,7 +416,7 @@ tab <- tibble::tribble(
                                   NA,             "Deceased",                     "n (%)"
          )
 
-tt(tab, escape=TRUE) |> 
+tt(tab, escape=TRUE, notes = "* aspartate aminotransferase") |> 
   format_tt(replace="")
 ```
 
