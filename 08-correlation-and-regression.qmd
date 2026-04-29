@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -13,17 +12,19 @@ library(dplyr)
 
 By the end of this module you will be able to:
 
--   Explore the association between two continuous variables using a scatter plot;
--   Estimate and interpret correlation coefficients;
--   Estimate and interpret parameters from a simple linear regression;
--   Assess the assumptions of simple linear regression;
--   Test a hypothesis using regression coefficients.
+- Explore the association between two continuous variables using a scatter plot;
+- Estimate and interpret correlation coefficients;
+- Estimate and interpret parameters from a simple linear regression;
+- Assess the assumptions of simple linear regression;
+- Test a hypothesis using regression coefficients.
 
 ## Optional readings {.unnumbered}
 
 @kirkwood_sterne01; Chapter 10. [\[UNSW Library Link\]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 
 @bland15; Chapter 11. [\[UNSW Library Link\]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+@schober_etal18 [\[Link\]](https://doi.org/10.1213/ANE.0000000000002864)
 
 ## Introduction
 
@@ -41,7 +42,7 @@ There may be cases where it does not matter which variable is denoted $x$ and wh
 
 ## Correlation
 
-We use correlation to measure the strength of a linear relationship between two variables. Before calculating a correlation coefficient, a scatter plot should first be obtained to give an understanding of the nature of the relationship between the two variables.
+We use correlation to measure the strength and direction of a linear relationship between two variables. Before calculating a correlation coefficient, a scatter plot should first be obtained to give an understanding of the nature of the relationship between the two variables.
 
 ### Worked Example
 
@@ -54,25 +55,23 @@ The file `mod08_lung_function.csv` has information about height and lung functio
 #| label: fig-scatter-plot
 #| fig-cap: "Association between height and lung function in 120 adults"
 #| out-width: 50%
-
 knitr::include_graphics(here::here("img", "mod08", "scatterpng.png"))
 ```
 
 ### Correlation coefficients
 
-A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. One interpretation of the strength of correlation coefficients has been provided by @schober2018 (@tbl-r-strength).
+A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. One interpretation of the strength of correlation coefficients has been provided by @schober_etal18 (@tbl-r-strength).
 
 ```{r tbl-r-strength, echo=FALSE}
 #| tbl-cap: Interpretation of correlation coefficients
 #| tbl-pos: h
-
 tab_r_strength <- tibble::tribble(
-    ~`Correlation coefficient (ignoring sign)`, ~`Strength of association`,
-    "0 to <0.1", "Negligible",
-    "0.1 to <0.4", "Weak",
-    "0.4 to <0.7", "Moderate",
-    "0.7 to <0.9", "Strong",
-    "0.9 to 1.0", "Very strong",
+  ~`Correlation coefficient (ignoring sign)` , ~`Strength of association` ,
+  "0 to <0.1"                                , "Negligible"               ,
+  "0.1 to <0.4"                              , "Weak"                     ,
+  "0.4 to <0.7"                              , "Moderate"                 ,
+  "0.7 to <0.9"                              , "Strong"                   ,
+  "0.9 to 1.0"                               , "Very strong"              ,
 )
 
 tt(tab_r_strength)
@@ -83,7 +82,11 @@ The correlation coefficient is positive when large values of one variable tend t
 The correlation coefficient is negative when large values of one variable tend to occur with small values of the other, and small values of one variable tend to occur with large values of the other (@fig-scatter-plot-four (c and d)). For example, percentage immunised against infectious diseases and under-five mortality rate.
 
 ```{r fig-scatter-plot-four, echo=FALSE, out.width = "66%", fig.cap="Scatter plots demonstrating strong and weak, positive and negative associations"}
-knitr::include_graphics(here::here("img", "mod08", "scatterplot-four-plots.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod08",
+  "scatterplot-four-plots.png"
+))
 ```
 
 As with all estimates, a 95% confidence interval should be provided when providing a correlation coefficient. The calculation of the 95% confidence interval is beyond the scope of this course, but the interval can be calculated easily by software.
@@ -92,13 +95,13 @@ It is also possible to calculate a P-value associated with a correlation coeffic
 
 The assumptions for using a Pearson's correlation coefficient are that:
 
--   observations are independent;
--   both variables are continuous variables;
--   the relationship between the two variables is linear.
+- observations are independent;
+- both variables are continuous variables;
+- the relationship between the two variables is linear.
 
 There is a further assumption that the data follow a bivariate normal distribution. This assumes: *y* follows a normal distribution for given values of *x*; and *x* follows a normal distribution for given values of *y*. This is quite a technical assumption that we do not discuss further.
 
-There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in @tbl-mod08-correlation-coefficients.
+There are two types of correlation coefficients, the correct one to use is determined by the nature of the variables as shown in @tbl-mod08-correlation-coefficients.
 
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | Correlation coefficient                | Application                                                                                      |
@@ -139,7 +142,11 @@ The nature of a relationship between two variables is more fully described using
 @fig-scatter-plot-line shows our lung data with a fitted regression line.
 
 ```{r fig-scatter-plot-line, echo=FALSE, out.width = "66%", fig.cap="Association between height and lung function in 120 adults"}
-knitr::include_graphics(here::here("img", "mod08", "scatterplot-line-fvc-height.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod08",
+  "scatterplot-line-fvc-height.png"
+))
 ```
 
 The line through the plot is called the line of 'best fit' because the size of the deviations between the data points and the line is minimised in estimating the line.
@@ -153,20 +160,24 @@ $$y = \beta_{0} + \beta_{1}x$$
 This line is shown in @fig-regression-parameters using the notation shown in @tbl-regression-notation.
 
 ```{r fig-regression-parameters, echo=FALSE, out.width = "66%", fig.cap="Coefficients of a linear regression equation"}
-knitr::include_graphics(here::here("img", "mod08", "regression-line-parameters.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod08",
+  "regression-line-parameters.png"
+))
 ```
 
-+--------------------+-------------------------------------------------+
-| Symbol             | Interpretation                                  |
-+====================+=================================================+
-| $y$                | The outcome variable                            |
-+--------------------+-------------------------------------------------+
-| $x$                | The explanatory variable                        |
-+--------------------+-------------------------------------------------+
-| $\beta_0$          | Intercept of the regression line                |
-+--------------------+-------------------------------------------------+
-| $\beta_1$          | Slope of the regression line                    |
-+--------------------+-------------------------------------------------+
++------------------+-----------------------------------------------+
+| Symbol           | Interpretation                                |
++==================+===============================================+
+| $y$              | The outcome variable                          |
++------------------+-----------------------------------------------+
+| $x$              | The explanatory variable                      |
++------------------+-----------------------------------------------+
+| $\beta_0$        | Intercept of the regression line              |
++------------------+-----------------------------------------------+
+| $\beta_1$        | Slope of the regression line                  |
++------------------+-----------------------------------------------+
 
 : Notation for linear regression equation {#tbl-regression-notation}
 
@@ -182,22 +193,22 @@ The regression parameters $\beta_{0}$ and $\beta_{1}$ are true, unknown quantiti
 
 Using the method of least squares:
 
--   the intercept is estimated as $b_0$;
--   the slope is estimated as $b_1$.
+- the intercept is estimated as $b_0$;
+- the slope is estimated as $b_1$.
 
 ## Regression coefficients: inference
 
 We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with $n - 2$ degrees of freedom is used:
 
--   95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
--   95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
+- 95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
+- 95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
 
 Note that as the constant ($b_0$) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.
 
 The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:
 
--   H~0~: $\beta_1 = 0$
--   H~1~: $\beta_1 \ne 0$
+- H~0~: $\beta_1 = 0$
+- H~1~: $\beta_1 \ne 0$
 
 To test the null hypothesis for the regression coefficient $\beta_1$, the following t-test is used:
 
@@ -210,16 +221,15 @@ This will give a t statistic which can be referred to a t distribution with n �
 ```{r tbl-estimated-regression, echo=FALSE}
 #| tbl-cap: Estimated regression coefficients
 #| tbl-pos: h
-
 df <- tibble::tribble(
-    ~Term, ~Estimate, ~`Standard error`, ~`t value`, ~`P value`, ~`95% Confidence interval`,
-    "Intercept", -18.87, 2.194, "t=-8.60, 118df", "<0.001", "-23.22 to -14.53",
-    "Height", 0.14, 0.013, "t=10.58, 118df", "<0.001", "0.11 to 0.17"
+  ~Term       , ~Estimate , ~`Standard error` , ~`t value`       , ~`P value` , ~`95% Confidence interval` ,
+  "Intercept" , -18.87    , 2.194             , "t=-8.60, 118df" , "<0.001"   , "-23.22 to -14.53"         ,
+  "Height"    ,   0.14    , 0.013             , "t=10.58, 118df" , "<0.001"   , "0.11 to 0.17"
 )
 
-tt(df, width = c(0.75, 0.75, 0.75, 1.5, 0.75, 2)) |> 
-  tt_format(escape = TRUE) |> 
-  tt_style(align="lllccc")
+tt(df, width = c(0.75, 0.75, 0.75, 1.5, 0.75, 2)) |>
+  tt_format(escape = TRUE) |>
+  tt_style(align = "lllccc")
 ```
 
 From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:
@@ -252,9 +262,9 @@ Regression is robust to moderate degrees of non-normality in the variables, prov
 
 The assumptions that must be met when using linear regression are as follows:
 
--   observations are independent;
--   the relationship between the explanatory and the outcome variable is linear;
--   the residuals are normally distributed.
+- observations are independent;
+- the relationship between the explanatory and the outcome variable is linear;
+- the residuals are normally distributed.
 
 A residual is defined as the difference between the observed and predicted outcome from the regression model. If the predicted value of the outcome variable is denoted by $\hat y$ then:
 
@@ -267,7 +277,11 @@ The distribution of the residuals should always be checked. Large residuals can 
 The distribution of the residuals from the model is shown in @fig-residual-dist. The residuals are approximately normally distributed, with no outlying values.
 
 ```{r fig-residual-dist, echo=FALSE, out.width = "50%", fig.cap="Distribution of regression residuals"}
-knitr::include_graphics(here::here("img", "mod08", "regression-residual-dist.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod08",
+  "regression-residual-dist.png"
+))
 ```
 
 ## Multiple linear regression

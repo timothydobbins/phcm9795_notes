@@ -249,8 +249,8 @@ tab1_pres <- tibble::tribble(
     "Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
 )
 
-tt(tab1_pres, width=c(2, 5)) |> 
-  notes = c('Sources: Altman (1990), Cole (2015), Assel et al. (2019)')
+tt(tab1_pres, width=c(2, 5),
+  notes = c('Sources: Altman (1990), Cole (2015), Assel et al. (2019)'))
 ```
 
 ### Table presentation guidelines

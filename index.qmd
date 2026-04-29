@@ -1,9 +1,5 @@
 # Course introduction {-}
 
-## Acknowledgement {-}
-
-The convenors of Foundations of Biostatistics acknowledge the Bidjigal, Gadigal, Ngunnawal and Ngambri, who are the Traditional Custodians of, and whose communities remain connected to, the unceded territories upon which the University’s main campuses are located. We pay our respects to Aboriginal and Torres Strait Islander Elders past and present for their custodianship of Country, and celebrate the cultural knowledges, stories, songlines, ancestors and dreamings of Aboriginal and Torres Strait Islander people, the First Peoples of Australia.
-
 ## Welcome {-}
 
 This introductory course in biostatistics aims to provide students with core biostatistical skills to analyse and present quantitative data from different study types. These are essential skills required in your degree and throughout your career.

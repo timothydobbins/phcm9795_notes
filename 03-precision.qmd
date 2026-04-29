@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -227,7 +226,7 @@ The principle of data sovereignty advocates strongly for data rights and interes
 
 The importance of data sovereignty principles is highlighted by the Pima Indian Diabetes Dataset (PIDD). The Pima people, living in Arizona USA, are known for high rates of diabetes and obesity. In 1965, the United States National Institutes of Health began an observational study of the Pima community, viewing their reservation as a "natural laboratory" for diabetes research. Originally planned to last ten years, this study continued for approximately forty years, collecting highly personal information including blood pressure, body mass index, and number of pregnancies of Pima Americans.
 
-The data collected during this study became known as the Pima Indian Diabetes Dataset and was subsequently included in the University of California, Irvine (UCI) Machine Learning Repository.[@home-u] This repository, established in 1987, is a collection of datasets and tools used to test and train machine learning models. Although the PIDD appears to have been removed from the UCI repository, it now appears in major machine learning repositories such as Kaggle. Significantly, this dataset has been used to refine algorithms intended for "knowledge discoveries" that have nothing to do with diabetes, including the prediction of manhole fires.
+The data collected during this study became known as the Pima Indian Diabetes Dataset and was subsequently included in the University of California, Irvine (UCI) Machine Learning Repository.[@universityofcaliforniairvine] This repository, established in 1987, is a collection of datasets and tools used to test and train machine learning models. Although the PIDD appears to have been removed from the UCI repository, it now appears in major machine learning repositories such as Kaggle. Significantly, this dataset has been used to refine algorithms intended for "knowledge discoveries" that have nothing to do with diabetes, including the prediction of manhole fires.
 
 This case raises profound questions about what might be termed "eternal consent." The Pima participants who provided their medical data in 1965 could not have realistically been informed of all potential uses for their medical data forty years into the future. The transformation of intimate health data, collected for a specific diabetes research purpose, into a widely distributed dataset for training machine learning algorithms represents a fundamental breach of the principles of data sovereignty. The Pima community had no control over the secondary uses of their data, no ongoing governance role, and no ability to determine whether these uses aligned with their collective well-being or cultural values. This example demonstrates the critical need for robust data sovereignty frameworks that protect Indigenous peoples' rights to control not only the initial collection of their data but also its subsequent use, storage, and dissemination.
 

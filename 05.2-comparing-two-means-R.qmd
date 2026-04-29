@@ -29,11 +29,31 @@ ggplot(data=bwt, aes(x=birthweight)) +
 
 ## Independent samples t-test
 
-We can use the `ttestIS()` (t-test, independent samples) function from the `jmv` package to perform the independent samples t-test. We include the `meanDiff=TRUE` and `ci=TRUE` options to obtain the difference in means, with its 95% confidence interval. We can request a Welch's test (which does not assume equal variances) by the `welchs=TRUE` option:
+We can use the `ttestIS()` (t-test, independent samples) function from the `jmv` package to perform the independent samples t-test. We include the `meanDiff=TRUE` and `ci=TRUE` options to obtain the difference in means, with its 95% confidence interval. We can request a Welch's test (which does not assume equal variances) by the `welchs=TRUE` option (note that output has been edited to fit on the page):
 
-```{r}
-ttestIS(data = bwt, vars = birthweight, group = gender, meanDiff = TRUE, ci = TRUE, welchs = TRUE)
 ```
+ttestIS(data = bwt, vars = birthweight, group = gender, 
+        meanDiff = TRUE, ci = TRUE, welchs = TRUE)
+
+
+INDEPENDENT SAMPLES T-TEST
+
+ Independent Samples T-Test                                                                                                          
+─────────────────────────────────────────────────────────────────────
+                                 Statistic    df          p           
+─────────────────────────────────────────────────────────────────────
+   birthweight    Student's t     2.296556    98.00000    0.0237731   
+                  Welch's t       2.303840    93.54377    0.0234458   
+─────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────── 
+                Mean difference    SE difference    Lower         Upper       
+────────────────────────────────────────────────────────────────────────────── 
+  Student's t        0.1660471       0.07230265    0.02256481    0.3095293   
+  Welch's t          0.1660471       0.07207403    0.02293328    0.3091609   
+────────────────────────────────────────────────────────────────────────────── 
+   Note. Hₐ μ <sub>Female</sub> ≠ μ <sub>Male</sub>
+```
+
 
 ## Checking the assumptions for a Paired t-test
 
@@ -55,8 +75,25 @@ While there is a large difference in blood pressure (around 60 mmHg) that warran
 
 To perform a paired t-test we will use the dataset `mod05_ankle_bp.xlsx`. We can perform a paired t-test using the `ttestPS()` function within the `jmv` package, where we defined the paired observations as: `pairs=list(list(i1 = 'variable1', i2 = 'variable2'))
 
-```{r}
-ttestPS(data = sbp, pairs = list(list(i1 = "sbp_dp", i2 = "sbp_tp")), meanDiff = TRUE, ci = TRUE)
+```
+ttestPS(data = sbp, pairs = list(list(i1 = "sbp_dp", i2 = "sbp_tp")),
+        meanDiff = TRUE, ci = TRUE)
+        
+
+ PAIRED SAMPLES T-TEST
+
+ Paired Samples T-Test                                                                                                                   
+ ──────────────────────────────────────────────────────────────────────────
+                                      statistic     df          p          
+ ──────────────────────────────────────────────────────────────────────────
+   sbp_dp    sbp_tp    Student's t    -0.9621117    106.0000    0.3381832  
+ ──────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────── 
+                        Mean difference    SE difference    Lower        Upper      
+ ────────────────────────────────────────────────────────────────────────────── 
+   sbp_dp    sbp_tp        -1.261682         1.311368    -3.861596    1.338232   
+ ────────────────────────────────────────────────────────────────────────────── 
+   Note. Hₐ μ <sub>Measure 1 - Measure 2</sub> ≠ 0
 ```
 
 The syntax of the ttestPS function is a little cumbersome. The `t.test` function can be used as an alternative:

@@ -2,7 +2,7 @@
 
 25 participants were enrolled in a 3-week weight loss program. @tbl-wt-loss presents the weight loss (in grams) of the participants.
 
-```{r act-1-1, echo=FALSE}
+```{r, echo=FALSE}
 #| label: tbl-wt-loss
 #| tbl-cap: Weight loss (g) for 25 participants
 #| tbl-pos: H

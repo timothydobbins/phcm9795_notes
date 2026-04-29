@@ -7,5 +7,13 @@
     ],
     "cSpell.language": "en,en-AU",
     "workbench.colorTheme": "Default Positron Dark",
-    "workbench.preferredDarkColorTheme": "Visual Studio Dark"
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "[r]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "Posit.air-vscode"
+    },
+    "[quarto]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "quarto.quarto"
+    }
 }

@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -159,12 +158,12 @@ Historically, a value of 0.05 has been used as a cut-point for finding evidence 
 library(tinytable)
 
 tab4_1 <- tibble::tribble(
-    ~`P-value`, ~`Strength of evidence`,
-    "<0.001", "Very strong evidence",
-    "0.001 to <0.01", "Strong evidence",
-    "0.01 to <0.05", "Evidence",
-    "0.05 to <0.1", "Weak evidence",
-    "≥0.1", "Little or no evidence"
+  ~`P-value`       , ~`Strength of evidence` ,
+  "<0.001"         , "Very strong evidence"  ,
+  "0.001 to <0.01" , "Strong evidence"       ,
+  "0.01 to <0.05"  , "Evidence"              ,
+  "0.05 to <0.1"   , "Weak evidence"         ,
+  "≥0.1"           , "Little or no evidence"
 )
 
 tt(tab4_1)
@@ -247,7 +246,6 @@ Most statistical tests are two tailed tests, that is, we conduct a test that all
 
 ```{r fig-two-tailed-test, echo=FALSE, out.width = "66%"}
 #| fig-cap: P-value for a 2-tailed test
-
 knitr::include_graphics(here::here("img", "mod04", "two-tailed-test.png"))
 ```
 
@@ -279,13 +277,13 @@ Selecting the correct test to use in each situation depends on the study design 
 
 The issue of data sovereignty was raised in Module 3, and here we will discuss how this concept applies in the Australian context.
 
-Indigenous data encompasses information or knowledge in any format or medium that is about, or may affect, Aboriginal and Torres Strait Islander peoples, either collectively or individually. [@walter2021] Indigenous Data Sovereignty specifically refers to the right of Aboriginal and Torres Strait Islander peoples, communities, and organisations to maintain, control, protect, develop, and use data as it relates to them. Data practices must support and enhance Indigenous collective well-being.
+Indigenous data encompasses information or knowledge in any format or medium that is about, or may affect, Aboriginal and Torres Strait Islander peoples, either collectively or individually. [@walter_etal21] Indigenous Data Sovereignty specifically refers to the right of Aboriginal and Torres Strait Islander peoples, communities, and organisations to maintain, control, protect, develop, and use data as it relates to them. Data practices must support and enhance Indigenous collective well-being.
 
-Indigenous Data Governance provides the practical mechanisms through which sovereignty is enacted. It consists of formal systems that assert Indigenous data interests regarding how data is accessed and used, ensuring that practices reflect Indigenous priorities, values, culture, and diversity.[@walter2021] Importantly, Indigenous Data Sovereignty is practised through Indigenous data governance, making governance the operational expression of sovereignty principles.
+Indigenous Data Governance provides the practical mechanisms through which sovereignty is enacted. It consists of formal systems that assert Indigenous data interests regarding how data is accessed and used, ensuring that practices reflect Indigenous priorities, values, culture, and diversity.[@walter_etal21] Importantly, Indigenous Data Sovereignty is practised through Indigenous data governance, making governance the operational expression of sovereignty principles.
 
 ### The Problem of Deficit-Based Data Narratives
 
-A major challenge in Australian data collections is that First Nations peoples are often framed as the "object of study" rather than as active participants in research. Data frequently focuses on poor outcomes across health, education, and economic participation, creating what has been termed the "5D data" narrative: disparity, deprivation, disadvantage, dysfunction, and difference. This approach has been further characterised as BADDR Data: Blaming, Aggregate, Decontextualised, Deficit, and Restricted.[@walter2021] Such framings perpetuate harmful stereotypes and fail to capture the strengths, resilience, and diversity of Indigenous communities.
+A major challenge in Australian data collections is that First Nations peoples are often framed as the "object of study" rather than as active participants in research. Data frequently focuses on poor outcomes across health, education, and economic participation, creating what has been termed the "5D data" narrative: disparity, deprivation, disadvantage, dysfunction, and difference. This approach has been further characterised as BADDR Data: Blaming, Aggregate, Decontextualised, Deficit, and Restricted.[@walter_etal21] Such framings perpetuate harmful stereotypes and fail to capture the strengths, resilience, and diversity of Indigenous communities.
 
 ### Key Principles for Indigenous Data Management
 
@@ -307,11 +305,11 @@ The CARE framework consists of four key components:
 
 -   Ethics stresses minimising harm and maximising benefit, promoting justice, and careful consideration of future data uses.
 
-This framework enables the enactment of FAIR principles but with appropriate care and attention to Indigenous rights and interests.[@walter2021]
+This framework enables the enactment of FAIR principles but with appropriate care and attention to Indigenous rights and interests.[@walter_etal21]
 
 ### Protecting Indigenous Data Sovereignty Rights in Research
 
-Aboriginal and Torres Strait Islander peoples have the right to decide how Indigenous data is used and stored.[@lowitjainstitute2021][@nationalindigenousaustraliansagency2024] Formal agreements protecting Indigenous Data Sovereignty should be established at the outset of any research project. Such agreements must cover intellectual property rights, data collection procedures, retention and access arrangements, and management protocols for all data arising from the research. These agreements must also specify actions that Aboriginal and Torres Strait Islander peoples, communities, and organisations can take if commitments are not met. Crucially, these agreements must be clearly understood and formally endorsed by appropriate representatives of the involved Aboriginal and Torres Strait Islander peoples, communities, and organisations.
+Aboriginal and Torres Strait Islander peoples have the right to decide how Indigenous data is used and stored.[@lowitjainstitute21][@nationalindigenousaustraliansagency24] Formal agreements protecting Indigenous Data Sovereignty should be established at the outset of any research project. Such agreements must cover intellectual property rights, data collection procedures, retention and access arrangements, and management protocols for all data arising from the research. These agreements must also specify actions that Aboriginal and Torres Strait Islander peoples, communities, and organisations can take if commitments are not met. Crucially, these agreements must be clearly understood and formally endorsed by appropriate representatives of the involved Aboriginal and Torres Strait Islander peoples, communities, and organisations.
 
 First Nations peoples have the right to lead and participate at all stages of the research process, including planning, data collection, analysis, dissemination of results, return of data, and ongoing access to data. Researchers bear responsibility for providing appropriate information to promote full and effective Indigenous leadership in data collection. They must also provide opportunities for communities to assess data collection, storage, and governance arrangements, including confidentiality protections. Indigenous peoples must have opportunities to engage in the development, design, collection, analysis, and reporting of data, including involvement in the development of appropriate indicators and surveys applicable to local contexts.
 
