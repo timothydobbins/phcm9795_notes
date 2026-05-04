@@ -411,7 +411,7 @@ window.Quarto = {
 <section id="worked-example-5.1" class="level3">
 <h3 class="anchored" data-anchor-id="worked-example-5.1">Worked Example 5.1</h3>
 <p>In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.</p>
-<p>Exploratory data analysis of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. In particular, the distribution of the analysis variable should be examined for each group, as shown in <a href="#fig-mod05-bwt-gender" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. The <code>mod05_birthweight.rds</code> dataset is available on Moodle.</p>
+<p>Exploratory data analysis of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. In particular, the distribution of the analysis variable should be examined for each group, as shown in <a href="#fig-mod05-bwt-gender" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. The data are stored in <code>mod05_birthweight.rds</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mod05-bwt-gender" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -442,19 +442,19 @@ Table&nbsp;5.1: Summary of birthweight by gender
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_12o4s3up3k7a1gbe7v9e = TinyTable.createTableFunctions("tinytable_12o4s3up3k7a1gbe7v9e");
+      const tableFns_a05w4x9ga8wrn8dxhw37 = TinyTable.createTableFunctions("tinytable_a05w4x9ga8wrn8dxhw37");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '4', j: 1 }, { i: '4', j: 2 }, { i: '4', j: 3 } ], css_id: 'tinytable_css_oe1wketznuqld5txgev0',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_cxrho5flfsyqe47z7bjm',}, 
+          { positions: [ { i: '4', j: 1 }, { i: '4', j: 2 }, { i: '4', j: 3 } ], css_id: 'tinytable_css_inyaakuw7b5baqk6gzrv',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_tljvukpe3l53hnoxa3wf',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_12o4s3up3k7a1gbe7v9e.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_a05w4x9ga8wrn8dxhw37.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -463,11 +463,11 @@ Table&nbsp;5.1: Summary of birthweight by gender
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_12o4s3up3k7a1gbe7v9e td.tinytable_css_oe1wketznuqld5txgev0, #tinytable_12o4s3up3k7a1gbe7v9e th.tinytable_css_oe1wketznuqld5txgev0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_12o4s3up3k7a1gbe7v9e td.tinytable_css_cxrho5flfsyqe47z7bjm, #tinytable_12o4s3up3k7a1gbe7v9e th.tinytable_css_cxrho5flfsyqe47z7bjm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_a05w4x9ga8wrn8dxhw37 td.tinytable_css_inyaakuw7b5baqk6gzrv, #tinytable_a05w4x9ga8wrn8dxhw37 th.tinytable_css_inyaakuw7b5baqk6gzrv {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_a05w4x9ga8wrn8dxhw37 td.tinytable_css_tljvukpe3l53hnoxa3wf, #tinytable_a05w4x9ga8wrn8dxhw37 th.tinytable_css_tljvukpe3l53hnoxa3wf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_12o4s3up3k7a1gbe7v9e" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_a05w4x9ga8wrn8dxhw37" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -531,19 +531,19 @@ Table&nbsp;5.2: Birthweight (kg) by sex
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_ab7g629w82b5y762ghxf = TinyTable.createTableFunctions("tinytable_ab7g629w82b5y762ghxf");
+      const tableFns_60qtj100opr8wka8kryg = TinyTable.createTableFunctions("tinytable_60qtj100opr8wka8kryg");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '3', j: 1 }, { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 } ], css_id: 'tinytable_css_i85qgk8qnzekapap2n52',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_i9dl27tn19kesr5s8a96',}, 
+          { positions: [ { i: '3', j: 1 }, { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 } ], css_id: 'tinytable_css_zsji3bcuaqrvk0ivm3q3',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_xko3a0wj594g07y2jn3n',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_ab7g629w82b5y762ghxf.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_60qtj100opr8wka8kryg.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -552,11 +552,11 @@ Table&nbsp;5.2: Birthweight (kg) by sex
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_ab7g629w82b5y762ghxf td.tinytable_css_i85qgk8qnzekapap2n52, #tinytable_ab7g629w82b5y762ghxf th.tinytable_css_i85qgk8qnzekapap2n52 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_ab7g629w82b5y762ghxf td.tinytable_css_i9dl27tn19kesr5s8a96, #tinytable_ab7g629w82b5y762ghxf th.tinytable_css_i9dl27tn19kesr5s8a96 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_60qtj100opr8wka8kryg td.tinytable_css_zsji3bcuaqrvk0ivm3q3, #tinytable_60qtj100opr8wka8kryg th.tinytable_css_zsji3bcuaqrvk0ivm3q3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_60qtj100opr8wka8kryg td.tinytable_css_xko3a0wj594g07y2jn3n, #tinytable_60qtj100opr8wka8kryg th.tinytable_css_xko3a0wj594g07y2jn3n {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_ab7g629w82b5y762ghxf" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_60qtj100opr8wka8kryg" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -625,7 +625,7 @@ Table&nbsp;5.2: Birthweight (kg) by sex
 <section id="worked-example-5.2" class="level3">
 <h3 class="anchored" data-anchor-id="worked-example-5.2">Worked Example 5.2</h3>
 <p>A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.</p>
-<p>The dataset <code>mod05_ankle_bp.xlsx</code> is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
+<p>Using the dataset <code>mod05_ankle_bp.xlsx</code>, we first need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mod05-sbpdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -655,19 +655,19 @@ Table&nbsp;5.3: Systolic blood pressure (mmHg) measured at two sites on the ankl
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_b6qa128prhfgdlu9iyl8 = TinyTable.createTableFunctions("tinytable_b6qa128prhfgdlu9iyl8");
+      const tableFns_es58c0gzp96jtqk6wqs5 = TinyTable.createTableFunctions("tinytable_es58c0gzp96jtqk6wqs5");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '3', j: 1 }, { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 } ], css_id: 'tinytable_css_a28l7tq71ofoqt81mdnv',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_o5at1z5r9lnc7sztj9kp',}, 
+          { positions: [ { i: '3', j: 1 }, { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 } ], css_id: 'tinytable_css_f3rp7lc40tnviogd1raj',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_t73uk8tu1qhcnsnh3knt',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_b6qa128prhfgdlu9iyl8.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_es58c0gzp96jtqk6wqs5.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -676,11 +676,11 @@ Table&nbsp;5.3: Systolic blood pressure (mmHg) measured at two sites on the ankl
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_b6qa128prhfgdlu9iyl8 td.tinytable_css_a28l7tq71ofoqt81mdnv, #tinytable_b6qa128prhfgdlu9iyl8 th.tinytable_css_a28l7tq71ofoqt81mdnv {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_b6qa128prhfgdlu9iyl8 td.tinytable_css_o5at1z5r9lnc7sztj9kp, #tinytable_b6qa128prhfgdlu9iyl8 th.tinytable_css_o5at1z5r9lnc7sztj9kp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_es58c0gzp96jtqk6wqs5 td.tinytable_css_f3rp7lc40tnviogd1raj, #tinytable_es58c0gzp96jtqk6wqs5 th.tinytable_css_f3rp7lc40tnviogd1raj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_es58c0gzp96jtqk6wqs5 td.tinytable_css_t73uk8tu1qhcnsnh3knt, #tinytable_es58c0gzp96jtqk6wqs5 th.tinytable_css_t73uk8tu1qhcnsnh3knt {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_b6qa128prhfgdlu9iyl8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_es58c0gzp96jtqk6wqs5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>

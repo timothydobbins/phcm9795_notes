@@ -32,7 +32,7 @@ e) Interpret the 95% confidence interval of the mean total sugar consumption for
 
 ### Activity 3.3 {-}
 
-The dataset for this activity is the same as the one used in Activity 1.3 in Module 1: a study was conducted to investigate the general health of undergraduate students at Australian universities. A random selection of 218 UNSW undergradute students from UNSW were enrolled, and their diastolic blood pressures were recorded. The file is `Activity_1.3.csv` on Moodle.
+The dataset for this activity is the same as the one used in Activity 1.3 in Module 1: a study was conducted to investigate the general health of undergraduate students at Australian universities. A random selection of 218 UNSW undergradute students from UNSW were enrolled, and their diastolic blood pressures were recorded. The file is `Activity_1.3.csv`.
 
 a) Plot diastolic blood pressure and describe the distribution.
 b) Use jamovi or R to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.
@@ -54,7 +54,7 @@ Note: BMI does not necessarily reflect body fat distribution or describe the sam
 Create a two-way table to display the distribution of BMI categories by sex (sex: 1 = respondent identifies as male; 2 = respondent identifies as female). Does there appear to be a difference in categorised BMI between males and females?
 
 ### Activity 3.5 {-}
-The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity_3.5.csv`). Import this dataset into jamovi or R. There are two variables in this dataset:
+The data set of hospital stay data for 1323 hypothetical patients is available in csv format (`Activity_3.5.csv`). Import this dataset into jamovi or R. There are two variables in this dataset:
 
 - female: female=1; male=0
 - los: length of stay in days

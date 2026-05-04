@@ -1,34 +1,34 @@
 ### Activity 9.1 {-}
 
-There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and a copy of the data set, `Activity_9.1.rds` is also available on Moodle.
+There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and in the data set, `Activity_9.1.rds`.
 
 ```{r act-9-1, echo=FALSE}
 #| tab-cap: Urinary level of ascorbic acid (mg per 3 hours) of university students
 library(flextable)
 
 tab9_1 <- tibble::tribble(
-  ~`Living and dining in Hall (n=17)`, ~`Living and dining at Home (n = 13)`,
-                                    34L,                                  163L,
-                                    62L,                                  205L,
-                                    37L,                                   83L,
-                                    27L,                                  372L,
-                                    38L,                                   50L,
-                                    20L,                                   22L,
-                                     7L,                                   47L,
-                                    53L,                                  255L,
-                                    22L,                                   30L,
-                                    37L,                                   89L,
-                                    14L,                                   96L,
-                                    28L,                                   48L,
-                                    28L,                                   25L,
-                                    70L,                                  163L,
-                                    16L,                                    NA,
-                                     9L,                                    NA,
-                                   121L,                                    NA
-  )
+  ~`Living and dining in Hall (n=17)` , ~`Living and dining at Home (n = 13)` ,
+   34L                                , 163L                                  ,
+   62L                                , 205L                                  ,
+   37L                                ,  83L                                  ,
+   27L                                , 372L                                  ,
+   38L                                ,  50L                                  ,
+   20L                                ,  22L                                  ,
+    7L                                ,  47L                                  ,
+   53L                                , 255L                                  ,
+   22L                                ,  30L                                  ,
+   37L                                ,  89L                                  ,
+   14L                                ,  96L                                  ,
+   28L                                ,  48L                                  ,
+   28L                                ,  25L                                  ,
+   70L                                , 163L                                  ,
+   16L                                , NA                                    ,
+    9L                                , NA                                    ,
+  121L                                , NA
+)
 
 flextable(tab9_1) |>
-  align(align="center", part="all")
+  align(align = "center", part = "all")
 ```
 
 Analyse these data to assess the research question.

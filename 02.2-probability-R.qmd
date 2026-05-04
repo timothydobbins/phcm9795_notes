@@ -22,10 +22,7 @@ To define our variable `sex` as a factor, we use:
 ```{r}
 pbc <- readRDS("data/activities/mod01_pbc.rds")
 
-pbc$sex <- factor(pbc$sex,
-    levels = c(1, 2),
-    labels = c("Male", "Female")
-)
+pbc$sex <- factor(pbc$sex, levels = c(1, 2), labels = c("Male", "Female"))
 ```
 
 We can then produce a frequency table:
@@ -37,9 +34,10 @@ descriptives(data = pbc, vars = sex, freq = TRUE)
 > Task: define `stage` and `status` (Vital Status) as factors, and produce one-way frequency tables. Refer to the file `pbc_info.txt` to view the labels for each variable. For example, for Stage:
 
 ```{r}
-pbc$stage <- factor(pbc$stage,
-    levels = c(1, 2, 3, 4),
-    labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4")
+pbc$stage <- factor(
+  pbc$stage,
+  levels = c(1, 2, 3, 4),
+  labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4")
 )
 ```
 
@@ -74,9 +72,10 @@ The simplest way to use the `plot()` function is by specifying an object to be p
 Here we will create the bar chart shown in @fig-bar-1 of the statistics notes using the `mod01_pdc.rds` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
 
 ```{r}
-plot(pbc$stage,
-    main = "Bar graph of stage of disease from PBC study",
-    ylab = "Number of participants"
+plot(
+  pbc$stage,
+  main = "Bar graph of stage of disease from PBC study",
+  ylab = "Number of participants"
 )
 ```
 
@@ -96,10 +95,7 @@ contTables(data = pbc, rows = sex, cols = stage)
 Creating a **clustered bar chart** as shown in @fig-bar-2 can be done by requesting a bar chart (`barplot=TRUE`), and the x-axis should be constructed from `stage` - that is, the **column** variable:
 
 ```{r}
-contTables(pbc,
-    rows = sex, cols = stage,
-    barplot = TRUE, xaxis = "xcols"
-)
+contTables(pbc, rows = sex, cols = stage, barplot = TRUE, xaxis = "xcols")
 ```
 
 If you want the x-axis to be constructed from the row variable, you would use `xaxis = "xrows"`.
@@ -107,19 +103,28 @@ If you want the x-axis to be constructed from the row variable, you would use `x
 To create a **stacked bar chart** (as in @fig-bar-3), specify `bartype` to be `stack`:
 
 ```{r}
-contTables(pbc,
-    rows = sex, cols = stage,
-    barplot = TRUE, xaxis = "xcols", bartype = "stack"
+contTables(
+  pbc,
+  rows = sex,
+  cols = stage,
+  barplot = TRUE,
+  xaxis = "xcols",
+  bartype = "stack"
 )
 ```
 
 Finally, to create a **stacked relative bar chart** (as in @fig-bar-4), specify the y-axis to be a percent (`yaxis="ypc"`), and the percentage be calculated from the columns of the frequency table (`yaxisPc = "column_pc"`):
 
 ```{r}
-contTables(pbc,
-    rows = sex, cols = stage,
-    barplot = TRUE, bartype = "stack", xaxis = "xcols",
-    yaxis = "ypc", yaxisPc = "column_pc"
+contTables(
+  pbc,
+  rows = sex,
+  cols = stage,
+  barplot = TRUE,
+  bartype = "stack",
+  xaxis = "xcols",
+  yaxis = "ypc",
+  yaxisPc = "column_pc"
 )
 ```
 
@@ -130,7 +135,6 @@ An alternative way of producing barcharts is via a package called `surveymv`. Un
 ```{r}
 #| eval: false
 #| include: true
-
 install.packages("devtools")
 library(devtools)
 install_github("raviselker/surveymv")
@@ -141,7 +145,6 @@ These commands have installed the `surveymv` package. We load the packing using 
 ```{r}
 #| eval: false
 #| include: true
-
 library(surveymv)
 ```
 
@@ -168,7 +171,8 @@ surveyPlot(
   vars = "sex",
   group = "stage",
   type = "stacked",
-  freq = "perc")
+  freq = "perc"
+)
 ```
 
 While this produces a bar chart with horizontal bars, it often performs better with labelling of the groups than the previous method.
@@ -183,7 +187,7 @@ There are two useful packages for importing data into R: `haven` (for data that 
 
 A `csv` file, or a "comma separated variables" file is commonly used to store data. These files have a very simple structure: they are plain text files, where data are separated by commas. csv files have the advantage that, as they are plain text files, they can be opened by a large number of programs (such as Notepad in Windows, TextEdit in MacOS, Microsoft Excel - even Microsoft Word). While they can be opened by Microsoft Excel, they can be opened by many other programs: the csv file can be thought of as the lingua-franca of data.
 
-In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `mod02_weight_1000.csv` available on Moodle.
+In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `mod02_weight_1000.csv`.
 
 To confirm that the file is readable by any text editor, here are the first ten lines of the file, opened in Notepad on Microsoft Windows, and TextEdit on MacOS.
 
@@ -215,9 +219,7 @@ In this example, we can use the `pbc` data and recode age into age groups:
 The quickest way to recode a continuous variable into categories is to use the `cut` command which takes a continuous variable, and "cuts" it into groups based on the specified "cutpoints"
 
 ```{r}
-pbc$agegroup <- cut(pbc$age,
-    breaks = c(0, 30, 50, 70, 100)
-)
+pbc$agegroup <- cut(pbc$age, breaks = c(0, 30, 50, 70, 100))
 ```
 
 Notice that some numbers need to be defined for the lowest (age=0) and highest (age=100) bounds: both a lower and upper limit must be defined for each group.
@@ -233,10 +235,7 @@ we see that each group has been labelled in the form of (a, b]. This notation is
 We can specify this recoding using the `right=FALSE` option:
 
 ```{r}
-pbc$agegroup <- cut(pbc$age,
-    breaks = c(0, 30, 50, 70, 100),
-    right = FALSE
-)
+pbc$agegroup <- cut(pbc$age, breaks = c(0, 30, 50, 70, 100), right = FALSE)
 
 summary(pbc$agegroup)
 ```
@@ -244,13 +243,16 @@ summary(pbc$agegroup)
 Finally, we can specify labels for the groups using the `labels` option:
 
 ```{r}
-pbc$agegroup <- cut(pbc$age,
-    breaks = c(0, 30, 50, 70, 100),
-    right = FALSE,
-    labels = c(
-        "Less than 30", "30 to less than 50",
-        "50 to less than 70", "70 or more"
-    )
+pbc$agegroup <- cut(
+  pbc$age,
+  breaks = c(0, 30, 50, 70, 100),
+  right = FALSE,
+  labels = c(
+    "Less than 30",
+    "30 to less than 50",
+    "50 to less than 70",
+    "70 or more"
+  )
 )
 
 summary(pbc$agegroup)
@@ -330,7 +332,7 @@ ggplot()
 In this example, all `ggplot` has done is to create a blank canvas. Let's start filling the canvas in by specifying our dataset, and defining sex as our x-axis:
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=sex))
+ggplot(data = pbc, mapping = aes(x = sex))
 ```
 
 Our blank canvas has been altered: we now have an x-axis, defined by `sex`, with values of `Male` and `Female`.
@@ -338,14 +340,14 @@ Our blank canvas has been altered: we now have an x-axis, defined by `sex`, with
 To add "ink" to our canvas, we now need to add a *geometry*. For a bar chart, we use `geom_bar()` as follows:
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=sex)) +
+ggplot(data = pbc, mapping = aes(x = sex)) +
   geom_bar()
 ```
 
 We can change the look of the figure by choosing a different *theme*: let's use `theme_classic()` here.
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=sex)) +
+ggplot(data = pbc, mapping = aes(x = sex)) +
   geom_bar() +
   theme_classic()
 ```
@@ -353,41 +355,37 @@ ggplot(data=pbc, mapping = aes(x=sex)) +
 The final changes we can make are to define the axis labels using `labs()`:
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=sex)) +
+ggplot(data = pbc, mapping = aes(x = sex)) +
   geom_bar() +
   theme_classic() +
-  labs(x = "Participant sex", 
-       y = "Frequency")
+  labs(x = "Participant sex", y = "Frequency")
 ```
 
 Finally, we can change the colour of the bars by specifying a `fill` colour within the `geom_bar()` command. We can choose one of over 600 (!) colours by name [^2].
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=sex)) +
-  geom_bar(fill="steelblue") +
+ggplot(data = pbc, mapping = aes(x = sex)) +
+  geom_bar(fill = "steelblue") +
   theme_classic() +
-  labs(x = "Participant sex", 
-       y = "Frequency")
+  labs(x = "Participant sex", y = "Frequency")
 ```
 
 Let's adapt this code to produce a bar chart for stage of disease:
 
 ```{r}
-ggplot(data=pbc, mapping = aes(x=stage)) +
-  geom_bar(fill="steelblue") +
+ggplot(data = pbc, mapping = aes(x = stage)) +
+  geom_bar(fill = "steelblue") +
   theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency")
+  labs(x = "Stage of disease", y = "Frequency")
 ```
 
 Note that `ggplot` has included a separate bar for the missing values (i.e. the `NA` values). We can instruct R to ignore the missing values in the `ggplot` function by specifying the data to be a `subset` of `pbc`. The command: `subset(pbc, is.na(stage) == FALSE)` essentially creates a temporary subset of the `pbc` dataset where `stage` is not missing. Putting it all together:
 
 ```{r}
-ggplot(data=subset(pbc, is.na(stage) == FALSE), mapping = aes(x=stage)) +
-  geom_bar(fill="steelblue") +
+ggplot(data = subset(pbc, is.na(stage) == FALSE), mapping = aes(x = stage)) +
+  geom_bar(fill = "steelblue") +
   theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency")
+  labs(x = "Stage of disease", y = "Frequency")
 ```
 
 ## Introducing the "pipe" `|>`
@@ -409,12 +407,11 @@ subset() |>
 This syntax would "pipe" the results of the first function into the second function, and produces code that is much easier for a person to read. So our previous bar chart of stage of disease can be rewritten as:
 
 ```{r}
-subset(pbc, is.na(stage) == FALSE) |> 
-  ggplot(mapping = aes(x=stage)) +
-    geom_bar(fill="steelblue") +
-    theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency")
+subset(pbc, is.na(stage) == FALSE) |>
+  ggplot(mapping = aes(x = stage)) +
+  geom_bar(fill = "steelblue") +
+  theme_classic() +
+  labs(x = "Stage of disease", y = "Frequency")
 ```
 
 Notice that when we pipe a dataset from the `subset()` function, we no longer need to specify the name of the dataset in `ggplot()`: the dataset is inferred from the action of the `subset()` function.
@@ -431,48 +428,41 @@ Notice that when we pipe a dataset from the `subset()` function, we no longer ne
 In @sec-two-catvar-graph, we saw that clustered or stacked bar charts can be used to summarise two categorical variables. Remember that the *aesthetic mapping* can be used to describe how our data map to visual elements of our plot. So we can map `sex` to the `fill` attribute to summarise Stage of Disease by sex. By default, `ggplot` will produce a stacked bar chart, but we can request a clustered bar chart by specifying `position="dodge"` in the `geom_bar()` statement:
 
 ```{r}
-subset(pbc, is.na(stage) == FALSE) |> 
-  ggplot(mapping = aes(x=stage, fill=sex)) +
-    geom_bar(position = "dodge") +
-    theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency")
+subset(pbc, is.na(stage) == FALSE) |>
+  ggplot(mapping = aes(x = stage, fill = sex)) +
+  geom_bar(position = "dodge") +
+  theme_classic() +
+  labs(x = "Stage of disease", y = "Frequency")
 ```
 
 Notice that the legend title uses the name of the `fill` variable, in this case `sex` with a lower-case s. We can specify an alternative legend title in the `labs()` statement:
 
 ```{r}
-subset(pbc, is.na(stage) == FALSE) |> 
-  ggplot(mapping = aes(x=stage, fill=sex)) +
-    geom_bar(position = "dodge") +
-    theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency",
-       fill = "Sex")
+subset(pbc, is.na(stage) == FALSE) |>
+  ggplot(mapping = aes(x = stage, fill = sex)) +
+  geom_bar(position = "dodge") +
+  theme_classic() +
+  labs(x = "Stage of disease", y = "Frequency", fill = "Sex")
 ```
 
 A stacked bar chart can be constructed by removing the `position = dodge()` statement:
 
 ```{r}
-subset(pbc, is.na(stage) == FALSE) |> 
-  ggplot(mapping = aes(x=stage, fill=sex)) +
-    geom_bar() +
-    theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Frequency",
-       fill = "Sex")
+subset(pbc, is.na(stage) == FALSE) |>
+  ggplot(mapping = aes(x = stage, fill = sex)) +
+  geom_bar() +
+  theme_classic() +
+  labs(x = "Stage of disease", y = "Frequency", fill = "Sex")
 ```
 
 Finally, we can construct a stacked relative bar chart by specifying `position = "fill"` in the `geom_bar()` definition:
 
 ```{r}
-subset(pbc, is.na(stage) == FALSE) |> 
-  ggplot(mapping = aes(x=stage, fill=sex)) +
-    geom_bar(position = "fill") +
-    theme_classic() +
-  labs(x = "Stage of disease", 
-       y = "Proportion",
-       fill = "Sex")
+subset(pbc, is.na(stage) == FALSE) |>
+  ggplot(mapping = aes(x = stage, fill = sex)) +
+  geom_bar(position = "fill") +
+  theme_classic() +
+  labs(x = "Stage of disease", y = "Proportion", fill = "Sex")
 ```
 
 ## Producing a density plot using ggplot
@@ -480,11 +470,10 @@ subset(pbc, is.na(stage) == FALSE) |>
 We can produce a density plot by specifying the variable of interest as the `x` variable, and requesting a `geom_density()`:
 
 ```{r}
-ggplot(data=pbc, aes(x=age)) + 
+ggplot(data = pbc, aes(x = age)) +
   geom_density() +
   theme_classic() +
-  labs(x="Age (years)",
-       y="Density")
+  labs(x = "Age (years)", y = "Density")
 ```
 
 ## Producing a boxplot using ggplot
@@ -492,19 +481,19 @@ ggplot(data=pbc, aes(x=age)) +
 A boxplot is constructed with a single `y` variable, and `geom_boxplot()`:
 
 ```{r}
-ggplot(data=pbc, aes(y=age)) + 
+ggplot(data = pbc, aes(y = age)) +
   geom_boxplot() +
   theme_classic() +
-  labs(y="Age (years)")
+  labs(y = "Age (years)")
 ```
 
 By default, `ggplot2` includes arbitrary values on the x-axis. As boxplots are usually constructed only for informal data investigation, and are rarely included in formal documents, the x-axis labelling may not be an issue. However, the x-axis labelling can be removed as follows:
 
 ```{r}
-ggplot(data=pbc, aes(y=age)) + 
+ggplot(data = pbc, aes(y = age)) +
   geom_boxplot() +
   theme_classic() +
-  labs(y="Age (years)") +
+  labs(y = "Age (years)") +
   theme(
     axis.title.x = element_blank(),
     axis.text.x = element_blank(),

@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -70,7 +69,7 @@ Traditionally, the variance of the analysis variable in each group was assumed t
 
 In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.
 
-Exploratory data analysis of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. In particular, the distribution of the analysis variable should be examined for each group, as shown in @fig-mod05-bwt-gender. The `mod05_birthweight.rds` dataset is available on Moodle.
+Exploratory data analysis of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. In particular, the distribution of the analysis variable should be examined for each group, as shown in @fig-mod05-bwt-gender. The data are stored in `mod05_birthweight.rds`.
 
 ```{r fig-mod05-bwt-gender, echo=FALSE, out.width = "50%", fig.cap="Distribution of birth weight by gender"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-bwt-gender.png"))
@@ -84,27 +83,29 @@ We can also describe the data using summary statistics:
 #| label: tbl-5-1
 #| tbl-cap: "Summary of birthweight by gender"
 #| tbl-pos: h
-
 library(gtsummary)
 
 ex5_1 <- readRDS("data/examples/mod05_birthweight.rds")
 
-tbl_summary(ex5_1,
-    by = gender,
-    type = all_continuous() ~ "continuous2",
-    statistic = all_continuous() ~ c(
-        "{N_nonmiss}",
-        "{mean} ({sd})",
-        "{median} ({p25}, {p75})",
-        "{min} to {max}"
-    )
+tbl_summary(
+  ex5_1,
+  by = gender,
+  type = all_continuous() ~ "continuous2",
+  statistic = all_continuous() ~ c(
+    "{N_nonmiss}",
+    "{mean} ({sd})",
+    "{median} ({p25}, {p75})",
+    "{min} to {max}"
+  )
 ) |>
   modify_header(all_stat_cols() ~ "**{level}**") |>
-  add_stat_label(label = birthweight ~ c("Number", "Mean (SD)", "Median (Q1, Q3)", "Range")) |>
-  as_tibble() |> 
-  janitor::clean_names(case="title") |> 
-  rename(` `=Characteristic) |> 
-  tidyr::drop_na() |> 
+  add_stat_label(
+    label = birthweight ~ c("Number", "Mean (SD)", "Median (Q1, Q3)", "Range")
+  ) |>
+  as_tibble() |>
+  janitor::clean_names(case = "title") |>
+  rename(` ` = Characteristic) |>
+  tidyr::drop_na() |>
   tt()
 ```
 
@@ -128,16 +129,15 @@ Statistical software will calculate both the t and P values. If the t-value is l
 #| label: tbl-ind-t
 #| tbl-cap: Birthweight (kg) by sex
 #| tbl-pos: h
-
 df <- tibble::tribble(
-    ~Sex, ~n, ~`Mean (SE)`, ~`95% Confidence Interval`,
-    "Female", 56, "3.59 (0.049)", "3.49 to 3.68",
-    "Male", 44, "3.42 (0.053)", "3.31 to 3.53",
-    "Difference", NA, "0.17 (0.072)", "0.02 to 0.31"
+  ~Sex         , ~n , ~`Mean (SE)`   , ~`95% Confidence Interval` ,
+  "Female"     , 56 , "3.59 (0.049)" , "3.49 to 3.68"             ,
+  "Male"       , 44 , "3.42 (0.053)" , "3.31 to 3.53"             ,
+  "Difference" , NA , "0.17 (0.072)" , "0.02 to 0.31"
 )
 
-tt(df) |> 
-  tt_format(escape=TRUE)
+tt(df) |>
+  tt_format(escape = TRUE)
 ```
 
 Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference of weight between girls and boys lies between 0.02 and 0.31 kg. Note that this interval does not contain the null value of 0.
@@ -179,7 +179,7 @@ Because the standard error becomes smaller as the sample size becomes larger, th
 
 A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.
 
-The dataset `mod05_ankle_bp.xlsx` is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in @fig-mod05-sbpdiff. The differences approximate a normal distribution and therefore a paired t-test can be used.
+Using the dataset `mod05_ankle_bp.xlsx`, we first need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in @fig-mod05-sbpdiff. The differences approximate a normal distribution and therefore a paired t-test can be used.
 
 ```{r fig-mod05-sbpdiff, echo=FALSE, out.width = "50%", fig.cap="Distribution of differences in ankle SBP between two sites of 107 participants"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-sbpdiff.png"))
@@ -191,15 +191,14 @@ The paired t-test can be performed using statistical software, with a summary of
 #| label: tbl-paired-t
 #| tbl-cap: "Systolic blood pressure (mmHg) measured at two sites on the ankle"
 #| tbl-pos: h
-
 df <- tibble::tribble(
-    ~Site, ~n, ~`Mean (SE)`, ~`95% Confidence Interval`,
-    "Dorsalis pedis", 107L, "116.7 (3.46)", "(109.9 to 123.6)",
-    "Tibialis posterior", 107L, "118.0 (3.43)", "(111.2 to 124.8)",
-    "Difference", 107L, "-1.3 (1.31)", "(-3.9 to 1.3)"
+  ~Site                , ~n   , ~`Mean (SE)`   , ~`95% Confidence Interval` ,
+  "Dorsalis pedis"     , 107L , "116.7 (3.46)" , "(109.9 to 123.6)"         ,
+  "Tibialis posterior" , 107L , "118.0 (3.43)" , "(111.2 to 124.8)"         ,
+  "Difference"         , 107L , "-1.3 (1.31)"  , "(-3.9 to 1.3)"
 )
 
-tt(df) |> 
+tt(df) |>
   tt_format(escape = TRUE)
 ```
 
@@ -224,59 +223,61 @@ library(ggplot2)
 library(dplyr)
 
 group4 <- data.frame(
-    group = 4,
-    x = rnorm(65, mean = -1, sd = 4)
+  group = 4,
+  x = rnorm(65, mean = -1, sd = 4)
 )
 
 group3 <- data.frame(
-    group = 3,
-    x = rnorm(50, mean = 1, sd = 8)
+  group = 3,
+  x = rnorm(50, mean = 1, sd = 8)
 )
 
 group2 <- data.frame(
-    group = 2,
-    x = rnorm(45, mean = 2, sd = 5.5)
+  group = 2,
+  x = rnorm(45, mean = 2, sd = 5.5)
 )
 
 group1 <- data.frame(
-    group = 1,
-    x = rnorm(50, mean = 4, sd = 2)
+  group = 1,
+  x = rnorm(50, mean = 4, sd = 2)
 )
 
 df <- rbind(group1, group2, group3, group4)
 df$group <- factor(df$group)
 
 dfsumm <- df |>
-    group_by(group) |>
-    summarise(
-        mean.x = mean(x, na.rm = TRUE),
-        sd.x = sd(x, na.rm = TRUE),
-        n.x = n()
-    ) |>
-    mutate(
-        se.x = sd.x / sqrt(n.x),
-        lower.ci.x = mean.x - qt(1 - (0.05 / 2), n.x - 1) * se.x,
-        upper.ci.x = mean.x + qt(1 - (0.05 / 2), n.x - 1) * se.x,
-        text = c(
-            "P<0.001; Very strong evidence",
-            "P=0.01; Evidence",
-            "P=0.4; No evidence",
-            "P=0.08; Weak evidence"
-        )
+  group_by(group) |>
+  summarise(
+    mean.x = mean(x, na.rm = TRUE),
+    sd.x = sd(x, na.rm = TRUE),
+    n.x = n()
+  ) |>
+  mutate(
+    se.x = sd.x / sqrt(n.x),
+    lower.ci.x = mean.x - qt(1 - (0.05 / 2), n.x - 1) * se.x,
+    upper.ci.x = mean.x + qt(1 - (0.05 / 2), n.x - 1) * se.x,
+    text = c(
+      "P<0.001; Very strong evidence",
+      "P=0.01; Evidence",
+      "P=0.4; No evidence",
+      "P=0.08; Weak evidence"
     )
+  )
 
 ggplot(data = dfsumm, aes(x = mean.x, y = group)) +
-    geom_errorbar(aes(xmin = lower.ci.x, xmax = upper.ci.x), width = 0.1) +
-    geom_point() +
-    geom_text(aes(label = text), nudge_y = -0.1) +
-    xlim(c(-2, 6)) +
-    theme_minimal() +
-    theme(
-        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        axis.line.x = element_line(colour = "black"), axis.text.y = element_blank()
-    ) +
-    labs(x = "Difference in means and 95% CI", y = "") +
-    geom_vline(xintercept = 0, linetype = 2)
+  geom_errorbar(aes(xmin = lower.ci.x, xmax = upper.ci.x), width = 0.1) +
+  geom_point() +
+  geom_text(aes(label = text), nudge_y = -0.1) +
+  xlim(c(-2, 6)) +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(colour = "black"),
+    axis.text.y = element_blank()
+  ) +
+  labs(x = "Difference in means and 95% CI", y = "") +
+  geom_vline(xintercept = 0, linetype = 2)
 ```
 
 

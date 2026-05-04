@@ -286,10 +286,10 @@ There are two things to note here. First, notice that the first two inputs are l
 
 ```{r, eval=FALSE}
 # Only the standard deviation is provided as the measure of variability
-descriptives(data=pbc, vars=age)
+descriptives(data = pbc, vars = age)
 
 # Additionally request the variance to be calculated
-descriptives(data=pbc, vars=age, variance=TRUE)
+descriptives(data = pbc, vars = age, variance = TRUE)
 ```
 
 Second, for functions with multiple inputs, we can specify the input name and its value, or we can ignore the input name and specify just the input values **in the order listed in the Usage section**. So the following are equivalent:
@@ -297,14 +297,14 @@ Second, for functions with multiple inputs, we can specify the input name and it
 ```{r, eval=FALSE}
 # We can specify that the dataset to be summarised is pbc,
 #   and the variable to summarise is age:
-descriptives(data=pbc, vars=age)
+descriptives(data = pbc, vars = age)
 
 # We can omit the input name, as long as we keep the inputs in the correct order -
 #   that is, dataset first, variable second:
 descriptives(pbc, age)
 
 # We can change the order of the inputs, as long as we specify the input name:
-descriptives(vars=age, data=pbc)
+descriptives(vars = age, data = pbc)
 ```
 
 In this course, we will usually provide all the input names, even when they are not required. As you become more familiar with R, you will start to use the shortcut method.
@@ -399,33 +399,32 @@ In this exercise (spanning Modules 1 and 2), we will analyse data to complete a 
 #| label: tbl-r-t1
 #| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
 #| tbl-pos: h
-
 tab <- tibble::tribble(
-                     ~Characteristic,                   ~` `,                    ~Summary,
-                       "Age (years)",                     NA, "Mean (SD) or Median [IQR]",
-                               "Sex",                 "Male",                     "n (%)",
-                                  NA,               "Female",                     "n (%)",
-                       "AST* (U/ml)",                     NA, "Mean (SD) or Median [IQR]",
-                   "Serum bilirubin",                     NA, "Mean (SD) or Median [IQR]",
-                             "Stage",                    "I",                     "n (%)",
-                                  NA,                   "II",                     "n (%)",
-                                  NA,                  "III",                     "n (%)",
-                                  NA,                 "IIIV",                     "n (%)",
-         "Vital status at study end", "Alive: no transplant",                     "n (%)",
-                                  NA,    "Alive: transplant",                     "n (%)",
-                                  NA,             "Deceased",                     "n (%)"
-         )
+  ~Characteristic             , ~` `                   , ~Summary                    ,
+  "Age (years)"               , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Sex"                       , "Male"                 , "n (%)"                     ,
+  NA                          , "Female"               , "n (%)"                     ,
+  "AST* (U/ml)"               , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Serum bilirubin"           , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Stage"                     , "I"                    , "n (%)"                     ,
+  NA                          , "II"                   , "n (%)"                     ,
+  NA                          , "III"                  , "n (%)"                     ,
+  NA                          , "IIIV"                 , "n (%)"                     ,
+  "Vital status at study end" , "Alive: no transplant" , "n (%)"                     ,
+  NA                          , "Alive: transplant"    , "n (%)"                     ,
+  NA                          , "Deceased"             , "n (%)"
+)
 
-tt(tab, escape=TRUE, notes = "* aspartate aminotransferase") |> 
-  format_tt(replace="")
+tt(tab, escape = TRUE, notes = "* aspartate aminotransferase") |>
+  format_tt(replace = "")
 ```
 
-This table is available in Table1.docx, saved on Moodle.
+This table is available in `Table1.docx`.
 
 ::: {.callout-note icon="false"}
 ## TASK
 
-Download the table shell, saved on Moodle as `PBC Table1.docx`, and the information file called `mod01_pbc_info.txt`.
+Download the table shell, saved as `PBC Table1.docx`, and the information file called `mod01_pbc_info.txt`.
 :::
 
 ### Set up your data
@@ -442,7 +441,7 @@ Call the new folder **data**.
 
 Click on this folder to open it, and then create two new folders: **activities** and **examples**.
 
-Download the "Data sets: for learning activities" from Moodle, and use Windows Explorer or MacOS Finder to save these data sets in **activities**. Save the "Data sets: example data from course notes" into the **examples** folder.
+Download the "Data sets: for learning activities", and use Windows Explorer or MacOS Finder to save these data sets in **activities**. Save the "Data sets: example data from course notes" into the **examples** folder.
 
 Your **activities** folder should look like:
 
@@ -500,13 +499,13 @@ We can summarise the three continuous variables in the pbc data: age, AST and se
 ```{r}
 library(jmv)
 
-descriptives(data=pbc, vars=c(age, ast, bili))
+descriptives(data = pbc, vars = c(age, ast, bili))
 ```
 
 By default, the `descriptives` function presents the mean, median, standard deviation, minimum and maximum. We can request additional statistics, such as the quartiles (which are called the percentiles, or pc, in the descriptives function):
 
 ```{r}
-descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE)
+descriptives(data = pbc, vars = c(age, ast, bili), pc = TRUE)
 ```
 
 ### Producing a density plot
@@ -514,7 +513,7 @@ descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE)
 We can add `dens=TRUE` to the `descriptives` function to produce a density plot for each listed variable:
 
 ```{r}
-descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE, dens=TRUE)
+descriptives(data = pbc, vars = c(age, ast, bili), pc = TRUE, dens = TRUE)
 ```
 
 Note that the density plots are plotted separately in the **Plot** window. They can be viewed using the arrows at the top of the **Plot** window:
@@ -530,9 +529,11 @@ plot(density(pbc$age))
 This plot can be improved by using `xlab=" "` and `main=" "` to assign labels for the x-axis and overall title respectively:
 
 ```{r}
-plot(density(pbc$age),
-     xlab="Age in years",
-     main="Density plot of participant age from pbc study data")
+plot(
+  density(pbc$age),
+  xlab = "Age in years",
+  main = "Density plot of participant age from pbc study data"
+)
 ```
 
 ::: callout-warning
@@ -554,8 +555,11 @@ Like the density plot, boxplots can be requested in the `descriptives` function 
 The `boxplot` function is an alternative, more flexible function, again specifying the dataframe to use and the variable to be plotted as `dataframe$variable`. Labels can be applied in the same way as the histogram:
 
 ```{r}
-boxplot(pbc$age, xlab="Age (years)",
-   main="Boxplot of participant age from pbc study data")
+boxplot(
+  pbc$age,
+  xlab = "Age (years)",
+  main = "Boxplot of participant age from pbc study data"
+)
 ```
 
 ::: {.callout-note icon="false"}
@@ -596,13 +600,16 @@ Consider a sample dataset: `mod01_weight_1000.rds`, which contains the weights o
 #| echo: false
 #| message: false
 #| warning: false
-
 sample <- readRDS("data/examples/mod01_weight_1000.rds")
 
-par(mfrow=c(1,2))
-plot(density(sample$weight), xlab="Weight (kg)", main="Density plot of 1000 weights")
-boxplot(sample$weight, xlab="Weight (kg)", main="Boxplot of 1000 weights")
-par(mfrow=c(1,1))
+par(mfrow = c(1, 2))
+plot(
+  density(sample$weight),
+  xlab = "Weight (kg)",
+  main = "Density plot of 1000 weights"
+)
+boxplot(sample$weight, xlab = "Weight (kg)", main = "Boxplot of 1000 weights")
+par(mfrow = c(1, 1))
 ```
 
 There is a clear outlying point shown in the boxplot. Although not obvious, the same point is shown in the density plot as a small blip around 700kg. Obviously this point is unusual, and we should investigate.
@@ -613,15 +620,14 @@ For example, to list any observations from the `sample` dataset with a weight la
 
 ```{r}
 #| eval: false
-subset(sample, weight>200)
+subset(sample, weight > 200)
 ```
 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
-
-print(subset(sample, weight>200))
+print(subset(sample, weight > 200))
 ```
 
 We see that there is a very high value of 700.2kg. A value as high as 700kg is likely to be a data entry error (e.g. error in entering an extra zero) and is not a plausible weight value. Here, **you should check your original data**.
@@ -640,7 +646,7 @@ We will write code to:
 Putting it all together:
 
 ```{r}
-sample$weight_clean = ifelse(sample$weight==700.2, NA, sample$weight)
+sample$weight_clean = ifelse(sample$weight == 700.2, NA, sample$weight)
 ```
 
 **Note:** if an extreme value lies within the range of biological possibility it should not be set to missing.

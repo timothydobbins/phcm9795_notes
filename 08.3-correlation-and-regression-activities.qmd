@@ -35,7 +35,7 @@ b) If a researcher has data on two variables, there will be a higher correlation
 
 ### Supplementary Activity 8.5 {-}
 
-A cross-sectional study was conducted to examine the association between gestational age and systolic blood pressure in low birthweight babies. Data were collected at birth from 60 low birthweight babies and saved in the file Activity_8.5_babies.csv. The dataset contains the following variables:
+A cross-sectional study was conducted to examine the association between gestational age and systolic blood pressure in low birthweight babies. Data were collected at birth from 60 low birthweight babies and saved in the file `Activity_8.5_babies.csv`. The dataset contains the following variables:
 
 - ID: participant ID number
 - sbp: systolic blood pressure (mmHg)

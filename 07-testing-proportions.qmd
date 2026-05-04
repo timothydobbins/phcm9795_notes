@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -153,12 +152,11 @@ For other types of paired data such as twins or matched cases and controls, the 
 ```{r tbl-7-1, echo=FALSE}
 #| tbl-cap: Table layout for testing matched proportions
 #| tbl-pos: h
-
 tab7_1 <- tibble::tribble(
-    ~` `, ~`Negative at follow-up`, ~`Positive at follow-up`, ~Total,
-    "Negative at baseline", "a", "b", "a + b",
-    "Positive at baseline", "c", "d", "c + d",
-    "Total", "a + c", "b + d", "N"
+  ~` `                   , ~`Negative at follow-up` , ~`Positive at follow-up` , ~Total  ,
+  "Negative at baseline" , "a"                      , "b"                      , "a + b" ,
+  "Positive at baseline" , "c"                      , "d"                      , "c + d" ,
+  "Total"                , "a + c"                  , "b + d"                  , "N"
 )
 
 tt(tab7_1)
@@ -166,7 +164,7 @@ tt(tab7_1)
 
 ### Worked Example 7.3
 
-Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The dataset `mod07_drug_response.rds` is available on Moodle. The null hypothesis is as follows:
+Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The data have been saved as `mod07_drug_response.rds`. The null hypothesis is as follows:
 
 -   H~0~: The proportion of patients who do better on drug A is the same as the proportion of patients who do better on drug B
 

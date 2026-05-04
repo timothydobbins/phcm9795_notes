@@ -120,25 +120,24 @@ In this exercise (spanning Modules 1 and 2), we will analyse data to complete a 
 #| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
 #| tbl-pos: h
 #| label: tbl-jamovi-t1
-
 tab <- tibble::tribble(
-                     ~Characteristic,                   ~` `,                    ~Summary,
-                       "Age (years)",                     NA, "Mean (SD) or Median [IQR]",
-                               "Sex",                 "Male",                     "n (%)",
-                                  NA,               "Female",                     "n (%)",
-                       "AST* (U/ml)",                     NA, "Mean (SD) or Median [IQR]",
-                   "Serum bilirubin",                     NA, "Mean (SD) or Median [IQR]",
-                             "Stage",                    "I",                     "n (%)",
-                                  NA,                   "II",                     "n (%)",
-                                  NA,                  "III",                     "n (%)",
-                                  NA,                 "IIIV",                     "n (%)",
-         "Vital status at study end", "Alive: no transplant",                     "n (%)",
-                                  NA,    "Alive: transplant",                     "n (%)",
-                                  NA,             "Deceased",                     "n (%)"
-         )
+  ~Characteristic             , ~` `                   , ~Summary                    ,
+  "Age (years)"               , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Sex"                       , "Male"                 , "n (%)"                     ,
+  NA                          , "Female"               , "n (%)"                     ,
+  "AST* (U/ml)"               , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Serum bilirubin"           , NA                     , "Mean (SD) or Median [IQR]" ,
+  "Stage"                     , "I"                    , "n (%)"                     ,
+  NA                          , "II"                   , "n (%)"                     ,
+  NA                          , "III"                  , "n (%)"                     ,
+  NA                          , "IIIV"                 , "n (%)"                     ,
+  "Vital status at study end" , "Alive: no transplant" , "n (%)"                     ,
+  NA                          , "Alive: transplant"    , "n (%)"                     ,
+  NA                          , "Deceased"             , "n (%)"
+)
 
-tt(tab, escape=TRUE, notes = "* aspartate aminotransferase") |> 
-  format_tt(replace="")
+tt(tab, escape = TRUE, notes = "* aspartate aminotransferase") |>
+  format_tt(replace = "")
 ```
 
 ::: {.callout-note icon="false"}
@@ -156,7 +155,7 @@ Typing data directly into jamovi is not common; we usually open data that have b
 
 Load the sample data set called `mod01_pbc.rds` into jamovi using the following steps:
 
-1.  Locate the data set called `mod01_pbc.rds` on Moodle or the PHCM9795 Home Page. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder.
+1.  Locate the data set called `mod01_pbc.rds`. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder.
 
 2.  In jamovi, click the three-bar icon, then choose **Open**. jamovi usually searches in the most recently used folder, so most times you will need to **click Browse**. Browse to where you stored the dataset and click **Open**.
 

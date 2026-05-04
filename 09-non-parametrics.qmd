@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 library(tidyverse)
@@ -38,7 +37,7 @@ When a variable has a skewed distribution, one possibility is to transform the d
 
 ### Worked Example
 
-We have data from 132 patients who had a hospital stay following admission to ICU available on Moodle (`mod09_infection.rds`). The distribution of the length of stay for these patients is shown in the density plot in @fig-mod09-los. As is common with variables that record time, the data are skewed with many patients having relatively short stays and a few patients having very long hospital stays. Clearly, it would be inappropriate to use parametric statistical methods for these data.
+We have data from 132 patients who had a hospital stay following admission to ICU (`mod09_infection.rds`). The distribution of the length of stay for these patients is shown in the density plot in @fig-mod09-los. As is common with variables that record time, the data are skewed with many patients having relatively short stays and a few patients having very long hospital stays. Clearly, it would be inappropriate to use parametric statistical methods for these data.
 
 ```{r fig-mod09-los, echo=FALSE, out.width = "66%", fig.cap="Length of hospital stay for 132 patients"}
 knitr::include_graphics(here::here("img", "mod09", "mod09-los-dist.png"))
@@ -96,34 +95,33 @@ It is often not possible or sensible to transform a non-normal distribution, for
 
 ```{r tbl-9-1, echo=FALSE}
 #| tbl-cap: Transforming data to ranks (first 21 participants)
-
 df <- tibble::tribble(
-    ~ID, ~Infection, ~`Length of stay`, ~Rank, ~`Infection=no`, ~`Infection=Yes`,
-    32L, "No", 0L, 1, 1, NA,
-    33L, "No", 1L, 2, 2, NA,
-    12L, "No", 9L, 3, 3, NA,
-    22L, "No", 11L, 4.5, 4.5, NA,
-    16L, "No", 11L, 4.5, 4.5, NA,
-    28L, "Yes", 12L, 6, NA, 6,
-    27L, "No", 13L, 7.5, 7.5, NA,
-    20L, "No", 13L, 7.5, 7.5, NA,
-    24L, "No", 14L, 11, 11, NA,
-    11L, "No", 14L, 11, 11, NA,
-    130L, "No", 14L, 11, 11, NA,
-    10L, "No", 14L, 11, 11, NA,
-    25L, "No", 14L, 11, 11, NA,
-    19L, "No", 15L, 15.5, 15.5, NA,
-    30L, "No", 15L, 15.5, 15.5, NA,
-    23L, "No", 15L, 15.5, 15.5, NA,
-    14L, "No", 15L, 15.5, 15.5, NA,
-    15L, "No", 17L, 20.5, 20.5, NA,
-    13L, "No", 17L, 20.5, 20.5, NA,
-    21L, "Yes", 17L, 20.5, NA, 20.5,
-    17L, "No", 17L, 20.5, 20.5, NA
+  ~ID  , ~Infection , ~`Length of stay` , ~Rank , ~`Infection=no` , ~`Infection=Yes` ,
+   32L , "No"       ,  0L               ,  1    ,  1              , NA               ,
+   33L , "No"       ,  1L               ,  2    ,  2              , NA               ,
+   12L , "No"       ,  9L               ,  3    ,  3              , NA               ,
+   22L , "No"       , 11L               ,  4.5  ,  4.5            , NA               ,
+   16L , "No"       , 11L               ,  4.5  ,  4.5            , NA               ,
+   28L , "Yes"      , 12L               ,  6    , NA              ,  6               ,
+   27L , "No"       , 13L               ,  7.5  ,  7.5            , NA               ,
+   20L , "No"       , 13L               ,  7.5  ,  7.5            , NA               ,
+   24L , "No"       , 14L               , 11    , 11              , NA               ,
+   11L , "No"       , 14L               , 11    , 11              , NA               ,
+  130L , "No"       , 14L               , 11    , 11              , NA               ,
+   10L , "No"       , 14L               , 11    , 11              , NA               ,
+   25L , "No"       , 14L               , 11    , 11              , NA               ,
+   19L , "No"       , 15L               , 15.5  , 15.5            , NA               ,
+   30L , "No"       , 15L               , 15.5  , 15.5            , NA               ,
+   23L , "No"       , 15L               , 15.5  , 15.5            , NA               ,
+   14L , "No"       , 15L               , 15.5  , 15.5            , NA               ,
+   15L , "No"       , 17L               , 20.5  , 20.5            , NA               ,
+   13L , "No"       , 17L               , 20.5  , 20.5            , NA               ,
+   21L , "Yes"      , 17L               , 20.5  , NA              , 20.5             ,
+   17L , "No"       , 17L               , 20.5  , 20.5            , NA
 )
 
-tt(df) |> 
-  tt_format(replace=" ")
+tt(df) |>
+  tt_format(replace = " ")
 ```
 
 By assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups.
@@ -152,22 +150,23 @@ A crossover trial is done to compare symptom scores for two drugs in 11 people w
 
 ```{r tbl-9-2, echo=FALSE}
 #| tbl-cap: Arthritis symptom scores for 11 patients after administering two drugs
-
 df <- tibble::tribble(
-    ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,
-    1L, 3L, 4L,
-    2L, 2L, 7L,
-    3L, 3L, 4L,
-    4L, 8L, 10L,
-    5L, 6L, 8L,
-    6L, 6L, 1L,
-    7L, 2L, 6L,
-    8L, 3L, 7L,
-    9L, 5L, 8L,
-    10L, 9L, 10L,
-    11L, 7L, 8L
+  ~`Patient ID` , ~`Score: Drug 1` , ~`Score: Drug 2` ,
+   1L           , 3L               ,  4L              ,
+   2L           , 2L               ,  7L              ,
+   3L           , 3L               ,  4L              ,
+   4L           , 8L               , 10L              ,
+   5L           , 6L               ,  8L              ,
+   6L           , 6L               ,  1L              ,
+   7L           , 2L               ,  6L              ,
+   8L           , 3L               ,  7L              ,
+   9L           , 5L               ,  8L              ,
+  10L           , 9L               , 10L              ,
+  11L           , 7L               ,  8L
 ) |>
-    dplyr::mutate(`Difference (Drug 2 - Drug 1)` = `Score: Drug 2` - `Score: Drug 1`)
+  dplyr::mutate(
+    `Difference (Drug 2 - Drug 1)` = `Score: Drug 2` - `Score: Drug 1`
+  )
 
 tt(df)
 ```
