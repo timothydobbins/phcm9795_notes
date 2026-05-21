@@ -5,6 +5,7 @@ We will use data from `mod04_blood_pressure.csv` to demonstrate how a one-sample
 Select `dbp` as the **Dependent Variable**. Enter the hypothesised mean as the **Test value** (`71` in this example) as shown below.
 
 ```{r mod4-ttest, echo=FALSE, out.width = "100%"}
+#| fig-alt: Screenshot of the Jamovi interface showing setup for a one-sample t-test. The variable “dbp” is entered as the dependent variable and the hypothesised mean test value is set to 71. The analysis options panel for conducting a one-sample t-test is displayed.
 knitr::include_graphics(here::here("img", "mod04", "jamovi", "mod4-ttest.png"))
 ```
 
@@ -13,5 +14,6 @@ The test statistic (i.e. t and its degrees of freedom) are provided. By default,
 Note that the one-sample t-test output does not include the mean or the 95% confidence interval of the mean of your variable of interest. This should be obtained using **Exploration \> Descriptives**:
 
 ```{r mod4-ttest-desc, echo=FALSE, out.width = "100%"}
+#| fig-alt: Screenshot of Jamovi descriptive statistics output for the variable “dbp”. The table reports the sample size, mean, standard deviation, standard error, and 95% confidence interval for diastolic blood pressure.
 knitr::include_graphics(here::here("img", "mod04", "jamovi", "mod4-ttest-desc.png"))
 ```

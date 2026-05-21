@@ -4,6 +4,7 @@
 #| warning: false
 library(tinytable)
 library(dplyr)
+library(ggplot2)
 ```
 
 # An introduction to hypothesis testing
@@ -12,14 +13,14 @@ library(dplyr)
 
 By the end of this module you will be able to:
 
--   Formulate a research question and present it as a null and alternative hypothesis;
--   Understand the role of confidence intervals in assessing research questions;
--   Explain the general framework of hypothesis testing;
--   Interpret P-values as measures of evidence;
--   Distinguish between statistical significance and practical importance;
--   Perform and interpret a one-sample t-test;
--   Explain the concepts of one-tailed and two-tailed statistical tests, and determine when each is appropriate;
--   Report the results of hypothesis tests clearly, accurately, and in plain language.
+- Formulate a research question and present it as a null and alternative hypothesis;
+- Understand the role of confidence intervals in assessing research questions;
+- Explain the general framework of hypothesis testing;
+- Interpret P-values as measures of evidence;
+- Distinguish between statistical significance and practical importance;
+- Perform and interpret a one-sample t-test;
+- Explain the concepts of one-tailed and two-tailed statistical tests, and determine when each is appropriate;
+- Report the results of hypothesis tests clearly, accurately, and in plain language.
 
 ## Optional readings {.unnumbered}
 
@@ -33,9 +34,9 @@ In earlier modules, we examined sampling and how summary statistics can be used 
 
 We use hypothesis testing to answer questions such as whether two groups have different health outcomes or whether there is an association between a treatment and a health outcome. For example, we may want to know:
 
--   whether a safety program has been effective in reducing injuries in a factory, i.e. whether the frequency of injuries in the group who attended a safety program is lower than in the group who did not receive the safety program;
--   whether a new drug is more effective in reducing blood pressure than a conventional drug, i.e. whether the mean blood pressure in the group receiving the new drug is lower than the mean blood pressure in the group receiving the conventional medication;
--   whether an environmental exposure increases the risk of a disease, i.e. whether the frequency of disease is higher in the group who have been exposed to an environmental factor than in the non-exposed group.
+- whether a safety program has been effective in reducing injuries in a factory, i.e. whether the frequency of injuries in the group who attended a safety program is lower than in the group who did not receive the safety program;
+- whether a new drug is more effective in reducing blood pressure than a conventional drug, i.e. whether the mean blood pressure in the group receiving the new drug is lower than the mean blood pressure in the group receiving the conventional medication;
+- whether an environmental exposure increases the risk of a disease, i.e. whether the frequency of disease is higher in the group who have been exposed to an environmental factor than in the non-exposed group.
 
 We may also want to know something about a single group. For example, whether the mean blood pressure of a sample is the same as the general population.
 
@@ -49,20 +50,20 @@ In this module, we will revisit the Pima example from Module 3 (`mod03_blood_pre
 
 A research question is an open, neutral question that states what we want to find out - often phrased using everyday language. Research questions guide study design and data collection, and do not presuppose an answer. Using our Pima example, a research question could be posed:
 
--   Do Pima women have the same mean diastolic blood pressure as the general US population?
+- Do Pima women have the same mean diastolic blood pressure as the general US population?
 
 A useful way of structuring research questions in health research is the PECO framework:
 
--   Population: Who is being studied?
--   Exposure: What exposure, risk factor, or condition is of interest?
--   Comparator: What is the exposure being compared against?
--   Outcome: What outcome is being measured?
+- Population: Who is being studied?
+- Exposure: What exposure, risk factor, or condition is of interest?
+- Comparator: What is the exposure being compared against?
+- Outcome: What outcome is being measured?
 
 In the example above:
 
--   Population: Pima women
--   Comparator: General US population
--   Outcome: Diastolic blood pressure
+- Population: Pima women
+- Comparator: General US population
+- Outcome: Diastolic blood pressure
 
 Note there as there is only one group here, there is no "exposure".
 
@@ -72,8 +73,8 @@ We can use the 95% confidence interval to **informally** assess research questio
 
 If a hypothesised mean lies:
 
--   *outside* the confidence interval, there is *informal evidence* that the population mean differs from the hypothesised mean
--   *inside* the confidence interval, there is *no informal evidence* that the population mean differs from the hypothesised mean
+- *outside* the confidence interval, there is *informal evidence* that the population mean differs from the hypothesised mean
+- *inside* the confidence interval, there is *no informal evidence* that the population mean differs from the hypothesised mean
 
 Note that a confidence interval does not provide a quantitative measure of evidence against a null hypothesis; it supports only an informal comparison. Formal hypothesis testing is required to quantify the level of evidence.
 
@@ -81,8 +82,8 @@ Note that a confidence interval does not provide a quantitative measure of evide
 
 In statistics, a hypothesis is a claim about a population parameter. Hypothesis testing is a formal procedure used to decide between two competing claims about a population parameter. These two claims are known as:
 
--   the **null hypothesis**
--   the **alternative hypothesis**
+- the **null hypothesis**
+- the **alternative hypothesis**
 
 Hypothesis testing is a statistical technique that is used to quantify the evidence against a null hypothesis.
 
@@ -100,37 +101,37 @@ To test this research question, we will need a value for the mean diastolic bloo
 
 Our hypotheses then, could be written as:
 
--   H~0~: $\mu = 71$
--   H~A~: $\mu \ne 71$
+- H~0~: $\mu = 71$
+- H~A~: $\mu \ne 71$
 
 where $\mu$ is the true population mean diastolic blood pressure of Pima women.
 
 These hypotheses are very formal, and it may be easier to think of them as:
 
--   H~0~: The mean diastolic blood pressure of Pima women is 71 mmHg.
--   H~A~: The mean diastolic blood pressure of Pima women is not 71 mmHg.
+- H~0~: The mean diastolic blood pressure of Pima women is 71 mmHg.
+- H~A~: The mean diastolic blood pressure of Pima women is not 71 mmHg.
 
 ## The hypothesis testing framework
 
 The recommended steps in a hypothesis test are as follows:
 
 0.  Exploratory data analysis
-    -   examine distributions, check for missing and/or unusual data
-    -   understand the structure of the data (sample size, groups, variables)
-    -   based on above, choose an appropriate statistical test
-    -   check the assumptions required for the chosen test
-    -   frame the research question using the PECO framework:
-        -   Population, Exposure, Comparator, Outcome
+    - examine distributions, check for missing and/or unusual data
+    - understand the structure of the data (sample size, groups, variables)
+    - based on above, choose an appropriate statistical test
+    - check the assumptions required for the chosen test
+    - frame the research question using the PECO framework:
+      - Population, Exposure, Comparator, Outcome
 1.  Specify the Null and Alternative Hypotheses
 2.  Perform the statistical test, and obtain test statistic, degrees of freedom and P-value
 3.  Calculate descriptive statistics
 4.  Summarise the results including
-    -   Summary statistics (overall or by group)
-    -   A statement about the evidence
-    -   Estimate of effect including:
-        -   Direction
-        -   Point estimate
-        -   95% confidence interval
+    - Summary statistics (overall or by group)
+    - A statement about the evidence
+    - Estimate of effect including:
+      - Direction
+      - Point estimate
+      - 95% confidence interval
 5.  Provide a clear and concise conclusion, written in plain English, that summarises the results of the study in terms of the wider population, not just the sample
 
 ## The test statistic
@@ -147,9 +148,9 @@ If the P-value is small, it is unlikely that we would observe data like ours or 
 
 To summarise:
 
--   a small P-value gives us evidence against the null hypothesis;
--   a P-value that is not small provides little or no evidence against null hypothesis;
--   the smaller the P-value, the stronger the evidence against the null hypothesis.
+- a small P-value gives us evidence against the null hypothesis;
+- a P-value that is not small provides little or no evidence against null hypothesis;
+- the smaller the P-value, the stronger the evidence against the null hypothesis.
 
 Historically, a value of 0.05 has been used as a cut-point for finding evidence against the null hypothesis. A P-value less than 0.05 would be interpreted as "statistically significant", and would allow us to "reject the null hypothesis". A P-value greater than 0.05 would be interpreted as "not significant", and we would "fail to reject the null hypothesis". This arbitrary dichotomy is overly simplistic, and a more nuanced view is now recommended. Recommended interpretations for P-values are given in @tbl-4-1.
 
@@ -183,7 +184,101 @@ Reporting the effect size enables others to judge whether a result that has evid
 
 When applying statistical methods in health and medical research, we need to make an informed decision about whether the effect size that led to a statistically significant finding is also practically important (see @fig-practical-importance). The decision about whether a statistically significant result is also practically important depends on expert knowledge, and is best made by others with experience in the field.
 
-![Statistical significance vs. clinical importance (Source: Armitage P, Berry G, Matthews JNS. (2001)](img/mod04/practical-vs-statistical-sig.png){#fig-practical-importance}
+```{r}
+#| label: fig-practical-importance
+#| echo: false
+#| title: Statistical significance vs. clinical importance (adapted from Armitage P, Berry G, Matthews JNS. (2001))
+#| fig-alt: Five vertical confidence interval plots illustrate the distinction between statistical significance and practical importance. A solid horizontal line at zero represents the null hypothesis, while a dashed horizontal line above zero marks the threshold for a clinically or practically important effect. Intervals (a) and (b) lie entirely above zero, indicating statistically significant results; however, only (a) is clearly practically important because the entire interval is above the importance threshold, while (b) includes values of uncertain practical importance. Interval (c) is statistically significant because it does not cross zero, but it lies below the practical importance threshold, indicating a statistically significant yet clinically unimportant effect. Interval (d) crosses zero and spans both harmful and beneficial values, representing a statistically non-significant and inconclusive result. Interval (e) also crosses zero but remains below the practical importance threshold, suggesting a true negative result with no clinically important effect.
+# 1. Create the dataset
+# 'y_min' and 'y_max' represent the bounds of the error bars
+df <- data.frame(
+  label = factor(
+    c(
+      "(a)\nDefinitely\nImportant",
+      "(b)\nPossibly\nImportant",
+      "(c)\nNot\nImportant",
+      "(d)\nInconclusive",
+      "(e)\nTrue Negative"
+    ),
+    levels = c(
+      "(a)\nDefinitely\nImportant",
+      "(b)\nPossibly\nImportant",
+      "(c)\nNot\nImportant",
+      "(d)\nInconclusive",
+      "(e)\nTrue Negative"
+    )
+  ),
+  y_min = c(1.2, 0.6, 0.1, -0.4, -0.2),
+  y_max = c(2.2, 1.8, 0.9, 1.6, 0.8)
+)
+
+# 2. Generate the plot
+ggplot(df, aes(x = label)) +
+  # Add the error bars
+  geom_errorbar(aes(ymin = y_min, ymax = y_max), width = 0.2, size = 0.8) +
+  # Add the Null Hypothesis line (y = 0)
+  geom_hline(yintercept = 0, linetype = "solid", size = 0.7) +
+  # Add the "Important" threshold line (y = 1)
+  geom_hline(yintercept = 1, linetype = "dashed", color = "black") +
+  # Formatting scales and labels
+  scale_y_continuous(breaks = 0) +
+  labs(y = "Difference", x = NULL) +
+  theme_classic() +
+  # Refine visual style
+  theme(
+    axis.line.y = element_line(
+      arrow = grid::arrow(length = unit(0.3, "cm"), type = "closed")
+    ),
+    axis.line.x = element_blank(),
+    axis.title.y = element_text(
+      angle = 90,
+      hjust = 0.7,
+      vjust = 1,
+      face = "italic"
+    ),
+    axis.text.y = element_text(face = "bold", color = "black"),
+    axis.text.x = element_text(size = 9, color = "black", vjust = 1),
+    axis.ticks.x = element_blank(),
+    panel.background = element_blank()
+  ) +
+  annotate(
+    geom = "text",
+    x = 0.5,
+    y = 0,
+    hjust = 0,
+    label = "Null \nHypothesis"
+  ) +
+  annotate(
+    geom = "text",
+    x = 0.5,
+    y = 1,
+    hjust = 0,
+    label = "Practically\nImportant"
+  ) +
+  annotate(geom = "text", x = 2, y = 2.4, label = "Evidence of a difference") +
+  annotate(
+    geom = "text",
+    x = 4.5,
+    y = 2.4,
+    label = "No evidence of a difference"
+  ) +
+  annotate(
+    geom = "segment",
+    x = 0.8,
+    y = 2.3,
+    xend = 3.2,
+    yend = 2.3,
+    linetype = "dotted"
+  ) +
+  annotate(
+    geom = "segment",
+    x = 3.8,
+    y = 2.3,
+    xend = 5.2,
+    yend = 2.3,
+    linetype = "dotted"
+  )
+```
 
 It is possible when conducting significance tests, particularly in very large studies, that a small difference provides strong evidence of an effect due to increased precision from large sample sizes. For example, in a large study of over 1000 patients, a new medication may be found to lower blood pressure by an average of 1 mmHg more than a currently accepted drug, providing strong evidence of a difference (P \< 0.01). However, such a small reduction in blood pressure would be unlikely to be practically important. The cost and potential side effects of the new medication would need to be weighed against this very small average benefit. In this situation, despite strong statistical evidence, the finding would not be practically important. This is the situation described in scenario (c) of @fig-practical-importance.
 
@@ -205,14 +300,12 @@ The other situation is where, in reality, the null hypothesis is false. A correc
 
 The error in falsely rejecting the null hypothesis when it is true (type I error), or in falsely accepting the null hypothesis when it is not true (type II error) is summarised in @tbl-mod4-alpha-beta. We will return to these concepts in Module 10, when discussing how to determine the appropriate sample size of a study.
 
-
-|                           | **Effect in reality**               | **No effect in reality** |
-|---------------------------|:-----------------------------------:|:------------------------:|
-| **Evidence was found**    |      Correct: Power ($1 - \beta$)   |   Error: $\alpha$        |
-| **No evidence was found** |  Error: $\beta$                     |       Correct            |
+|   | **Effect in reality** | **No effect in reality** |
+|----------------------|:---------------------------:|:-------------------:|
+| **Evidence was found** | Correct: Power ($1 - \beta$) | Error: $\alpha$ |
+| **No evidence was found** | Error: $\beta$ | Correct |
 
 : Comparison of study result with the truth {#tbl-mod4-alpha-beta}
-
 
 ## One-sample t-test
 
@@ -229,10 +322,10 @@ The mean diastolic blood pressure (BP) of the general US population is known to 
 We can use jamovi or R to conduct a one sample t-test using the data available (`mod04_blood_pressure.csv`). The results from this test are summarised below.
 
 | n | Mean | Standard deviation | Standard error | 95% confidence interval of the mean |
-|------------|------------|------------|------------|-------------------------|
+|-------------|-------------|-------------|-------------|--------------------|
 | 733 | 72.4 | 12.38 | 0.46 | 71.5 to 73.3 |
 
-: Summary of blood pressure from female Pima indigenous Americans {#tbl-one-sample-ttest}
+: Summary of blood pressure from female Pima indigenous Americans
 
 The test statistic for the one-sample t-test is calculated as t~732~=3.07, with a P-value of 0.002.
 
@@ -246,6 +339,7 @@ Most statistical tests are two tailed tests, that is, we conduct a test that all
 
 ```{r fig-two-tailed-test, echo=FALSE, out.width = "66%"}
 #| fig-cap: P-value for a 2-tailed test
+#| fig-alt: A symmetric bell-shaped t-distribution centred at zero. Both tails are shaded beyond the critical values, illustrating the rejection regions for a two-tailed hypothesis test with alpha equal to 0.05.
 knitr::include_graphics(here::here("img", "mod04", "two-tailed-test.png"))
 ```
 
@@ -257,13 +351,11 @@ You will often see P-values generated by statistical software presented as 0.000
 
 R can display P-values in a very cryptic way: $\text{6.478546e-05}$ for example. This is translated as:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 6.478546e-05 &= 6.478546 \times 10^{-5} \\
   &= 6.478546 \times 0.00001 \\
   &= 0.00006478546
-\end{aligned}
-$$
+\end{aligned}$$
 
 Such a P-value should be presented as P\<0.0001.
 
@@ -297,13 +389,13 @@ The Australian Open Data infrastructure incorporates FAIR principles (Findable, 
 
 The CARE framework consists of four key components:
 
--   Collective Benefit emphasises inclusive development and innovation, improved governance and citizen engagement, and equitable outcomes.
+- Collective Benefit emphasises inclusive development and innovation, improved governance and citizen engagement, and equitable outcomes.
 
--   Authority to Control focuses on recognising Indigenous rights and interests, supporting data for governance, and enabling the governance of data itself.
+- Authority to Control focuses on recognising Indigenous rights and interests, supporting data for governance, and enabling the governance of data itself.
 
--   Responsibility calls for positive relationships, expanding capability and capacity, and incorporating Indigenous worldviews into data practices.
+- Responsibility calls for positive relationships, expanding capability and capacity, and incorporating Indigenous worldviews into data practices.
 
--   Ethics stresses minimising harm and maximising benefit, promoting justice, and careful consideration of future data uses.
+- Ethics stresses minimising harm and maximising benefit, promoting justice, and careful consideration of future data uses.
 
 This framework enables the enactment of FAIR principles but with appropriate care and attention to Indigenous rights and interests.[@walter_etal21]
 

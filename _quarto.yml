@@ -10,10 +10,10 @@ execute:
 book:
   title: "PHCM9795: Foundations of Biostatistics"
   author: "Timothy Dobbins"
-  date: "04-May-2026"
+  date: "21-May-2026"
   date-format: "DD MMMM, YYYY"
-  version: 0.2
-  output-file: "PHCM9795 Course notes v0.31"
+  version: 1.0
+  output-file: "PHCM9795 Course notes"
   chapters:
     - index.qmd
     - 01-intro.qmd
