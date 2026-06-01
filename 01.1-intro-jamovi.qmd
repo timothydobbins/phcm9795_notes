@@ -36,7 +36,7 @@ jamovi can be downloaded for no cost at [https://www.jamovi.org/download.html](h
 
 When you first open jamovi, it will look something like the following.
 
-![](img/mod01/jamovi/simple-01.png)
+![](img/mod01/jamovi/simple-01.png){fig-alt="Screenshot of jamovi opening with the spreadsheet view on the left and the results panel on the right."}
 On the left-hand side of the window is the spreadsheet view, and the right is where results of statistical analyses will appear. The **spreadsheet** is where data can be entered or changed.
 
 ::: {.callout-note icon="false"}
@@ -51,7 +51,7 @@ If you make a mistake, simply click the incorrect cell, and enter the correct va
 
 Your screen should look like this:
 
-![](img/mod01/jamovi/simple-02.png)
+![](img/mod01/jamovi/simple-02.png){fig-alt="Screenshot showing six ages entered down a single column in jamovi, with the default variable name A at the top."}
 
 There are two things to note here:
 
@@ -60,15 +60,15 @@ There are two things to note here:
 
 Let's rename our variable from `A` to `Age (years)`. There are a number of ways of doing this: here we will click the **Data** tab (at the top of the window) which allows us to change aspects of our dataset, and then click **Setup**. By default, the first column is selected - you can choose any column simply by clicking it.
 
-![](img/mod01/jamovi/variables-01.png)
+![](img/mod01/jamovi/variables-01.png){fig-alt="Screenshot of the Data tab and Setup panel where the first variable column is selected for editing."}
 
 In this window, you can change many variable properties, such as variable names and variable types. To change the variable name, click the name of the variable, currently `A`, at the top of the window. Replace `A` with `Age (years)`:
 
-![](img/mod01/jamovi/variables-02.png)
+![](img/mod01/jamovi/variables-02.png){fig-alt="Screenshot showing the variable name A being changed to Age (years) in the Setup panel."}
 
 Note that jamovi has assumed these data are *Nominal* data; this can be changed to *Continuous* by choosing the appropriate item in the **Measure type** drop-down menu:
 
-![](img/mod01/jamovi/variables-03.png)
+![](img/mod01/jamovi/variables-03.png){fig-alt="Screenshot of the Setup panel showing the measure type dropdown where a variable can be changed from nominal to continuous."}
 
 Once you have finished naming all your variables, you can click the **Up** arrow to close the Setup tab to view the spreadsheet again.
 
@@ -86,7 +86,7 @@ Rename the variable `A` with the name `Age (years)`, and define age as a *Contin
 
 Now that we have entered our six ages, let's calculate the mean age. Choose **Analyses \> Exploration \> Descriptives**. The **Descriptives** dialog box will appear. Move the variable `Age` into the **Variables** box by clicking `Age (years)` and then clicking the right-arrow icon. The window should appear as:
 
-![](img/mod01/jamovi/simple-03.png)
+![](img/mod01/jamovi/simple-03.png){fig-alt="Screenshot of the Descriptives analysis dialog with Age (years) selected in the Variables box."}
 
 You can see the results of the analysis in the right-hand pane.
 
@@ -102,7 +102,7 @@ Now that we have seen a simple example of how to use jamovi, let's describe the 
 
 The unique thing about jamovi is that *all analyses are updated whenever the data are changed in the spreadsheet*. While this can be convinient, *care must be taken not to make any unintended changes to your data while in the spreadsheet view.*
 
-jamovi also has a way of opening and saving data, using the three lines in the upper-left corner: ![](img/mod01/jamovi/three-lines.png). This collection of commands lets you open data, save data and export data and output.
+jamovi also has a way of opening and saving data, using the three lines in the upper-left corner: ![](img/mod01/jamovi/three-lines.png){fig-alt="Small three-line menu icon used to open, save, and export data or output in jamovi."}. This collection of commands lets you open data, save data and export data and output.
 
 ::: {.callout-tip}
 ## Tip
@@ -178,11 +178,11 @@ Assign meaningful variable names to the variables used in Table 1. You should to
 
 As we saw in Part 1, continuous variables can be summarised using **Analyses > Exploration**. There are three continuous variables that we would like to summarise: age, AST and serum bilirubin. Each of these can be listed in the **Exploration** dialog box, as shown below. The summaries are calculated automatically:
 
-![](img/mod01/jamovi/summ-01.png)
+![](img/mod01/jamovi/summ-01.png){fig-alt="Screenshot of jamovi Descriptives output showing summary statistics for age, AST, and serum bilirubin."}
 
 By default, the exploration command presents the number of observations, the number of missing observations, the mean, median, standard deviation, minimum and maximum. We may be interested in obtaining the interquartile range as well, so we select the **Statistics** arrow, and choose **Percentiles**:
 
-![](img/mod01/jamovi/summ-02.png)
+![](img/mod01/jamovi/summ-02.png){fig-alt="Screenshot of jamovi Descriptives output showing additional summary statistics for age, AST, and serum bilirubin."}
 
 For each of our three continuous variables, we need to decide whether to present the mean and standard deviation, or the median and interquartile range. This decision can be made after examining a density plot (and perhaps a boxplot) for each variable.
 
@@ -190,7 +190,7 @@ For each of our three continuous variables, we need to decide whether to present
 
 To produce a density plot, click the arrow next to **Plots** and choose **Density**. Plots will be produced for each variable listed in the **Variables** box. The density plots will be produced one after another, but they have been presented horizontally here:
 
-![](img/mod01/jamovi/densplot-all.png)
+![](img/mod01/jamovi/densplot-all.png){fig-alt="Screenshot showing density plots for the three continuous variables listed in the Descriptives output."}
 
 ### Producing a boxplot
 
@@ -240,9 +240,9 @@ As we saw in @sec-eda-cts, it is important to explore our data to identify any u
 Consider a sample dataset: `mod01_weight_1000.rds`, which contains the weights of 1000 people. A density plot and a boxplot should be examined before we start analysing these data:
 
 ::: {layout-ncol=2}
-![](img/mod01/jamovi/densplot-weight.png)
+![](img/mod01/jamovi/densplot-weight.png){fig-alt="Density plot of weights showing a small bump at an extreme high value, suggesting an unusual value."}
 
-![](img/mod01/jamovi/boxplot-weight.png)
+![](img/mod01/jamovi/boxplot-weight.png){fig-alt="Boxplot of weights with one extreme point far above the rest of the data, indicating an unusual value."}
 :::
 
 There is a clear outlying point shown in the boxplot. Although not obvious, the same point is shown in the density plot as a small blip around 700kg. Obviously this point is unusual, and we should investigate. You will need to decide if any usual values are a data entry error or are biologically plausible. If an extreme value or "outlier", is biologically plausible, it should be included in all analyses.
@@ -250,7 +250,7 @@ There is a clear outlying point shown in the boxplot. Although not obvious, the 
 
 Notice the boxed number in the boxplot: this is the record number in jamovi's spreadsheet. Click **Data** to view the spreadsheet, and scroll to record number 58:
 
-![](img/mod01/jamovi/outlier.png){width="40%}
+![](img/mod01/jamovi/outlier.png){width=40% fig-alt="Screenshot of the jamovi spreadsheet highlighting a very large value of 700.2 kg in record 58."}
 
 We see that there is a very high value of 700.2kg. A value as high as 700kg is likely to be a data entry error (e.g. error in entering an extra zero) and is not a plausible weight value. Here, **you should check your original data**.
 

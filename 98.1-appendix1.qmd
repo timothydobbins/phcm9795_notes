@@ -3,5 +3,31 @@
 # Analysis flowchart
 
 ```{r , echo=FALSE, out.width = "100%"}
+#| fig-alt: | 
+#| Flowchart titled “Analysis flowchart” that guides selection of statistical tests based on the type of outcome variable, type of exposure variable, whether groups are independent or related, and whether normality can be assumed.
+#| 
+#| The chart begins by splitting outcome variables into “Continuous” and “Categorical.”
+#| 
+#| For a continuous outcome:
+#| 
+#| If there is no exposure variable, and normality can be assumed, the recommended test is a 1-sample t-test.
+#| If the exposure variable is categorical with 2 groups:
+#| For independent groups:
+#| If normality is assumed, use the Independent samples t-test
+#| If not, use the Wilcoxon rank-sum test
+#| For related groups:
+#| If normality is assumed, use the Paired t-test
+#| If not, use the Wilcoxon signed-rank test
+#| If the exposure variable is categorical with more than 2 groups:
+#| If normality is assumed, use Analysis of Variance (ANOVA) - not covered in this course
+#| If not, use the Kruskal–Wallis test
+#| If the exposure variable is continuous, and normality is assumed, the recommended method is Linear regression.
+#| 
+#| For a categorical outcome:
+#| 
+#| If the exposure variable is categorical with 2 or more groups and groups are independent, use the Chi-squared test or Fisher’s exact test
+#| If the exposure variable is categorical with 2 groups and groups are related, use the McNemar’s test
+#| 
+#| The flowchart is arranged left-to-right with arrows connecting decision points to the recommended statistical methods.
 knitr::include_graphics(here::here("img", "misc", "analysis-flowchart.png"))
 ```

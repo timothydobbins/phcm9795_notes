@@ -2,7 +2,6 @@
 #| echo: false
 #| message: false
 #| warning: false
-
 library(tinytable)
 library(dplyr)
 ```
@@ -106,6 +105,7 @@ The top five causes of death are also presented as a graph, enabling a simple co
 
 ```{r fig-1-1, echo=FALSE, out.width = "100%"}
 #| fig-cap: Leading causes of death, age-standardised death rates, 2014-2023
+#| fig-alt: Line chart showing the top five causes of death in Australia from 2014 to 2023, with age-standardised death rates changing over time.
 knitr::include_graphics(here::here("img", "mod01", "cause-death.png"))
 ```
 
@@ -226,6 +226,7 @@ As well as calculating measures of central tendency and spread to describe the c
 A frequency histogram is a plot of the number of observations that fall within defined ranges of non-overlapping intervals (called bins). Examples of frequency histograms are given in @fig-hist-1.
 
 ```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histograms of age and serum bilirubin from PBC data"}
+#| fig-alt: Two histograms shown side by side, one for age with a roughly symmetric distribution and one for serum bilirubin with a strong right skew.
 knitr::include_graphics(here::here("img", "mod01", "hist-symmetric-skewed.png"))
 ```
 
@@ -244,6 +245,7 @@ Both the frequency and density histograms are useful for understanding how the d
 A density plot can be thought of as a smoothed version of a density histogram. Like histograms, density plots show areas where there are a lot of observations and areas where there are relatively few observations. @fig-dens-1 illustrates example density plots for the same data as plotted in @fig-hist-1.
 
 ```{r fig-dens-1, echo=FALSE, out.width = "100%", fig.cap="Density plots of age (left) and serum bilirubin (right) from a sample of data"}
+#| fig-alt: Two density plots comparing a roughly symmetric age distribution with a highly right-skewed serum bilirubin distribution.
 knitr::include_graphics(here::here("img", "mod01", "dens-symmetric-skewed.png"))
 ```
 
@@ -263,6 +265,7 @@ Another way to inspect the distribution of data is by using a box plot. In a box
 @fig-box-1 presents two example boxplots for age and serum bilirubin.
 
 ```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age and serum bilirubin from PBC study data"}
+#| fig-alt: Two boxplots comparing age and serum bilirubin, with serum bilirubin showing a longer upper tail and more extreme values.
 knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
 ```
 

@@ -40,6 +40,7 @@ In summary, we recommend you use RStudio to write R code.
 3.  Open the R program. You should see a screen similar to below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
+#| fig-alt: Screenshot of the R console opening screen after installation, showing the command prompt ready for input.
 knitr::include_graphics("img/mod01/R-screenshot.png")
 ```
 
@@ -59,6 +60,7 @@ At this point, close R - we will not interact with R like this in the future. Yo
 4.  Open RStudio, which will appear similar to the screenshot below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
+#| fig-alt: Screenshot of the RStudio interface with the main panes visible.
 knitr::include_graphics("img/mod01/RStudio-screenshot-01.png")
 ```
 
@@ -91,6 +93,7 @@ By default, RStudio will retain data, scripts and other objects when you quit yo
 Make sure you are in the **General** pane, and **untick "Restore .RData into workplace at startup"**, and choose: "**Save workspace to .RData on exit:** **Never"**.
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot of the RStudio preferences window where workspace restoration settings can be changed.
 knitr::include_graphics("img/mod01/RStudio-preferences.png")
 ```
 
@@ -103,24 +106,28 @@ We will create a project called **PHCM9795** to store all the data you will use 
 Step 1: Choose **File \> New Project...** in RStudio to open the **Create Project** dialog box. Click the first option to create a project in a **New directory**:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot of RStudio’s Create Project window with the New Directory option selected.
 knitr::include_graphics("img/mod01/NewProject-1.png")
 ```
 
 Step 2: Click the first option: **New Project**:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot of the next step in the project wizard with New Project selected.
 knitr::include_graphics("img/mod01/NewProject-2.png")
 ```
 
 Step 3: Give the project a name, by typing PHCM9795 in the "Directory name", and choose where you want to store the project by clicking the **Browse** button. Finally, click **Create** to create your project.
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot of the project wizard where the project is named PHCM9795 and a folder location is selected.
 knitr::include_graphics("img/mod01/NewProject-3.png")
 ```
 
 You will now have a new folder in your directory, which contains only one file: PHCM9795.Rproj, and the two right-hand panes of RStudio will appear as below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot showing the newly created PHCM9795 project and the RStudio panes after creation.
 knitr::include_graphics("img/mod01/NewProject-4.png")
 ```
 
@@ -154,6 +161,7 @@ summary(age)
 Your screen should look like:
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
+#| fig-alt: Screenshot showing a simple R script typed into the script editor, including comments and summary(age).
 knitr::include_graphics("img/mod01/RStudio-screenshot-02.png")
 ```
 
@@ -186,6 +194,7 @@ Save your script within the PHCM9795 project by using **File \> Save As**, using
 Now that we have seen a simple example of how to use R within RStudio, let's describe the RStudio environment. Let's assume that you have just run your first R script, and you have four windows as below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
+#| fig-alt: Screenshot of the RStudio environment after running a script, showing the four standard panes.
 knitr::include_graphics("img/mod01/RStudio-screenshot-03.png")
 ```
 
@@ -265,6 +274,7 @@ As the 'verbs' of R, functions transform objects. Functions can transform your d
 R functions are specified by their arguments (or inputs). The arguments that can be supplied for each function can be inspected by examining the help notes for that function. To obtain help for a function, we can submit `help(summary)` (or equivalently `?summary`) in the console, or we can use the **Help** tab in the bottom-right window of RStudio. For example, the first part of the help notes for `summary` appear as:
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
+#| fig-alt: Screenshot of the R help page showing usage details for the summary function.
 knitr::include_graphics("img/mod01/help-1.png")
 ```
 
@@ -273,12 +283,14 @@ The help notes in R can be quite cryptic, but the **Usage** section details what
 Most help pages also include some examples of how you might use the function. These can be found at the very bottom of the help page.
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
+#| fig-alt: Screenshot of the bottom of an R help page showing example usage code.
 knitr::include_graphics("img/mod01/help-2.png")
 ```
 
 The `summary()` function is quite simple, in that it only requires one input, the object to be summarised. More complex functions might require a number of inputs. For example, the help notes for the `descriptives()` function in the `jmv` package show a large number of inputs can be specified. Instructions for installing the `jmv` package will be provided later, this help-screen is included for illustration only.
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
+#| fig-alt: Screenshot of the help page for the descriptives function with multiple arguments listed.
 knitr::include_graphics("img/mod01/help-3.png")
 ```
 
@@ -342,6 +354,7 @@ Note the use of the quotation marks.
 Alternatively, RStudio offers a graphical way of installing packages that can be accessed via **Tools \> Install Packages**, or via the **Install** button at the top of the **Packages** tab in the bottom-right window. You can begin typing the name of the package in the dialog box that appears, and RStudio will use predictive text to offer possible packages:
 
 ```{r echo=FALSE, fig.show="hold", out.width="60%"}
+#| fig-alt: Screenshot of the RStudio package installation window with a search field and suggested packages.
 knitr::include_graphics("img/mod01/install-packages.png")
 ```
 
@@ -434,6 +447,7 @@ We created a project in the previous step. We will now create a folder to store 
 Create a new folder by clicking the **New Folder** icon in the **Files** tab at the bottom-right:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot showing the New Folder icon in the Files pane.
 knitr::include_graphics("img/mod01/NewFolder-1.png")
 ```
 
@@ -446,6 +460,7 @@ Download the "Data sets: for learning activities", and use Windows Explorer or M
 Your **activities** folder should look like:
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
+#| fig-alt: Screenshot of the project's data folder after creating activities and examples subfolders.
 knitr::include_graphics("img/mod01/data-folder.png")
 ```
 
@@ -481,6 +496,7 @@ skim(pbc)
 ```
 
 ```{r echo=FALSE, fig.show="hold", out.width="90%"}
+#| fig-alt: Screenshot of the skimr summary output for the pbc dataset, including summary statistics and mini histograms.
 knitr::include_graphics("img/mod01/skim-pbc.png")
 ```
 :::
@@ -513,22 +529,25 @@ descriptives(data = pbc, vars = c(age, ast, bili), pc = TRUE)
 We can add `dens=TRUE` to the `descriptives` function to produce a density plot for each listed variable:
 
 ```{r}
+#| fig-alt: Density plots for three continuous variables
 descriptives(data = pbc, vars = c(age, ast, bili), pc = TRUE, dens = TRUE)
 ```
 
 Note that the density plots are plotted separately in the **Plot** window. They can be viewed using the arrows at the top of the **Plot** window:
 
-![](img/mod01/r-dens-01.png)
+![](img/mod01/r-dens-01.png){fig-alt="Screenshot showing the density plots output in the RStudio Plot window with navigation arrows for browsing plots."}
 
 A more flexible way of constructing a density plot is by using the plot() function within R, using the syntax: `plot(density(dataframe$variable))`, which plots the `variable` from the `dataframe`. For example, the default density plot for the `age` column of the `pbc` data:
 
 ```{r}
+#| fig-alt: Density plot for age. The x-axis is labelled "N=418, Bandwidth=2.812", the y-axis is labelled "Density" and the main title is "density(x=pbc$age)"
 plot(density(pbc$age))
 ```
 
 This plot can be improved by using `xlab=" "` and `main=" "` to assign labels for the x-axis and overall title respectively:
 
 ```{r}
+#| fig-alt: Density plot for age. The x-axis is labelled "Age in years", the y-axis is labelled "Density" and the main title is "Density plot of participant age from pbc study data"
 plot(
   density(pbc$age),
   xlab = "Age in years",
@@ -555,6 +574,7 @@ Like the density plot, boxplots can be requested in the `descriptives` function 
 The `boxplot` function is an alternative, more flexible function, again specifying the dataframe to use and the variable to be plotted as `dataframe$variable`. Labels can be applied in the same way as the histogram:
 
 ```{r}
+#| fig-alt: Boxplot for age showing a box with roughly equal whiskers.
 boxplot(
   pbc$age,
   xlab = "Age (years)",
@@ -600,6 +620,7 @@ Consider a sample dataset: `mod01_weight_1000.rds`, which contains the weights o
 #| echo: false
 #| message: false
 #| warning: false
+#| fig-alt: Density plot of weights showing a small bump at an extreme high value, suggesting an unusual value. Boxplot of weights with one extreme point far above the rest of the data, indicating an unusual value.
 sample <- readRDS("data/examples/mod01_weight_1000.rds")
 
 par(mfrow = c(1, 2))
