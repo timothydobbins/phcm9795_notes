@@ -393,7 +393,7 @@ More information about the tidyverse can be found using freely available resourc
 
 ## Part 2: Obtaining summary statistics for continuous data
 
-In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from Modeling Survival Data: Extending the Cox Model @therneau_grambsch10. By the end of this exercise, we will have completed some of @tbl-r-t1.
+In this exercise (spanning Modules 1 and 2), we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from Modeling Survival Data: Extending the Cox Model by @therneau_grambsch10. By the end of this exercise, we will have completed some of @tbl-r-t1.
 
 ```{r echo=FALSE}
 #| label: tbl-r-t1
@@ -651,7 +651,7 @@ sample$weight_clean = ifelse(sample$weight == 700.2, NA, sample$weight)
 
 **Note:** if an extreme value lies within the range of biological possibility it should not be set to missing.
 
-The same syntax could be used to replace the incorrect value with the correct value. For example, if you do source the original medical records, you might find that the original weight was recorded in medical records as 70.2kg. We could use the same syntax to replace 700.2 by 70.2: `sample$weight_clean = ifelse(sample$weight==700.2, NA, sample$weight)`
+The same syntax could be used to replace the incorrect value with the correct value. For example, if you do source the original medical records, you might find that the original weight was recorded in medical records as 70.2kg. We could use simlar syntax to replace 700.2 by 70.2: `sample$weight_clean = ifelse(sample$weight==700.2, 70.2, sample$weight)`
 
 Once you have checked your data for errors, you are ready to start analysing your data.
 

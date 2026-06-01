@@ -33,3 +33,7 @@ On successful completion of this course, you will be able to:
 UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics Course Notes. UNSW Sydney, 2026.
 
 ## Change log
+
+1 June 2026
+
+- Section 1.15 - corrected typo: "We could use *similar* syntax..." Also, the code `sample$weight_clean = ifelse(sample$weight==700.2, NA, sample$weight)` should be correctly written as `sample$weight_clean = ifelse(sample$weight==700.2, 70.2, sample$weight)`.
