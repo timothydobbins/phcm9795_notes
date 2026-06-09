@@ -44,7 +44,7 @@ This can be done easily in jamovi by defining a **Split by** variable. For examp
 
 ## Computing probabilities from a Normal distribution {#sec-normal-jamovi}
 
-jamovi does not have a point-and-click method for computing probabilities from a Normal distribution. Here, instructions are provided for using a third-party applet. This Normal Distribution Applet has been posted at https://homepage.stat.uiowa.edu/~mbognar/applets/normal.html, and provides a simple and intuitive way to compute probabilities from a Normal distribution. The applet requires three pieces of information:
+jamovi does not have a point-and-click method for computing probabilities from a Normal distribution. Here, instructions are provided for using a third-party applet. This Normal Distribution Applet has been posted at [https://mabognar.github.io/apps/normal.html](https://mabognar.github.io/apps/normal.html){target="_blank"}, and provides a simple and intuitive way to compute probabilities from a Normal distribution. The applet requires three pieces of information:
 
 - $\mu$: the mean of the Normal distribution being considered
 - $\sigma$: the standard deviation of the Normal distribution being considered

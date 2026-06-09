@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -95,7 +95,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-9f93a63bed731ea7c2fe0727957fd65d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2e087fb2413e055b304b7b86d488d459.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-108633c039277fca446d0fb103cb9c0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -745,7 +745,7 @@ Table&nbsp;3.1: Summary of blood pressure from female Pima indigenous Americans
 </section>
 <section id="sec-normal-jamovi" class="level2" data-number="3.16">
 <h2 data-number="3.16" class="anchored" data-anchor-id="sec-normal-jamovi"><span class="header-section-number">3.16</span> Computing probabilities from a Normal distribution</h2>
-<p>jamovi does not have a point-and-click method for computing probabilities from a Normal distribution. Here, instructions are provided for using a third-party applet. This Normal Distribution Applet has been posted at https://homepage.stat.uiowa.edu/~mbognar/applets/normal.html, and provides a simple and intuitive way to compute probabilities from a Normal distribution. The applet requires three pieces of information:</p>
+<p>jamovi does not have a point-and-click method for computing probabilities from a Normal distribution. Here, instructions are provided for using a third-party applet. This Normal Distribution Applet has been posted at <a href="https://mabognar.github.io/apps/normal.html" target="_blank">https://mabognar.github.io/apps/normal.html</a>, and provides a simple and intuitive way to compute probabilities from a Normal distribution. The applet requires three pieces of information:</p>
 <ul>
 <li><span class="math inline">\(\mu\)</span>: the mean of the Normal distribution being considered</li>
 <li><span class="math inline">\(\sigma\)</span>: the standard deviation of the Normal distribution being considered</li>
@@ -1043,6 +1043,7 @@ Table&nbsp;3.1: Summary of blood pressure from female Pima indigenous Americans
 </section>
 <section id="sec-normal-r" class="level2" data-number="3.26">
 <h2 data-number="3.26" class="anchored" data-anchor-id="sec-normal-r"><span class="header-section-number">3.26</span> Computing probabilities from a Normal distribution</h2>
+<p>The Normal Distribution Applet posted at <a href="https://mabognar.github.io/apps/normal.html" target="_blank">https://mabognar.github.io/apps/normal.html</a>, provides a simple and intuitive way to compute probabilities from a binomial distribution. Refer to the jamovi instructions for details.</p>
 <p>We can use the <code>pnorm</code> function to calculate probabilities from a Normal distribution:</p>
 <ul>
 <li><code>pnorm(q, mean, sd)</code> calculates the probability of observing a value of <code>q</code> or less, from a Normal distribution with a mean of <code>mean</code> and a standard deviation of <code>sd</code>. Note that if <code>mean</code> and <code>sd</code> are not entered, they are assumed to be 0 and 1 respectively (i.e.&nbsp;a standard normal distribution.)</li>

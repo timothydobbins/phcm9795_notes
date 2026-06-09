@@ -211,6 +211,8 @@ descriptives(age_df)
 
 ## Computing probabilities from a Normal distribution {#sec-normal-r}
 
+The Normal Distribution Applet posted at [https://mabognar.github.io/apps/normal.html](https://mabognar.github.io/apps/normal.html){target="_blank"}, provides a simple and intuitive way to compute probabilities from a binomial distribution. Refer to the jamovi instructions for details.
+
 We can use the `pnorm` function to calculate probabilities from a Normal distribution:
 
 -   `pnorm(q, mean, sd)` calculates the probability of observing a value of `q` or less, from a Normal distribution with a mean of `mean` and a standard deviation of `sd`. Note that if `mean` and `sd` are not entered, they are assumed to be 0 and 1 respectively (i.e. a standard normal distribution.)

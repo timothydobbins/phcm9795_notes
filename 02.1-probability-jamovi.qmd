@@ -127,7 +127,7 @@ We can examine the new categories by obtaining a frequency table: **Analyses > E
 
 ## Computing binomial probabilities
 
-jamovi does not have a point-and-click method for computing probabilities from a binomial distribution. Here, instructions are provided for using a third-party applet. This Binomial Distribution Applet has been posted at https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html, and provides a simple and intuitive way to compute probabilities from a binomial distribution. 
+jamovi does not have a point-and-click method for computing probabilities from a binomial distribution. Here, instructions are provided for using a third-party applet. This Binomial Distribution Applet has been posted at [https://mabognar.github.io/apps/bin.html](https://mabognar.github.io/apps/bin.html){target="_blank"}, and provides a simple and intuitive way to compute probabilities from a binomial distribution. 
 
 The applet requires three pieces of information:
 

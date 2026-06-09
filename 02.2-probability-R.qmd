@@ -260,6 +260,8 @@ summary(pbc$agegroup)
 
 ## Computing binomial probabilities using R {#sec-binom-r}
 
+The Binomial Distribution Applet posted at [https://mabognar.github.io/apps/bin.html](https://mabognar.github.io/apps/bin.html){target="_blank"}, provides a simple and intuitive way to compute probabilities from a binomial distribution. Refer to the jamovi instructions for details.
+
 There are two R functions that we can use to calculate probabilities based on the binomial distribution: `dbinom` and `pbinom`:
 
 -   `dbinom(x, size, prob)` gives the probability of obtaining `x` successes from `size` trials when the probability of a success on one trial is `prob`;
