@@ -32,33 +32,39 @@ Categorical data are best summarised using a frequency table, where each categor
 #| warning: false
 #| tbl-cap: Sex of participants in PBC study
 #| tbl-pos: h
-
 library(dplyr)
 library(jmv)
 library(tinytable)
 library(modelsummary)
 
 pbc <- readRDS("data/examples/mod01_pbc.rds") |>
-    mutate(sex = factor(sex, levels = c(1, 2), labels = c("Male", "Female")),
-           stage = factor(stage, levels=c(1,2,3,4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))) |> 
-  rename(Sex=sex, `Stage of disease`=stage)
+  mutate(
+    sex = factor(sex, levels = c(1, 2), labels = c("Male", "Female")),
+    stage = factor(
+      stage,
+      levels = c(1, 2, 3, 4),
+      labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4")
+    )
+  ) |>
+  rename(Sex = sex, `Stage of disease` = stage)
 
 tab <- descriptives(pbc, Sex, freq = TRUE)
 
 tab_out <- as.data.frame(tab$frequencies[[1]]) |>
-    rename(
-        Frequency = counts,
-        `Relative frequency (%)` = pc,
-        `Cumulative relative frequency (%)` = cumpc
-    ) |>
-    mutate(
-        `Relative frequency (%)` = 100 * `Relative frequency (%)`,
-        `Cumulative relative frequency (%)` = 100 * `Cumulative relative frequency (%)`
-    )
+  rename(
+    Frequency = counts,
+    `Relative frequency (%)` = pc,
+    `Cumulative relative frequency (%)` = cumpc
+  ) |>
+  mutate(
+    `Relative frequency (%)` = 100 * `Relative frequency (%)`,
+    `Cumulative relative frequency (%)` = 100 *
+      `Cumulative relative frequency (%)`
+  )
 
-tt(select(tab_out, 1:3), escape=TRUE) |> 
-  tt_format(j=3, digits=1, num_fmt="decimal") |> 
-  tt_style(align="lcc")
+tt(select(tab_out, 1:3), escape = TRUE) |>
+  tt_format(j = 3, digits = 1, num_fmt = "decimal") |>
+  tt_style(align = "lcc")
 ```
 
 It is sometimes useful to present the cumulative relative frequency, which shows the relative frequency of individuals in a certain category or below (for example, @tbl-1-stage).
@@ -66,7 +72,6 @@ It is sometimes useful to present the cumulative relative frequency, which shows
 ```{r tbl-1-stage, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Stage of disease for participants in PBC study
 #| tbl-pos: h
-
 tab_stage <- descriptives(pbc, `Stage of disease`, freq = TRUE)
 
 tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
@@ -77,10 +82,14 @@ tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
   ) |>
   mutate(
     `Relative frequency (%)` = sprintf("%.1f", 100 * `Relative frequency (%)`),
-    `Cumulative relative frequency (%)` = sprintf("%.1f", 100 * `Cumulative relative frequency (%)`))
+    `Cumulative relative frequency (%)` = sprintf(
+      "%.1f",
+      100 * `Cumulative relative frequency (%)`
+    )
+  )
 
-tt(select(tab_stage_out, 1:4), escape=TRUE) |> 
-  tt_style(align="lccc")
+tt(select(tab_stage_out, 1:4), escape = TRUE) |>
+  tt_style(align = "lccc")
 ```
 
 From @tbl-1-stage, we can see that 65.0% of participants had Stage 3 disease or lower.
@@ -115,10 +124,12 @@ Using our PBC data, we can summarise the two categorical variables: sex and stag
 ```{r tbl-1-sex-stage-freq, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*
 #| tbl-pos: h
-
-datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N,
-                     notes = c('* Stage of disease was missing for 6 participants')) |> 
+datasummary_crosstab(
+  Sex ~ `Stage of disease`,
+  data = pbc,
+  statistic = 1 ~ 1 + N,
+  notes = c('* Stage of disease was missing for 6 participants')
+) |>
   format_tt(replace = list("Count" = "N"))
 ```
 
@@ -127,17 +138,23 @@ We can add percentages to two-way tables as either *column* or *row* percents. U
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
 #| tbl-pos: h
-
-ds <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ N + Percent("col"),
-                     output = "data.frame")
+ds <- datasummary_crosstab(
+  Sex ~ `Stage of disease`,
+  data = pbc,
+  statistic = 1 ~ N + Percent("col"),
+  output = "data.frame"
+)
 
 colnames(ds)[2] <- "Stat"
 
-ds <- ds |> 
-  mutate(Stat = replace_when(Stat,
-                             Stat == "N" ~ "Count",
-                             Stat == "% col" ~ "Column percent"))
+ds <- ds |>
+  mutate(
+    Stat = replace_when(
+      Stat,
+      Stat == "N" ~ "Count",
+      Stat == "% col" ~ "Column percent"
+    )
+  )
 
 ft <- tt(ds, notes = c('* Stage of disease was missing for 6 participants'))
 
@@ -150,19 +167,28 @@ Conversely, row percents represent the relative frequencies of stage within each
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including row percents
 #| tbl-pos: h
-
-ds <- datasummary_crosstab(Sex ~ `Stage of disease`, data=pbc,
-                     statistic = 1 ~ 1 + N + Percent("row"),
-                     output = "data.frame")
+ds <- datasummary_crosstab(
+  Sex ~ `Stage of disease`,
+  data = pbc,
+  statistic = 1 ~ 1 + N + Percent("row"),
+  output = "data.frame"
+)
 
 colnames(ds)[2] <- "Stat"
 
-ds <- ds |> 
-  mutate(Stat = replace_when(Stat,
-                             Stat == "N" ~ "Count",
-                             Stat == "% row" ~ "Row percent"))
+ds <- ds |>
+  mutate(
+    Stat = replace_when(
+      Stat,
+      Stat == "N" ~ "Count",
+      Stat == "% row" ~ "Row percent"
+    )
+  )
 
-finaltable <- tt(ds, notes = c('* Stage of disease was missing for 6 participants'))
+finaltable <- tt(
+  ds,
+  notes = c('* Stage of disease was missing for 6 participants')
+)
 
 names(finaltable)[2] <- " "
 finaltable
@@ -205,13 +231,21 @@ knitr::include_graphics(here::here("img", "mod02", "pbc-bar-stage-sex.png"))
 An alternative bar graph is a stacked or composite bar graph, which retains the overall height for each category, but differentiates the bars by another variable (@fig-bar-3).
 
 ```{r fig-bar-3, echo=FALSE, out.width = "75%", fig.cap="Stacked bar graph of stage of disease by sex from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod02", "pbc-bar-stage-sex-stacked.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod02",
+  "pbc-bar-stage-sex-stacked.png"
+))
 ```
 
 Finally, a stacked relative bar chart (@fig-bar-4) displays the proportion of grouping variable for each bar, where each overall bar represents 100%. These graphs allow the reader to compare the proportions between categories. We can easily see from @fig-bar-4 that the distribution of sex is similar across each stage of disease.
 
 ```{r fig-bar-4, echo=FALSE, out.width = "75%", fig.cap="Relative frequency of sex within stage of disease from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod02", "pbc-bar-stage-sex-stacked-relative.png"))
+knitr::include_graphics(here::here(
+  "img",
+  "mod02",
+  "pbc-bar-stage-sex-stacked-relative.png"
+))
 ```
 
 ## Presentation guidelines
@@ -229,28 +263,30 @@ A summary of these guidelines that will be used in this course appear in @tbl-1-
 ```{r tbl-1-pres, echo=FALSE}
 #| tbl-cap: Guidelines for presentation of statistical results
 #| fig-pos: h
-
 tab1_pres <- tibble::tribble(
-    ~`Summary statistic`, ~`Guideline (reference)`,
-    "Mean", "It is usually appropriate to quote the mean to one extra decimal place compared with the raw data. (Altman)",
-    "Median, Interquartile range, Range", "As medians, interquartile ranges and ranges are based on individual data points, these values should be presented with the same precision as the original data.",
-    "Percentage", "Percentages do not need to be given with more than one decimal place at most. When the sample size is less than 100, no decimal places should be given. (Altman)",
-    "Probability", "It is acceptable to present probabilities to 2 or 3 decimal places. If the probability is presented as a percentage, present the percentage with 0 or 1 decimal place.",
-    "Standard deviation", "The standard deviation should usually be given to the same accuracy as the mean, or with one extra decimal place. (Altman)",
-    "Standard error", "As per standard deviation",
-    "Confidence interval", "Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)",
-    "Test statistic", "Test statistics should not be presented with more than two decimal places.",
-    "Degrees of freedom", "Most degrees of freedom are whole numbers, and should be presented as such. If a test statistic has degrees of freedom with decimal places (the Welch t-statistic for example), present only one decimal place.",
-    "P-value", "Report P-values to a single significant figure unless the P-value is close to 0.05 (say, 0.01 to 0.2), in which case, report two significant figures. Do not report `not significant` for P-values of 0.05 or higher. Very low P-values can be reported as P < 0.001 or P < 0.0001. A P-value can indeed be 1, although some investigators prefer to report this as >0.9. (Based on Assel)",
-    "Difference in means", "As for the estimated means",
-    "Difference in proportions", "As for the estimated proportions",
-    "Odds ratio / Relative risk", "Hazard and odds ratios are normally reported to two decimal places, although this can be avoided for high odds ratios (Assel)",
-    "Correlation coefficient", "One or two decimal places, or more when very close to ±1   (Cole)",
-    "Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
+  ~`Summary statistic`                 , ~`Guideline (reference)`                                                                                                                                                                                                                                                                                                                                                                     ,
+  "Mean"                               , "It is usually appropriate to quote the mean to one extra decimal place compared with the raw data. (Altman)"                                                                                                                                                                                                                                                                                ,
+  "Median, Interquartile range, Range" , "As medians, interquartile ranges and ranges are based on individual data points, these values should be presented with the same precision as the original data."                                                                                                                                                                                                                            ,
+  "Percentage"                         , "Percentages do not need to be given with more than one decimal place at most. When the sample size is less than 100, no decimal places should be given. (Altman)"                                                                                                                                                                                                                           ,
+  "Probability"                        , "It is acceptable to present probabilities to 2 or 3 decimal places. If the probability is presented as a percentage, present the percentage with 0 or 1 decimal place."                                                                                                                                                                                                                     ,
+  "Standard deviation"                 , "The standard deviation should usually be given to the same accuracy as the mean, or with one extra decimal place. (Altman)"                                                                                                                                                                                                                                                                 ,
+  "Standard error"                     , "As per standard deviation"                                                                                                                                                                                                                                                                                                                                                                  ,
+  "Confidence interval"                , "Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)"                                                                                                                                                                                                                     ,
+  "Test statistic"                     , "Test statistics should not be presented with more than two decimal places."                                                                                                                                                                                                                                                                                                                 ,
+  "Degrees of freedom"                 , "Most degrees of freedom are whole numbers, and should be presented as such. If a test statistic has degrees of freedom with decimal places (the Welch t-statistic for example), present only one decimal place."                                                                                                                                                                            ,
+  "P-value"                            , "Report P-values to a single significant figure unless the P-value is close to 0.05 (say, 0.01 to 0.2), in which case, report two significant figures. Do not report `not significant` for P-values of 0.05 or higher. Very low P-values can be reported as P < 0.001 or P < 0.0001. A P-value can indeed be 1, although some investigators prefer to report this as >0.9. (Based on Assel)" ,
+  "Difference in means"                , "As for the estimated means"                                                                                                                                                                                                                                                                                                                                                                 ,
+  "Difference in proportions"          , "As for the estimated proportions"                                                                                                                                                                                                                                                                                                                                                           ,
+  "Odds ratio / Relative risk"         , "Hazard and odds ratios are normally reported to two decimal places, although this can be avoided for high odds ratios (Assel)"                                                                                                                                                                                                                                                              ,
+  "Correlation coefficient"            , "One or two decimal places, or more when very close to ±1   (Cole)"                                                                                                                                                                                                                                                                                                                          ,
+  "Regression coefficient"             , "Use one more significant figure than the underlying data   (adapted from Cole)"
 )
 
-tt(tab1_pres, width=c(2, 5),
-  notes = c('Sources: Altman (1990), Cole (2015), Assel et al. (2019)'))
+tt(
+  tab1_pres,
+  width = c(2, 5),
+  notes = c('Sources: Altman (1990), Cole (2015), Assel et al. (2019)')
+)
 ```
 
 ### Table presentation guidelines
@@ -319,18 +355,16 @@ Using the information from https://www.donateblood.com.au/learn/about-blood let�
 ```{r tbl-2-1, echo=FALSE}
 #| tbl-cap: Frequency of blood types
 #| tbl-pos: h
-
-
 tab2_1 <- tibble::tribble(
-    ~`Blood Type`, ~`% of population`, ~Probability,
-    "A", "38%", 0.38,
-    "B", "10%", 0.1,
-    "AB", "3%", 0.03,
-    "O", "49%", 0.49,
-    "Total", "100%", 1.0
+  ~`Blood Type` , ~`% of population` , ~Probability ,
+  "A"           , "38%"              , 0.38         ,
+  "B"           , "10%"              , 0.1          ,
+  "AB"          , "3%"               , 0.03         ,
+  "O"           , "49%"              , 0.49         ,
+  "Total"       , "100%"             , 1.0
 )
 
-tt(tab2_1, escape=TRUE)
+tt(tab2_1, escape = TRUE)
 ```
 
 In this example we consider: What is the probability that an individual will have either blood group O or A?
@@ -362,15 +396,13 @@ For example, the probability distribution for a single coin toss is straightforw
 ```{r tbl-coin, echo=FALSE}
 #| tbl-cap: Probability distribution for a single coin toss
 #| tbl-pos: h
-
 tab2_coin <- tibble::tribble(
-    ~`Coin face`, ~Probability,
-    "Heads", 0.5,
-    "Tails", 0.5
+  ~`Coin face` , ~Probability ,
+  "Heads"      , 0.5          ,
+  "Tails"      , 0.5
 )
 
 tt(tab2_coin)
-
 ```
 
 Similarly, the probability distribution for a single roll of a die is straightforward: each face has a probability of 1/6 (@tbl-die).
@@ -378,15 +410,14 @@ Similarly, the probability distribution for a single roll of a die is straightfo
 ```{r tbl-die, echo=FALSE}
 #| tbl-cap: Probability distributions for a single roll of a die
 #| tbl-pos: h
-
 tab2_die <- tibble::tribble(
-    ~`Face of a die`, ~Probability,
-    1L, "1/6",
-    2L, "1/6",
-    3L, "1/6",
-    4L, "1/6",
-    5L, "1/6",
-    6L, "1/6"
+  ~`Face of a die` , ~Probability ,
+  1L               , "1/6"        ,
+  2L               , "1/6"        ,
+  3L               , "1/6"        ,
+  4L               , "1/6"        ,
+  5L               , "1/6"        ,
+  6L               , "1/6"
 )
 
 tt(tab2_die)
@@ -416,24 +447,22 @@ The possible combinations for three coin tosses are as follows:
 ```{r tbl-2-3toss, echo=FALSE}
 #| tbl-cap: The number of heads from three coin tosses
 #| tbl-pos: h
-
 tab2_3toss <- tibble::tribble(
-    ~`Pattern`, ~`Number of heads`,
-    "Tail, Tail, Tail", 0,
-    "Head, Tail, Tail", NA,
-    "Tail, Head, Tail", 1,
-    "Tail, Tail, Head", NA,
-    "Head, Head, Tail", NA,
-    "Head, Tail, Head", 2,
-    "Tail, Head, Head", NA,
-    "Head, Head, Head", 3
+  ~`Pattern`         , ~`Number of heads` ,
+  "Tail, Tail, Tail" ,                  0 ,
+  "Head, Tail, Tail" , NA                 ,
+  "Tail, Head, Tail" ,                  1 ,
+  "Tail, Tail, Head" , NA                 ,
+  "Head, Head, Tail" , NA                 ,
+  "Head, Tail, Head" ,                  2 ,
+  "Tail, Head, Head" , NA                 ,
+  "Head, Head, Head" ,                  3
 )
 
 
 tt(tab2_3toss) |>
-  format_tt(replace = "") |> 
-  tt_style(i=c(1, 4, 7), line="b")
-
+  format_tt(replace = "") |>
+  tt_style(i = c(1, 4, 7), line = "b")
 ```
 
 There are eight possible outcomes from three coin tosses (permutations). If we assume an equal chance of observing a head or a tail, each permutation above is equally likely, and so has a probability of 1/8.
@@ -445,18 +474,16 @@ Therefore, the probability distribution for X, the number of heads from three co
 ```{r tbl-2-4, echo=FALSE}
 #| tbl-cap: Probability distribution for the number of heads from three coin tosses
 #| tbl-pos: h
-
 tab2_4 <- tibble::tribble(
-    ~`x (number of heads observed)`, ~`P(X=x)`,
-    0L, "1/8",
-    1L, "1/8 + 1/8 + 1/8 = 3/8",
-    2L, "1/8 + 1/8 + 1/8 = 3/8",
-    3L, "1/8"
+  ~`x (number of heads observed)` , ~`P(X=x)`               ,
+  0L                              , "1/8"                   ,
+  1L                              , "1/8 + 1/8 + 1/8 = 3/8" ,
+  2L                              , "1/8 + 1/8 + 1/8 = 3/8" ,
+  3L                              , "1/8"
 )
 
 
 tt(tab2_4)
-
 ```
 
 Note that the probabilities sum to 1.
@@ -470,21 +497,20 @@ The number of ways two people out of three could have Type A blood is 3, and eac
 ```{r tbl-2-5, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Combinations and probabilities of Type A blood in three people
 #| tbl-pos: h
-
 tab2_5 <- tibble::tribble(
-    ~`Person 1`, ~`Person 2`, ~`Person 3`, ~Probability,
-    "A", "A", "A", "0.38 × 0.38 × 0.38 = 0.0549",
-    "A", "A", "Not A", "0.38 × 0.38 × 0.62 = 0.0895",
-    "A", "Not A", "A", "0.38 × 0.62 × 0.38 = 0.0895",
-    "Not A", "A", "A", "0.62 × 0.38 × 0.38 = 0.0895",
-    "A", "Not A", "Not A", "0.38 × 0.62 × 0.62 = 0.1461",
-    "Not A", "A", "Not A", "0.62 × 0.38 × 0.62 = 0.1461",
-    "Not A", "Not A", "A", "0.62 × 0.62 × 0.38 = 0.1461",
-    "Not A", "Not A", "Not A", "0.62 × 0.62 × 0.62 = 0.2383"
+  ~`Person 1` , ~`Person 2` , ~`Person 3` , ~Probability                  ,
+  "A"         , "A"         , "A"         , "0.38 × 0.38 × 0.38 = 0.0549" ,
+  "A"         , "A"         , "Not A"     , "0.38 × 0.38 × 0.62 = 0.0895" ,
+  "A"         , "Not A"     , "A"         , "0.38 × 0.62 × 0.38 = 0.0895" ,
+  "Not A"     , "A"         , "A"         , "0.62 × 0.38 × 0.38 = 0.0895" ,
+  "A"         , "Not A"     , "Not A"     , "0.38 × 0.62 × 0.62 = 0.1461" ,
+  "Not A"     , "A"         , "Not A"     , "0.62 × 0.38 × 0.62 = 0.1461" ,
+  "Not A"     , "Not A"     , "A"         , "0.62 × 0.62 × 0.38 = 0.1461" ,
+  "Not A"     , "Not A"     , "Not A"     , "0.62 × 0.62 × 0.62 = 0.2383"
 )
 
-tt(tab2_5) |> 
-    tt_style(i=c(1, 4, 7), line="b")
+tt(tab2_5) |>
+  tt_style(i = c(1, 4, 7), line = "b")
 ```
 
 @tbl-2-6 gives the probability of each of the blood type combinations we could observe in three people. The probability of observing a certain number of people (say, k) with Type A blood from a sample of three people can be calculated by summing the combinations:
@@ -492,17 +518,15 @@ tt(tab2_5) |>
 ```{r tbl-2-6, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Probabilities of observing numbers of people with Type A blood in a sample of three people
 #| tbl-pos: h
-
 tab2_6 <- tibble::tribble(
-    ~`Number of people with Type A blood`, ~`Probability of each pattern`,
-    3L, "0.0549",
-    2L, "0.0895 + 0.0895 + 0.0895 = 0.2689",
-    1L, "0.1461 + 0.1461 + 0.1461 = 0.4382",
-    0L, "0.2383"
+  ~`Number of people with Type A blood` , ~`Probability of each pattern`      ,
+  3L                                    , "0.0549"                            ,
+  2L                                    , "0.0895 + 0.0895 + 0.0895 = 0.2689" ,
+  1L                                    , "0.1461 + 0.1461 + 0.1461 = 0.4382" ,
+  0L                                    , "0.2383"
 )
 
 tt(tab2_6)
-
 ```
 
 ## Binomial distribution
@@ -546,7 +570,7 @@ c)  What is the probability that at most, 2 will be smokers?
 
 a)  Calculating this single binomial probability is best done using software.
 
-We can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html) to calculate this, or use the `dbinom` function in R with x=3, size=6, and prob=0.198. This gives an answer of 0.08.
+We can use the [applet](https://mabognar.github.io/apps/bin.html){target="_blank"} to calculate this, or use the `dbinom` function in R with x=3, size=6, and prob=0.198. This gives an answer of 0.08.
 
 b)  In common language, getting “at least 4” smokers means getting 4, 5 or 6 smokers. Since these are mutually exclusive events, we can apply the additive law to find the probability of getting at least 4 smokers:
 
@@ -558,7 +582,7 @@ $$ P(X \ge 4) = P(X=4) + P(X=5) + P(X=6) $$ Using the same binomial probability 
 
 Answer: $P(X \ge 4) = 0.0148 + 0.00146 + 0.0000603 = 0.016$
 
-We can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html) to calculate this, or in R we can use the `pbinom` function with the `lower.tail=FALSE` option.
+We can use the [applet](https://mabognar.github.io/apps/bin.html){target="_blank"} to calculate this, or in R we can use the `pbinom` function with the `lower.tail=FALSE` option.
 
 c)  Observing at most two means observing 0, 1 or 2 smokers. Therefore, the probability of observing at most 2 smokers is:
 
@@ -569,7 +593,7 @@ c)  Observing at most two means observing 0, 1 or 2 smokers. Therefore, the prob
 
 Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
 
-Again, we can use the [applet](https://homepage.stat.uiowa.edu/~mbognar/applets/bin.html) to calculate this, or use the `pbinom` function in R.
+Again, we can use the [applet](https://mabognar.github.io/apps/bin.html){target="_blank"} to calculate this, or use the `pbinom` function in R.
 
 {{< pagebreak >}}
 
