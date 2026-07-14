@@ -153,9 +153,9 @@ For other types of paired data such as twins or matched cases and controls, the 
 #| tbl-cap: Table layout for testing matched proportions
 #| tbl-pos: h
 tab7_1 <- tibble::tribble(
-  ~` `                   , ~`Negative at follow-up` , ~`Positive at follow-up` , ~Total  ,
-  "Negative at baseline" , "a"                      , "b"                      , "a + b" ,
-  "Positive at baseline" , "c"                      , "d"                      , "c + d" ,
+  ~` `                   , ~`Positive at follow-up` , ~`Negative at follow-up` , ~Total  ,
+  "Positive at baseline" , "a"                      , "b"                      , "a + b" ,
+  "Negative at baseline" , "c"                      , "d"                      , "c + d" ,
   "Total"                , "a + c"                  , "b + d"                  , "N"
 )
 

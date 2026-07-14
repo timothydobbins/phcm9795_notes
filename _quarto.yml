@@ -10,7 +10,7 @@ execute:
 book:
   title: "PHCM9795: Foundations of Biostatistics"
   author: "Timothy Dobbins"
-  date: "21-May-2026"
+  date: "14-Jul-2026"
   date-format: "DD MMMM, YYYY"
   version: 1.0
   output-file: "PHCM9795 Course notes"

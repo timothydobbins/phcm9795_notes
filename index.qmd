@@ -34,6 +34,10 @@ UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics
 
 ## Change log
 
+14 July
+
+- fixed the ordering of the categories in Table 7.5
+
 9 June 2026
 
 - updated the address of the Binomial Distribution applet (Module 2) and the Normal Distribution applet (Module 3)
