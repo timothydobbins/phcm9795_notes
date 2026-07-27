@@ -78,7 +78,7 @@ If we were testing the hypothesis that there was a difference in length of stay 
 
 : Summary statistics for transformed length of stay {#tbl-los-ttest}
 
-Here, a two-sample t-test gives a test statistic of 2.59 with 130 degrees of freedom, and a P-value of 0.01.
+Here, a two-sample t-test gives a test statistic of -2.61 with 38.5 degrees of freedom, and a P-value of 0.01.
 
 As explained above, the estimated statistics would need to be converted back to the units in which the variable was measured. From @tbl-los-ttest, we can take the exponential of the corresponding log-transformed values:
 

@@ -34,6 +34,10 @@ UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics
 
 ## Change log
 
+27 July
+
+- corrected the t-test in Section 9.2 to use a Welch's t-test
+
 14 July
 
 - fixed the ordering of the categories in Table 7.5
