@@ -25,7 +25,7 @@ To do the problem discussed in Worked Example 10.3, choose **Indep / Prospective
 
 ![](img/mod10/PS/mod10-twoprop-03.png){width=40%}
 
-Based on the information in Worked Example 10.5, the **Power** is `0.9` and **Significance level** is `0.05`, and the two proportions are entered as `0.35` and `0.2`. Define equal numbers in each group (**Ratio** of `1`).
+Based on the information in Worked Example 10.3, the **Power** is `0.9` and **Significance level** is `0.05`, and the two proportions are entered as `0.35` and `0.25`. Define equal numbers in each group (**Ratio** of `1`).
 
 Click **Calculate** obtain Output 10.3.
 

@@ -34,6 +34,10 @@ UNSW Sydney, School of Population Health. PHCM9795: Foundations of Biostatistics
 
 ## Change log
 
+1 August
+
+- Section 10.12. Corrected typos: Based on the information in Worked Example ~~10.5~~ 10.3, the Power is 0.9 and Significance level is 0.05, and the two proportions are entered as 0.35 and ~~0.2~~ 0.25. Define equal numbers in each group (Ratio of 1).
+
 27 July
 
 - corrected the t-test in Section 9.2 to use a Welch's t-test
