@@ -3,9 +3,7 @@
   "result": {
     "engine": "knitr",
     "markdown": "# Appendix {-}\n\n# Analysis flowchart\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](img/misc/analysis-flowchart.png){width=100%}\n:::\n:::\n\n",
-    "supporting": [
-      "98.1-appendix1_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
