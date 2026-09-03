@@ -1,0 +1,41 @@
+{
+  "index.qmd": {
+    "index.html": "eeb11aa5"
+  },
+  "01-intro.qmd": {
+    "01-intro.html": "7ee5f4b4"
+  },
+  "02-probability.qmd": {
+    "02-probability.html": "f8730ac9"
+  },
+  "03-precision.qmd": {
+    "03-precision.html": "935b2d1d"
+  },
+  "04-hypothesis-testing.qmd": {
+    "04-hypothesis-testing.html": "3e7c1092"
+  },
+  "05-comparing-two-means.qmd": {
+    "05-comparing-two-means.html": "0f5aecc7"
+  },
+  "06-proportions.qmd": {
+    "06-proportions.html": "9cce7705"
+  },
+  "07-testing-proportions.qmd": {
+    "07-testing-proportions.html": "0e4966cb"
+  },
+  "08-correlation-and-regression.qmd": {
+    "08-correlation-and-regression.html": "4bb3bff9"
+  },
+  "09-non-parametrics.qmd": {
+    "09-non-parametrics.html": "5f6d257f"
+  },
+  "10-sample-size.qmd": {
+    "10-sample-size.html": "c81ce3ef"
+  },
+  "98.1-appendix1.qmd": {
+    "98.1-appendix1.html": "67caac36"
+  },
+  "references.qmd": {
+    "references.html": "fa32454e"
+  }
+}

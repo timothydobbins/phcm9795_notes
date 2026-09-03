@@ -1,0 +1,15 @@
+{
+  "hash": "f5bb69da170def6b7150fddbeebf3e36",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Appendix {-}\n\n# Analysis flowchart\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](img/misc/analysis-flowchart.png){width=100%}\n:::\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
